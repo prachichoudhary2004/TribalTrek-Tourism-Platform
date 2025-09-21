@@ -4,23 +4,7 @@
       "static/media/Geist_Variable-s.p.f406b17f.woff2",
       "static/media/GeistMono_Variable.p.6bae060c.woff2"
     ],
-    "[project]/app/ai-features/page": [
-      "static/media/Geist_Variable-s.p.f406b17f.woff2",
-      "static/media/GeistMono_Variable.p.6bae060c.woff2"
-    ],
-    "[project]/app/feedback/page": [
-      "static/media/Geist_Variable-s.p.f406b17f.woff2",
-      "static/media/GeistMono_Variable.p.6bae060c.woff2"
-    ],
     "[project]/app/destinations/page": [
-      "static/media/Geist_Variable-s.p.f406b17f.woff2",
-      "static/media/GeistMono_Variable.p.6bae060c.woff2"
-    ],
-    "[project]/app/analytics/page": [
-      "static/media/Geist_Variable-s.p.f406b17f.woff2",
-      "static/media/GeistMono_Variable.p.6bae060c.woff2"
-    ],
-    "[project]/app/about/page": [
       "static/media/Geist_Variable-s.p.f406b17f.woff2",
       "static/media/GeistMono_Variable.p.6bae060c.woff2"
     ],
@@ -29,6 +13,14 @@
       "static/media/GeistMono_Variable.p.6bae060c.woff2"
     ],
     "[project]/app/travel-planner/page": [
+      "static/media/Geist_Variable-s.p.f406b17f.woff2",
+      "static/media/GeistMono_Variable.p.6bae060c.woff2"
+    ],
+    "[project]/app/feedback/page": [
+      "static/media/Geist_Variable-s.p.f406b17f.woff2",
+      "static/media/GeistMono_Variable.p.6bae060c.woff2"
+    ],
+    "[project]/app/about/page": [
       "static/media/Geist_Variable-s.p.f406b17f.woff2",
       "static/media/GeistMono_Variable.p.6bae060c.woff2"
     ],
@@ -41,6 +33,10 @@
       "static/media/GeistMono_Variable.p.6bae060c.woff2"
     ],
     "[project]/app/order/success/page": [
+      "static/media/Geist_Variable-s.p.f406b17f.woff2",
+      "static/media/GeistMono_Variable.p.6bae060c.woff2"
+    ],
+    "[project]/app/ai-features/page": [
       "static/media/Geist_Variable-s.p.f406b17f.woff2",
       "static/media/GeistMono_Variable.p.6bae060c.woff2"
     ],

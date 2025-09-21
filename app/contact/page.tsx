@@ -119,21 +119,18 @@ export default function ContactPage() {
       address: "123 Tourism Hub, Main Road, Ranchi 834001",
       phone: "+91 651 234 5678",
       email: "ranchi@jharkhantourism.com",
-      manager: "Dr. Rajesh Kumar",
     },
     {
       city: "Jamshedpur",
       address: "456 Steel City Plaza, Jamshedpur 831001",
       phone: "+91 657 890 1234",
       email: "jamshedpur@jharkhantourism.com",
-      manager: "Amit Singh",
     },
     {
       city: "Hazaribagh",
       address: "789 Heritage Center, Hazaribagh 825301",
       phone: "+91 654 567 8901",
       email: "hazaribagh@jharkhantourism.com",
-      manager: "Priya Sharma",
     },
   ]
 
@@ -397,9 +394,6 @@ export default function ContactPage() {
                     <span className="text-sm text-primary">{office.email}</span>
                   </div>
 
-                  <div className="pt-2">
-                    <Badge variant="outline">Manager: {office.manager}</Badge>
-                  </div>
                 </div>
 
                 <Button variant="outline" className="w-full mt-4 group bg-transparent">

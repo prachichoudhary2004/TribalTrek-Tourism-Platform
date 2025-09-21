@@ -21,44 +21,7 @@ import {
 } from "lucide-react"
 
 export default function AboutPage() {
-  const team = [
-    {
-      name: "Dr. Rajesh Kumar",
-      role: "Founder & CEO",
-      image: "/placeholder.svg?height=200&width=200&text=Rajesh",
-      bio: "Tourism expert with 15+ years experience in sustainable development",
-      location: "Ranchi",
-      email: "rajesh@jharkhantourism.com",
-      linkedin: "#",
-    },
-    {
-      name: "Priya Sharma",
-      role: "Head of Community Relations",
-      image: "/placeholder.svg?height=200&width=200&text=Priya",
-      bio: "Anthropologist specializing in tribal culture preservation",
-      location: "Hazaribagh",
-      email: "priya@jharkhantourism.com",
-      linkedin: "#",
-    },
-    {
-      name: "Amit Singh",
-      role: "Technology Director",
-      image: "/placeholder.svg?height=200&width=200&text=Amit",
-      bio: "AI/ML engineer focused on sustainable tourism solutions",
-      location: "Jamshedpur",
-      email: "amit@jharkhantourism.com",
-      linkedin: "#",
-    },
-    {
-      name: "Sunita Devi",
-      role: "Cultural Heritage Advisor",
-      image: "/placeholder.svg?height=200&width=200&text=Sunita",
-      bio: "Traditional artist and cultural preservation advocate",
-      location: "Deoghar",
-      email: "sunita@jharkhantourism.com",
-      linkedin: "#",
-    },
-  ]
+  const team = []
 
   const values = [
     {
@@ -150,25 +113,25 @@ export default function AboutPage() {
       {/* Mission & Vision */}
       <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
-            <div className="p-8 rounded-3xl" style={{
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-16 lg:mb-20">
+            <div className="p-6 lg:p-8 rounded-3xl" style={{
               background: 'linear-gradient(135deg, rgba(244, 208, 63, 0.15) 0%, rgba(128, 0, 32, 0.15) 100%)',
               backdropFilter: 'blur(20px)',
               border: '2px solid rgba(244, 208, 63, 0.4)',
               boxShadow: '0 8px 32px rgba(244, 208, 63, 0.3)'
             }}>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-balance" style={{
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 lg:mb-6 text-balance" style={{
                 color: '#f4d03f',
                 textShadow: '0 2px 4px rgba(244, 208, 63, 0.3)'
               }}>🎯 Our Mission</h2>
-              <p className="text-lg mb-6 text-pretty" style={{
+              <p className="text-base lg:text-lg mb-4 lg:mb-6 text-pretty" style={{
                 color: 'white',
                 lineHeight: '1.7'
               }}>
                 To create a sustainable digital ecosystem that empowers tribal communities in Jharkhand through
                 responsible tourism, while preserving their rich cultural heritage and protecting the environment.
               </p>
-              <p className="text-lg text-pretty" style={{
+              <p className="text-base lg:text-lg text-pretty" style={{
                 color: 'rgba(255, 255, 255, 0.9)',
                 lineHeight: '1.7'
               }}>
@@ -176,53 +139,53 @@ export default function AboutPage() {
                 exchange, and promoting environmental conservation.
               </p>
             </div>
-            <div className="relative">
-              <div className="rounded-3xl overflow-hidden" style={{
+            <div className="relative flex justify-center lg:justify-start">
+              <div className="rounded-3xl overflow-hidden w-full max-w-md lg:max-w-none" style={{
                 border: '3px solid rgba(244, 208, 63, 0.5)',
                 boxShadow: '0 12px 40px rgba(244, 208, 63, 0.2)'
               }}>
                 <img
                   src="/jharkhand-landscape-forest-mountains-tribal-cultur.jpg"
                   alt="Jharkhand landscape"
-                  className="w-full h-80 object-cover"
+                  className="w-full h-48 lg:h-56 object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
               </div>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="order-2 lg:order-1 relative">
-              <div className="rounded-3xl overflow-hidden" style={{
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <div className="order-2 lg:order-1 relative flex justify-center lg:justify-end">
+              <div className="rounded-3xl overflow-hidden w-full max-w-md lg:max-w-none" style={{
                 border: '3px solid rgba(30, 58, 138, 0.5)',
                 boxShadow: '0 12px 40px rgba(30, 58, 138, 0.2)'
               }}>
                 <img
                   src="/jharkhand-tribal-handicrafts-marketplace-artisans.jpg"
                   alt="Tribal artisans"
-                  className="w-full h-80 object-cover"
+                  className="w-full h-48 lg:h-56 object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
               </div>
             </div>
-            <div className="order-1 lg:order-2 p-8 rounded-3xl" style={{
+            <div className="order-1 lg:order-2 p-6 lg:p-8 rounded-3xl" style={{
               background: 'linear-gradient(135deg, rgba(30, 58, 138, 0.15) 0%, rgba(244, 208, 63, 0.15) 100%)',
               backdropFilter: 'blur(20px)',
               border: '2px solid rgba(30, 58, 138, 0.4)',
               boxShadow: '0 8px 32px rgba(30, 58, 138, 0.3)'
             }}>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-balance" style={{
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 lg:mb-6 text-balance" style={{
                 color: '#f4d03f',
                 textShadow: '0 2px 4px rgba(244, 208, 63, 0.3)'
               }}>🌟 Our Vision</h2>
-              <p className="text-lg mb-6 text-pretty" style={{
+              <p className="text-base lg:text-lg mb-4 lg:mb-6 text-pretty" style={{
                 color: 'white',
                 lineHeight: '1.7'
               }}>
                 To make Jharkhand a global model for sustainable, community-driven tourism that celebrates indigenous
                 culture while creating lasting economic impact.
               </p>
-              <p className="text-lg text-pretty" style={{
+              <p className="text-base lg:text-lg text-pretty" style={{
                 color: 'rgba(255, 255, 255, 0.9)',
                 lineHeight: '1.7'
               }}>
@@ -252,22 +215,22 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {values.map((value, index) => (
-              <div key={index} className="text-center p-8 rounded-3xl transition-all duration-300 hover:scale-105" style={{
+              <div key={index} className="text-center p-6 lg:p-8 rounded-3xl transition-all duration-300 hover:scale-105" style={{
                 background: 'linear-gradient(135deg, rgba(244, 208, 63, 0.15) 0%, rgba(128, 0, 32, 0.15) 100%)',
                 backdropFilter: 'blur(20px)',
                 border: '2px solid rgba(244, 208, 63, 0.3)',
                 boxShadow: '0 8px 32px rgba(244, 208, 63, 0.2)'
               }}>
-                <div className="mx-auto w-16 h-16 rounded-full flex items-center justify-center mb-6" style={{
+                <div className="mx-auto w-14 h-14 lg:w-16 lg:h-16 rounded-full flex items-center justify-center mb-4 lg:mb-6" style={{
                   background: 'linear-gradient(135deg, #f4d03f 0%, #d4af37 100%)',
                   boxShadow: '0 4px 15px rgba(244, 208, 63, 0.4)'
                 }}>
-                  {React.cloneElement(value.icon, { className: 'h-8 w-8', style: { color: '#800020' } })}
+                  {React.cloneElement(value.icon, { className: 'h-6 w-6 lg:h-8 lg:w-8', style: { color: '#800020' } })}
                 </div>
-                <h3 className="text-xl font-bold mb-4" style={{ color: '#f4d03f' }}>{value.title}</h3>
-                <p className="text-pretty" style={{ color: 'white', lineHeight: '1.6' }}>{value.description}</p>
+                <h3 className="text-lg lg:text-xl font-bold mb-3 lg:mb-4" style={{ color: '#f4d03f' }}>{value.title}</h3>
+                <p className="text-sm lg:text-base text-pretty" style={{ color: 'white', lineHeight: '1.6' }}>{value.description}</p>
               </div>
             ))}
           </div>
@@ -294,11 +257,11 @@ export default function AboutPage() {
             <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full" style={{
               background: 'linear-gradient(180deg, #f4d03f 0%, #800020 50%, #1e3a8a 100%)'
             }}></div>
-            <div className="space-y-12">
+            <div className="space-y-8 lg:space-y-12">
               {milestones.map((milestone, index) => (
                 <div key={index} className={`flex items-center ${index % 2 === 0 ? "flex-row" : "flex-row-reverse"}`}>
-                  <div className={`w-1/2 ${index % 2 === 0 ? "pr-8 text-right" : "pl-8 text-left"}`}>
-                    <div className="p-6 rounded-2xl transition-all duration-300 hover:scale-105" style={{
+                  <div className={`w-1/2 ${index % 2 === 0 ? "pr-4 lg:pr-8 text-right" : "pl-4 lg:pl-8 text-left"}`}>
+                    <div className="p-4 lg:p-6 rounded-2xl transition-all duration-300 hover:scale-105" style={{
                       background: index % 2 === 0 
                         ? 'linear-gradient(135deg, rgba(244, 208, 63, 0.15) 0%, rgba(128, 0, 32, 0.15) 100%)'
                         : 'linear-gradient(135deg, rgba(30, 58, 138, 0.15) 0%, rgba(244, 208, 63, 0.15) 100%)',
@@ -309,19 +272,19 @@ export default function AboutPage() {
                       <div className="flex items-center gap-2 mb-2" style={{
                         justifyContent: index % 2 === 0 ? 'flex-end' : 'flex-start'
                       }}>
-                        <Calendar className="h-4 w-4" style={{ color: '#f4d03f' }} />
-                        <span className="px-3 py-1 rounded-full text-sm font-semibold" style={{
+                        <Calendar className="h-3 w-3 lg:h-4 lg:w-4" style={{ color: '#f4d03f' }} />
+                        <span className="px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm font-semibold" style={{
                           background: 'rgba(244, 208, 63, 0.2)',
                           border: '1px solid rgba(244, 208, 63, 0.4)',
                           color: '#f4d03f'
                         }}>{milestone.year}</span>
                       </div>
-                      <h3 className="text-xl font-bold mb-2" style={{ color: '#f4d03f' }}>{milestone.title}</h3>
-                      <p style={{ color: 'white', lineHeight: '1.6' }}>{milestone.description}</p>
+                      <h3 className="text-lg lg:text-xl font-bold mb-2" style={{ color: '#f4d03f' }}>{milestone.title}</h3>
+                      <p className="text-sm lg:text-base" style={{ color: 'white', lineHeight: '1.6' }}>{milestone.description}</p>
                     </div>
                   </div>
                   <div className="relative z-10">
-                    <div className="w-6 h-6 rounded-full border-4" style={{
+                    <div className="w-4 h-4 lg:w-6 lg:h-6 rounded-full border-2 lg:border-4" style={{
                       background: 'linear-gradient(135deg, #f4d03f 0%, #d4af37 100%)',
                       borderColor: '#800020',
                       boxShadow: '0 4px 15px rgba(244, 208, 63, 0.4)'
@@ -335,68 +298,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Team */}
-      <section className="py-20" style={{
-        background: 'linear-gradient(135deg, rgba(30, 58, 138, 0.1) 0%, rgba(128, 0, 32, 0.1) 100%)'
-      }}>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance" style={{
-              color: '#f4d03f',
-              textShadow: '0 2px 4px rgba(244, 208, 63, 0.3)'
-            }}>👥 Meet Our Team</h2>
-            <p className="text-xl max-w-3xl mx-auto text-pretty" style={{
-              color: 'white',
-              textShadow: '0 2px 4px rgba(0,0,0,0.3)'
-            }}>
-              Passionate individuals dedicated to sustainable tourism and community empowerment
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {team.map((member, index) => (
-              <div key={index} className="text-center p-6 rounded-3xl transition-all duration-300 hover:scale-105" style={{
-                background: 'linear-gradient(135deg, rgba(244, 208, 63, 0.15) 0%, rgba(30, 58, 138, 0.15) 100%)',
-                backdropFilter: 'blur(20px)',
-                border: '2px solid rgba(244, 208, 63, 0.3)',
-                boxShadow: '0 8px 32px rgba(244, 208, 63, 0.2)'
-              }}>
-                <div className="mx-auto w-32 h-32 rounded-full overflow-hidden mb-6" style={{
-                  border: '3px solid rgba(244, 208, 63, 0.5)',
-                  boxShadow: '0 4px 15px rgba(244, 208, 63, 0.3)'
-                }}>
-                  <img
-                    src={member.image || "/placeholder.svg"}
-                    alt={member.name}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <h3 className="text-xl font-bold mb-2" style={{ color: '#f4d03f' }}>{member.name}</h3>
-                <p className="font-medium mb-3" style={{ color: '#800020' }}>{member.role}</p>
-                <p className="text-sm mb-4" style={{ color: 'white', lineHeight: '1.5' }}>{member.bio}</p>
-                <div className="flex items-center justify-center gap-2 mb-4">
-                  <MapPin className="h-4 w-4" style={{ color: '#f4d03f' }} />
-                  <span className="text-sm" style={{ color: 'white' }}>{member.location}</span>
-                </div>
-                <div className="flex justify-center gap-2">
-                  <button className="p-2 rounded-full transition-all duration-300 hover:scale-110" style={{
-                    background: 'rgba(244, 208, 63, 0.2)',
-                    border: '1px solid rgba(244, 208, 63, 0.4)'
-                  }}>
-                    <Mail className="h-4 w-4" style={{ color: '#f4d03f' }} />
-                  </button>
-                  <button className="p-2 rounded-full transition-all duration-300 hover:scale-110" style={{
-                    background: 'rgba(244, 208, 63, 0.2)',
-                    border: '1px solid rgba(244, 208, 63, 0.4)'
-                  }}>
-                    <Linkedin className="h-4 w-4" style={{ color: '#f4d03f' }} />
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Awards & Recognition */}
       <section className="py-20">
@@ -408,32 +309,32 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card className="text-center p-8">
-              <div className="mx-auto w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mb-6">
-                <Award className="h-8 w-8 text-yellow-600" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            <Card className="text-center p-6 lg:p-8">
+              <div className="mx-auto w-12 h-12 lg:w-16 lg:h-16 bg-yellow-100 rounded-full flex items-center justify-center mb-4 lg:mb-6">
+                <Award className="h-6 w-6 lg:h-8 lg:w-8 text-yellow-600" />
               </div>
-              <h3 className="text-xl font-bold text-foreground mb-2">UNESCO Award</h3>
+              <h3 className="text-lg lg:text-xl font-bold text-foreground mb-2">UNESCO Award</h3>
               <p className="text-primary font-medium mb-3">Best Sustainable Tourism Platform 2024</p>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-xs lg:text-sm text-muted-foreground">
                 Recognized for innovative approach to cultural preservation through tourism
               </p>
             </Card>
-            <Card className="text-center p-8">
-              <div className="mx-auto w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
-                <Leaf className="h-8 w-8 text-green-600" />
+            <Card className="text-center p-6 lg:p-8">
+              <div className="mx-auto w-12 h-12 lg:w-16 lg:h-16 bg-green-100 rounded-full flex items-center justify-center mb-4 lg:mb-6">
+                <Leaf className="h-6 w-6 lg:h-8 lg:w-8 text-green-600" />
               </div>
-              <h3 className="text-xl font-bold text-foreground mb-2">Green Tourism Award</h3>
+              <h3 className="text-lg lg:text-xl font-bold text-foreground mb-2">Green Tourism Award</h3>
               <p className="text-primary font-medium mb-3">Ministry of Tourism, India 2023</p>
-              <p className="text-sm text-muted-foreground">Excellence in promoting eco-friendly tourism practices</p>
+              <p className="text-xs lg:text-sm text-muted-foreground">Excellence in promoting eco-friendly tourism practices</p>
             </Card>
-            <Card className="text-center p-8">
-              <div className="mx-auto w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
-                <Lightbulb className="h-8 w-8 text-blue-600" />
+            <Card className="text-center p-6 lg:p-8">
+              <div className="mx-auto w-12 h-12 lg:w-16 lg:h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 lg:mb-6">
+                <Lightbulb className="h-6 w-6 lg:h-8 lg:w-8 text-blue-600" />
               </div>
-              <h3 className="text-xl font-bold text-foreground mb-2">Innovation Award</h3>
+              <h3 className="text-lg lg:text-xl font-bold text-foreground mb-2">Innovation Award</h3>
               <p className="text-primary font-medium mb-3">Travel Tech Summit 2023</p>
-              <p className="text-sm text-muted-foreground">Outstanding use of AI and blockchain in tourism</p>
+              <p className="text-xs lg:text-sm text-muted-foreground">Outstanding use of AI and blockchain in tourism</p>
             </Card>
           </div>
         </div>

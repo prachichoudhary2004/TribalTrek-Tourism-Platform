@@ -1,18 +1,17 @@
 {
   "/page": "app/page.js",
-  "/api/feedback/route": "app/api/feedback/route.js",
   "/api/analytics/route": "app/api/analytics/route.js",
-  "/ai-features/page": "app/ai-features/page.js",
-  "/feedback/page": "app/feedback/page.js",
+  "/api/feedback/route": "app/api/feedback/route.js",
   "/destinations/page": "app/destinations/page.js",
-  "/analytics/page": "app/analytics/page.js",
-  "/about/page": "app/about/page.js",
-  "/api/chatbot/message/route": "app/api/chatbot/message/route.js",
   "/destinations/[destination]/page": "app/destinations/[destination]/page.js",
   "/api/wikipedia/route": "app/api/wikipedia/route.js",
   "/travel-planner/page": "app/travel-planner/page.js",
+  "/feedback/page": "app/feedback/page.js",
+  "/about/page": "app/about/page.js",
+  "/api/chatbot/message/route": "app/api/chatbot/message/route.js",
   "/marketplace/page": "app/marketplace/page.js",
   "/marketplace/product/[id]/page": "app/marketplace/product/[id]/page.js",
   "/order/success/page": "app/order/success/page.js",
+  "/ai-features/page": "app/ai-features/page.js",
   "/ar-vr/page": "app/ar-vr/page.js"
 }
