@@ -462,7 +462,7 @@ export default function TravelPlannerPage() {
                             <MapPin className="h-5 w-5" style={{ color: '#f4d03f' }} />
                             <div>
                               <span style={{ color: '#f4d03f' }} className="text-sm font-medium">Destination</span>
-                              <p style={{ color: 'white !important' }} className="font-semibold">{formData.destination || 'Not selected'}</p>
+                              <p className="font-semibold" style={{ color: 'white' }}>{formData.destination || 'Not selected'}</p>
                             </div>
                           </div>
                         </div>
@@ -473,7 +473,7 @@ export default function TravelPlannerPage() {
                               <Calendar className="h-5 w-5" style={{ color: '#f4d03f' }} />
                               <div>
                                 <span style={{ color: '#f4d03f' }} className="text-sm font-medium">Duration</span>
-                                <p style={{ color: 'white !important' }} className="font-semibold">
+                                <p className="font-semibold" style={{ color: 'white' }}>
                                   {calculateDuration(formData.startDate, formData.endDate)}
                                 </p>
                               </div>
@@ -485,7 +485,7 @@ export default function TravelPlannerPage() {
                               <Clock className="h-5 w-5" style={{ color: '#f4d03f' }} />
                               <div>
                                 <span style={{ color: '#f4d03f' }} className="text-sm font-medium">Travel Dates</span>
-                                <p style={{ color: 'white !important' }} className="font-semibold">
+                                <p className="font-semibold" style={{ color: 'white' }}>
                                   {formData.startDate && formData.endDate 
                                     ? `${formData.startDate} to ${formData.endDate}` 
                                     : 'Not selected'}
@@ -501,7 +501,7 @@ export default function TravelPlannerPage() {
                               <DollarSign className="h-5 w-5" style={{ color: '#f4d03f' }} />
                               <div>
                                 <span style={{ color: '#f4d03f' }} className="text-sm font-medium">Budget</span>
-                                <p style={{ color: 'white !important' }} className="font-semibold">{formData.budget}</p>
+                                <p className="font-semibold" style={{ color: 'white' }}>{formData.budget}</p>
                               </div>
                             </div>
                           </div>
@@ -511,7 +511,7 @@ export default function TravelPlannerPage() {
                               <Users className="h-5 w-5" style={{ color: '#f4d03f' }} />
                               <div>
                                 <span style={{ color: '#f4d03f' }} className="text-sm font-medium">Group</span>
-                                <p style={{ color: 'white !important' }} className="font-semibold">{formData.groupSize}</p>
+                                <p className="font-semibold" style={{ color: 'white' }}>{formData.groupSize}</p>
                               </div>
                             </div>
                           </div>
@@ -529,9 +529,10 @@ export default function TravelPlannerPage() {
                                       key={interest} 
                                       className="px-3 py-1 text-sm rounded-full border font-medium"
                                       style={{
-                                        backgroundColor: 'rgba(244, 208, 63, 0.2)',
-                                        borderColor: 'rgba(244, 208, 63, 0.3)',
-                                        color: 'white !important'
+                                        backgroundColor: 'rgba(244, 208, 63, 0.3)',
+                                        borderColor: 'rgba(244, 208, 63, 0.5)',
+                                        color: 'white',
+                                        fontWeight: '600'
                                       }}
                                     >
                                       {interest}
@@ -629,9 +630,12 @@ export default function TravelPlannerPage() {
                           }}
                         >
                           {generatedItinerary.split('\n').map((line, index) => {
-                            // Main headings (Day 1, Day 2, etc.)
-                            if (line.match(/^\*\*(.*?)\*\*$/)) {
-                              const title = line.replace(/\*\*/g, '');
+                            // Clean the line and trim whitespace
+                            const cleanLine = line.trim();
+                            
+                            // Main headings (Day 1, Day 2, etc.) - multiple patterns
+                            if (cleanLine.match(/^\*\*(.*?)\*\*$/) || cleanLine.match(/^(Day \d+|DAY \d+)/i) || cleanLine.match(/^#{1,3}\s*(Day \d+|DAY \d+)/i)) {
+                              const title = cleanLine.replace(/\*\*/g, '').replace(/^#{1,3}\s*/, '').trim();
                               return (
                                 <div key={index} className="mb-4 mt-6 first:mt-0">
                                   <div 
@@ -649,8 +653,9 @@ export default function TravelPlannerPage() {
                               );
                             }
                             
-                            // Time entries with clock emoji
-                            if (line.match(/^🕐/)) {
+                            // Time entries with clock emoji or time patterns
+                            if (cleanLine.match(/^🕐/) || cleanLine.match(/^\*\*\d{1,2}:\d{2}\s*(AM|PM|am|pm)?/) || cleanLine.match(/^\d{1,2}:\d{2}\s*(AM|PM|am|pm)?/) || cleanLine.match(/^(Morning|Afternoon|Evening|Night):/i)) {
+                              const timeText = cleanLine.replace(/\*\*/g, '').replace(/^🕐\s*/, '');
                               return (
                                 <div key={index} className="mb-3">
                                   <div 
@@ -659,20 +664,21 @@ export default function TravelPlannerPage() {
                                       background: 'rgba(244, 208, 63, 0.08)',
                                       borderLeftColor: '#f4d03f',
                                       borderLeftWidth: '3px',
-                                      borderLeftStyle: 'solid'
+                                      borderLeftStyle: 'solid',
+                                      textAlign: 'left'
                                     }}
                                   >
                                     <span className="font-semibold" style={{ color: '#f4d03f' }}>
-                                      {line}
+                                      🕐 {timeText}
                                     </span>
                                   </div>
                                 </div>
                               );
                             }
                             
-                            // Time entries without emoji
-                            if (line.match(/^\* .*?:/)) {
-                              const timeEntry = line.replace(/^\* /, '');
+                            // Time entries without emoji (bullet points with time)
+                            if (cleanLine.match(/^\* .*?:/) || cleanLine.match(/^- .*?:/)) {
+                              const timeEntry = cleanLine.replace(/^[\*\-]\s*/, '').replace(/\*\*/g, '');
                               return (
                                 <div key={index} className="mb-3">
                                   <div 
@@ -681,7 +687,8 @@ export default function TravelPlannerPage() {
                                       background: 'rgba(244, 208, 63, 0.08)',
                                       borderLeftColor: '#f4d03f',
                                       borderLeftWidth: '3px',
-                                      borderLeftStyle: 'solid'
+                                      borderLeftStyle: 'solid',
+                                      textAlign: 'left'
                                     }}
                                   >
                                     <span className="font-semibold" style={{ color: '#f4d03f' }}>
@@ -693,8 +700,8 @@ export default function TravelPlannerPage() {
                             }
                             
                             // Bullet points with dash (- **text**)
-                            if (line.match(/^- \*\*/)) {
-                              const content = line.replace(/^- \*\*/, '').replace(/\*\*/g, '');
+                            if (cleanLine.match(/^- \*\*/)) {
+                              const content = cleanLine.replace(/^- \*\*/, '').replace(/\*\*/g, '');
                               const parts = content.split(/(₹[0-9,]+)/g);
                               return (
                                 <div key={index} className="mb-2">
@@ -718,8 +725,8 @@ export default function TravelPlannerPage() {
                             }
                             
                             // Sub-activities
-                            if (line.match(/^\+ /)) {
-                              const activity = line.replace(/^\+ /, '');
+                            if (cleanLine.match(/^\+ /)) {
+                              const activity = cleanLine.replace(/^\+ /, '').replace(/\*\*/g, '');
                               const parts = activity.split(/(₹[0-9,]+)/g);
                               return (
                                 <div key={index} className="mb-2 ml-4">
@@ -743,8 +750,8 @@ export default function TravelPlannerPage() {
                             }
                             
                             // Regular bullets
-                            if (line.match(/^\* /)) {
-                              const bullet = line.replace(/^\* /, '');
+                            if (cleanLine.match(/^\* /) && !cleanLine.match(/^\* .*?:/)) {
+                              const bullet = cleanLine.replace(/^\* /, '').replace(/\*\*/g, '');
                               const parts = bullet.split(/(₹[0-9,]+)/g);
                               return (
                                 <div key={index} className="mb-2">
@@ -752,7 +759,8 @@ export default function TravelPlannerPage() {
                                     className="p-2 rounded"
                                     style={{ 
                                       background: 'rgba(255, 255, 255, 0.02)',
-                                      color: 'white'
+                                      color: 'white',
+                                      textAlign: 'left'
                                     }}
                                   >
                                     • {parts.map((part, i) => 
@@ -766,23 +774,29 @@ export default function TravelPlannerPage() {
                             }
                             
                             // Empty lines
-                            if (line.trim() === '') {
+                            if (cleanLine === '') {
                               return <div key={index} className="mb-2"></div>;
                             }
                             
-                            // Regular text
-                            const parts = line.split(/(₹[0-9,]+)/g);
-                            return (
-                              <div key={index} className="mb-2">
-                                <p className="m-0" style={{ color: 'white' }}>
-                                  {parts.map((part, i) => 
-                                    part.match(/₹[0-9,]+/) ? 
-                                      <span key={i} style={{ color: '#f4d03f', fontWeight: '600' }}>{part}</span> : 
-                                      part
-                                  )}
-                                </p>
-                              </div>
-                            );
+                            // Regular text - only if not empty
+                            if (cleanLine.length > 0) {
+                              const cleanText = cleanLine.replace(/\*\*/g, '');
+                              const parts = cleanText.split(/(₹[0-9,]+)/g);
+                              return (
+                                <div key={index} className="mb-2">
+                                  <p className="m-0 leading-relaxed" style={{ color: 'white', lineHeight: '1.6', textAlign: 'left' }}>
+                                    {parts.map((part, i) => 
+                                      part.match(/₹[0-9,]+/) ? 
+                                        <span key={i} style={{ color: '#f4d03f', fontWeight: '600' }}>{part}</span> : 
+                                        part
+                                    )}
+                                  </p>
+                                </div>
+                              );
+                            }
+                            
+                            // Return null for unmatched lines
+                            return null;
                           })}
                         </div>
                         

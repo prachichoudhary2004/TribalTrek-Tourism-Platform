@@ -104,24 +104,6 @@ export default function AIFeaturesPage() {
       },
     },
     {
-      id: "location",
-      icon: <MapPin className="h-12 w-12" />,
-      title: "Real-time Location Services",
-      description: "Live transport updates and geo-location services",
-      longDescription:
-        "Stay connected with real-time location services that provide live updates on transportation, nearby attractions, emergency services, and local amenities. Never get lost with our advanced GPS integration.",
-      benefits: [
-        "Real-time public transport updates",
-        "Nearby attraction and service discovery",
-        "Emergency service location and contact",
-        "Offline map functionality",
-      ],
-      demoContent: {
-        title: "Smart Navigation System",
-        subtitle: "Get real-time updates and smart routing for your journey",
-      },
-    },
-    {
       id: "analytics",
       icon: <BarChart3 className="h-12 w-12" />,
       title: "Tourism Analytics Dashboard",
@@ -197,7 +179,7 @@ export default function AIFeaturesPage() {
             <p className="subtitle text-center mb-8">Interactive demonstrations of our cutting-edge technology stack</p>
             
             {/* Feature Buttons */}
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-3 max-w-4xl mx-auto mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4 max-w-3xl mx-auto mb-8">
               {features.map((feature, index) => (
                 <button
                   key={feature.id}

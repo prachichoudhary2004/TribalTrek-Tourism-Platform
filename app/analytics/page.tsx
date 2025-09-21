@@ -49,7 +49,8 @@ import {
   Image as ImageIcon,
   Volume2,
   MessageSquare,
-  Sparkles
+  Sparkles,
+  Mountain
 } from "lucide-react"
 
 interface AnalyticsData {
@@ -154,12 +155,56 @@ export default function AnalyticsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen" style={{
+        background: 'linear-gradient(135deg, rgba(128, 0, 32, 0.05) 0%, rgba(30, 58, 138, 0.05) 100%)'
+      }}>
         <Navigation />
         <div className="container mx-auto px-4 py-20">
-          <div className="text-center">
-            <RefreshCw className="h-12 w-12 animate-spin mx-auto mb-4" />
-            <p className="text-lg">Loading analytics dashboard...</p>
+          <div className="text-center" style={{
+            background: 'linear-gradient(135deg, rgba(128, 0, 32, 0.15) 0%, rgba(30, 58, 138, 0.15) 100%)',
+            backdropFilter: 'blur(20px)',
+            border: '2px solid rgba(244, 208, 63, 0.4)',
+            borderRadius: '24px',
+            padding: '60px 40px',
+            boxShadow: '0 8px 32px rgba(128, 0, 32, 0.3)'
+          }}>
+            <div style={{
+              background: 'linear-gradient(135deg, #f4d03f 0%, #d4af37 100%)',
+              borderRadius: '50%',
+              padding: '20px',
+              display: 'inline-block',
+              marginBottom: '24px',
+              boxShadow: '0 8px 25px rgba(244, 208, 63, 0.4)'
+            }}>
+              <RefreshCw className="h-12 w-12 animate-spin" style={{ color: '#800020' }} />
+            </div>
+            <h2 className="text-3xl font-bold mb-4" style={{
+              color: '#f4d03f',
+              textShadow: '0 2px 4px rgba(244, 208, 63, 0.3)'
+            }}>🔄 Loading Analytics Dashboard</h2>
+            <p className="text-lg" style={{ color: 'white' }}>Fetching comprehensive tourism insights...</p>
+            <div className="mt-6 flex justify-center space-x-4">
+              <div className="animate-pulse" style={{
+                background: 'rgba(244, 208, 63, 0.3)',
+                height: '8px',
+                width: '60px',
+                borderRadius: '4px'
+              }}></div>
+              <div className="animate-pulse" style={{
+                background: 'rgba(244, 208, 63, 0.3)',
+                height: '8px',
+                width: '60px',
+                borderRadius: '4px',
+                animationDelay: '0.2s'
+              }}></div>
+              <div className="animate-pulse" style={{
+                background: 'rgba(244, 208, 63, 0.3)',
+                height: '8px',
+                width: '60px',
+                borderRadius: '4px',
+                animationDelay: '0.4s'
+              }}></div>
+            </div>
           </div>
         </div>
       </div>
@@ -168,42 +213,124 @@ export default function AnalyticsPage() {
 
   if (!data) {
     return (
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen" style={{
+        background: 'linear-gradient(135deg, rgba(128, 0, 32, 0.05) 0%, rgba(30, 58, 138, 0.05) 100%)'
+      }}>
         <Navigation />
         <div className="container mx-auto px-4 py-20 text-center">
-          <AlertTriangle className="h-12 w-12 text-red-500 mx-auto mb-4" />
-          <h1 className="text-2xl font-bold mb-4">Failed to load analytics</h1>
-          <Button onClick={fetchAnalytics}>Try Again</Button>
+          <div style={{
+            background: 'linear-gradient(135deg, rgba(128, 0, 32, 0.15) 0%, rgba(30, 58, 138, 0.15) 100%)',
+            backdropFilter: 'blur(20px)',
+            border: '2px solid rgba(244, 208, 63, 0.4)',
+            borderRadius: '24px',
+            padding: '60px 40px',
+            boxShadow: '0 8px 32px rgba(128, 0, 32, 0.3)',
+            maxWidth: '600px',
+            margin: '0 auto'
+          }}>
+            <div style={{
+              background: 'linear-gradient(135deg, #ff4444 0%, #cc0000 100%)',
+              borderRadius: '50%',
+              padding: '20px',
+              display: 'inline-block',
+              marginBottom: '24px',
+              boxShadow: '0 8px 25px rgba(255, 68, 68, 0.4)'
+            }}>
+              <AlertTriangle className="h-12 w-12" style={{ color: 'white' }} />
+            </div>
+            <h1 className="text-3xl font-bold mb-4" style={{
+              color: '#f4d03f',
+              textShadow: '0 2px 4px rgba(244, 208, 63, 0.3)'
+            }}>⚠️ Failed to Load Analytics</h1>
+            <p className="text-lg mb-6" style={{ color: 'white' }}>Unable to fetch analytics data. Please check your connection and try again.</p>
+            <Button 
+              onClick={fetchAnalytics}
+              style={{
+                background: 'linear-gradient(135deg, #f4d03f 0%, #d4af37 100%)',
+                border: '2px solid #f4d03f',
+                color: '#800020',
+                borderRadius: '25px',
+                fontWeight: '700',
+                padding: '12px 24px',
+                boxShadow: '0 6px 20px rgba(244, 208, 63, 0.4)',
+                transition: 'all 0.3s ease'
+              }}
+            >
+              <RefreshCw className="h-4 w-4 mr-2" style={{ color: '#800020' }} />
+              Try Again
+            </Button>
+          </div>
         </div>
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen" style={{
+      background: 'linear-gradient(135deg, rgba(128, 0, 32, 0.05) 0%, rgba(30, 58, 138, 0.05) 100%)'
+    }}>
       <Navigation />
 
       <div className="container mx-auto px-4 py-8">
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center justify-between mb-8" style={{
+          background: 'linear-gradient(135deg, rgba(128, 0, 32, 0.15) 0%, rgba(30, 58, 138, 0.15) 100%)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
+          border: '2px solid rgba(244, 208, 63, 0.4)',
+          borderRadius: '24px',
+          padding: '32px',
+          boxShadow: '0 8px 32px rgba(128, 0, 32, 0.3), 0 16px 64px rgba(30, 58, 138, 0.2)'
+        }}>
           <div>
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-[#800020] to-[#1e3a8a] bg-clip-text text-transparent">
-              AI-Powered Analytics Dashboard
-            </h1>
-            <p className="text-muted-foreground mt-2 flex items-center gap-2">
-              <Brain className="h-4 w-4 text-[#f4d03f]" />
-              Comprehensive AI insights for Jharkhand tourism officials
+            <div className="flex items-center gap-4 mb-4">
+              <div style={{
+                background: 'linear-gradient(135deg, #f4d03f 0%, #d4af37 100%)',
+                borderRadius: '16px',
+                padding: '12px',
+                boxShadow: '0 8px 25px rgba(244, 208, 63, 0.4)'
+              }}>
+                <Mountain className="h-10 w-10" style={{ color: '#800020' }} />
+              </div>
+              <h1 className="text-5xl font-bold" style={{
+                background: 'linear-gradient(135deg, #f4d03f 0%, #d4af37 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                textShadow: '0 4px 8px rgba(244, 208, 63, 0.3)',
+                fontWeight: '900'
+              }}>
+                Tourism Analytics Dashboard
+              </h1>
+            </div>
+            <p className="text-lg flex items-center gap-3" style={{
+              color: 'white',
+              fontSize: '1.2rem',
+              fontWeight: '500'
+            }}>
+              <Brain className="h-6 w-6" style={{ color: '#f4d03f' }} />
+              AI-Powered insights for Jharkhand tourism excellence
             </p>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
             <select
               value={selectedTimeRange}
               onChange={(e) => setSelectedTimeRange(e.target.value)}
-              className="px-3 py-2 border border-[#800020] rounded-[25px] bg-background text-[#800020]"
+              style={{
+                background: 'linear-gradient(135deg, rgba(244, 208, 63, 0.15) 0%, rgba(244, 208, 63, 0.25) 100%)',
+                border: '2px solid #f4d03f',
+                borderRadius: '25px',
+                padding: '12px 16px',
+                color: 'white',
+                fontWeight: '600',
+                fontSize: '14px',
+                backdropFilter: 'blur(15px)',
+                boxShadow: '0 6px 20px rgba(244, 208, 63, 0.4)',
+                transition: 'all 0.3s ease'
+              }}
             >
-              <option value="7d">Last 7 Days</option>
-              <option value="30d">Last 30 Days</option>
-              <option value="90d">Last 3 Months</option>
-              <option value="1y">Last Year</option>
+              <option value="7d" style={{ color: '#800020' }}>📅 Last 7 Days</option>
+              <option value="30d" style={{ color: '#800020' }}>📊 Last 30 Days</option>
+              <option value="90d" style={{ color: '#800020' }}>📈 Last 3 Months</option>
+              <option value="1y" style={{ color: '#800020' }}>🗓️ Last Year</option>
             </select>
             
             {/* Export Controls */}
@@ -211,17 +338,37 @@ export default function AnalyticsPage() {
               <select
                 value={exportFormat}
                 onChange={(e) => setExportFormat(e.target.value)}
-                className="px-3 py-2 border border-[#800020] rounded-[25px] bg-background text-[#800020] text-sm"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(128, 0, 32, 0.15) 0%, rgba(128, 0, 32, 0.25) 100%)',
+                  border: '2px solid #800020',
+                  borderRadius: '25px',
+                  padding: '12px 16px',
+                  color: 'white',
+                  fontWeight: '600',
+                  fontSize: '14px',
+                  backdropFilter: 'blur(15px)',
+                  boxShadow: '0 6px 20px rgba(128, 0, 32, 0.4)',
+                  transition: 'all 0.3s ease'
+                }}
               >
-                <option value="csv">CSV</option>
-                <option value="xlsx">Excel</option>
-                <option value="pdf">PDF</option>
-                <option value="json">JSON</option>
+                <option value="csv" style={{ color: '#800020' }}>📄 CSV</option>
+                <option value="xlsx" style={{ color: '#800020' }}>📊 Excel</option>
+                <option value="pdf" style={{ color: '#800020' }}>📋 PDF</option>
+                <option value="json" style={{ color: '#800020' }}>💾 JSON</option>
               </select>
               <Button 
                 onClick={exportData} 
                 disabled={isExporting}
-                className="bg-[#f4d03f] hover:bg-[#f1c40f] text-[#800020] border-[#f4d03f] rounded-[25px]"
+                style={{
+                  background: 'linear-gradient(135deg, #f4d03f 0%, #d4af37 100%)',
+                  border: '2px solid #f4d03f',
+                  color: '#800020',
+                  borderRadius: '25px',
+                  fontWeight: '700',
+                  padding: '12px 20px',
+                  boxShadow: '0 6px 20px rgba(244, 208, 63, 0.4)',
+                  transition: 'all 0.3s ease'
+                }}
                 size="sm"
               >
                 {isExporting ? (
@@ -233,156 +380,404 @@ export default function AnalyticsPage() {
               </Button>
             </div>
             
-            <Button onClick={fetchAnalytics} disabled={loading} className="bg-[#800020] hover:bg-[#a0001a] text-white rounded-[25px]">
+            <Button 
+              onClick={fetchAnalytics} 
+              disabled={loading} 
+              style={{
+                background: 'linear-gradient(135deg, #800020 0%, #a00028 100%)',
+                border: '2px solid #800020',
+                color: 'white',
+                borderRadius: '25px',
+                fontWeight: '700',
+                padding: '12px 20px',
+                boxShadow: '0 6px 20px rgba(128, 0, 32, 0.4)',
+                transition: 'all 0.3s ease'
+              }}
+            >
               {loading ? <RefreshCw className="h-4 w-4 animate-spin" /> : <RefreshCw className="h-4 w-4" />}
             </Button>
           </div>
         </div>
 
         {/* AI Features Highlight */}
-        <div className="bg-gradient-to-r from-[#800020]/10 to-[#1e3a8a]/10 p-6 rounded-[16px] border border-[#f4d03f] mb-8">
-          <div className="flex items-center gap-3 mb-4">
-            <Sparkles className="h-6 w-6 text-[#f4d03f]" />
-            <h2 className="text-xl font-semibold text-[#800020]">AI-Powered Features Active</h2>
+        <div style={{
+          background: 'linear-gradient(135deg, rgba(128, 0, 32, 0.15) 0%, rgba(30, 58, 138, 0.15) 100%)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
+          border: '2px solid rgba(244, 208, 63, 0.5)',
+          borderRadius: '20px',
+          padding: '24px',
+          marginBottom: '32px',
+          boxShadow: '0 8px 32px rgba(244, 208, 63, 0.2)'
+        }}>
+          <div className="flex items-center gap-3 mb-6">
+            <Sparkles className="h-8 w-8" style={{ color: '#f4d03f' }} />
+            <h2 className="text-2xl font-bold" style={{
+              color: '#f4d03f',
+              textShadow: '0 2px 4px rgba(244, 208, 63, 0.3)',
+              fontWeight: '800'
+            }}>🤖 AI-Powered Features Active</h2>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="flex items-center gap-2 text-sm text-[#800020]">
-              <Brain className="h-4 w-4 text-[#f4d03f]" />
-              <span>Sentiment Analysis</span>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="flex items-center gap-3 p-4 rounded-xl" style={{
+              background: 'linear-gradient(135deg, rgba(244, 208, 63, 0.1) 0%, rgba(244, 208, 63, 0.2) 100%)',
+              border: '1px solid rgba(244, 208, 63, 0.3)',
+              backdropFilter: 'blur(10px)'
+            }}>
+              <Brain className="h-6 w-6" style={{ color: '#f4d03f' }} />
+              <span style={{ color: 'white', fontWeight: '600', fontSize: '14px' }}>🧠 Sentiment Analysis</span>
             </div>
-            <div className="flex items-center gap-2 text-sm text-[#800020]">
-              <Zap className="h-4 w-4 text-[#f4d03f]" />
-              <span>Predictive Modeling</span>
+            <div className="flex items-center gap-3 p-4 rounded-xl" style={{
+              background: 'linear-gradient(135deg, rgba(244, 208, 63, 0.1) 0%, rgba(244, 208, 63, 0.2) 100%)',
+              border: '1px solid rgba(244, 208, 63, 0.3)',
+              backdropFilter: 'blur(10px)'
+            }}>
+              <Zap className="h-6 w-6" style={{ color: '#f4d03f' }} />
+              <span style={{ color: 'white', fontWeight: '600', fontSize: '14px' }}>⚡ Predictive Modeling</span>
             </div>
-            <div className="flex items-center gap-2 text-sm text-[#800020]">
-              <Volume2 className="h-4 w-4 text-[#f4d03f]" />
-              <span>Voice Analytics</span>
+            <div className="flex items-center gap-3 p-4 rounded-xl" style={{
+              background: 'linear-gradient(135deg, rgba(244, 208, 63, 0.1) 0%, rgba(244, 208, 63, 0.2) 100%)',
+              border: '1px solid rgba(244, 208, 63, 0.3)',
+              backdropFilter: 'blur(10px)'
+            }}>
+              <Volume2 className="h-6 w-6" style={{ color: '#f4d03f' }} />
+              <span style={{ color: 'white', fontWeight: '600', fontSize: '14px' }}>🎤 Voice Analytics</span>
             </div>
-            <div className="flex items-center gap-2 text-sm text-[#800020]">
-              <ImageIcon className="h-4 w-4 text-[#f4d03f]" />
-              <span>Image Recognition</span>
+            <div className="flex items-center gap-3 p-4 rounded-xl" style={{
+              background: 'linear-gradient(135deg, rgba(244, 208, 63, 0.1) 0%, rgba(244, 208, 63, 0.2) 100%)',
+              border: '1px solid rgba(244, 208, 63, 0.3)',
+              backdropFilter: 'blur(10px)'
+            }}>
+              <ImageIcon className="h-6 w-6" style={{ color: '#f4d03f' }} />
+              <span style={{ color: 'white', fontWeight: '600', fontSize: '14px' }}>📸 Image Recognition</span>
             </div>
           </div>
         </div>
 
         <Tabs defaultValue="overview" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-6">
-            <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="visitors">Visitors</TabsTrigger>
-            <TabsTrigger value="destinations">Destinations</TabsTrigger>
-            <TabsTrigger value="vendors">Vendors</TabsTrigger>
-            <TabsTrigger value="insights">AI Insights</TabsTrigger>
-            <TabsTrigger value="database">Database</TabsTrigger>
+          <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2" style={{
+            background: 'linear-gradient(135deg, rgba(128, 0, 32, 0.2) 0%, rgba(30, 58, 138, 0.2) 100%)',
+            backdropFilter: 'blur(15px)',
+            border: '2px solid rgba(244, 208, 63, 0.3)',
+            borderRadius: '20px',
+            padding: '8px',
+            boxShadow: '0 4px 20px rgba(244, 208, 63, 0.2)'
+          }}>
+            <TabsTrigger value="overview" style={{
+              background: 'linear-gradient(135deg, rgba(244, 208, 63, 0.2) 0%, rgba(244, 208, 63, 0.3) 100%)',
+              border: '2px solid rgba(244, 208, 63, 0.4)',
+              color: 'white',
+              fontWeight: '600',
+              borderRadius: '15px',
+              padding: '12px 16px',
+              backdropFilter: 'blur(10px)',
+              boxShadow: '0 4px 15px rgba(244, 208, 63, 0.2)',
+              transition: 'all 0.3s ease'
+            }}>🏠 Overview</TabsTrigger>
+            <TabsTrigger value="visitors" style={{
+              background: 'linear-gradient(135deg, rgba(128, 0, 32, 0.2) 0%, rgba(128, 0, 32, 0.3) 100%)',
+              border: '2px solid rgba(128, 0, 32, 0.4)',
+              color: 'white',
+              fontWeight: '600',
+              borderRadius: '15px',
+              padding: '12px 16px',
+              backdropFilter: 'blur(10px)',
+              boxShadow: '0 4px 15px rgba(128, 0, 32, 0.2)',
+              transition: 'all 0.3s ease'
+            }}>👥 Visitors</TabsTrigger>
+            <TabsTrigger value="destinations" style={{
+              background: 'linear-gradient(135deg, rgba(30, 58, 138, 0.2) 0%, rgba(30, 58, 138, 0.3) 100%)',
+              border: '2px solid rgba(30, 58, 138, 0.4)',
+              color: 'white',
+              fontWeight: '600',
+              borderRadius: '15px',
+              padding: '12px 16px',
+              backdropFilter: 'blur(10px)',
+              boxShadow: '0 4px 15px rgba(30, 58, 138, 0.2)',
+              transition: 'all 0.3s ease'
+            }}>🏛️ Destinations</TabsTrigger>
+            <TabsTrigger value="vendors" style={{
+              background: 'linear-gradient(135deg, rgba(244, 208, 63, 0.2) 0%, rgba(128, 0, 32, 0.2) 100%)',
+              border: '2px solid rgba(244, 208, 63, 0.4)',
+              color: 'white',
+              fontWeight: '600',
+              borderRadius: '15px',
+              padding: '12px 16px',
+              backdropFilter: 'blur(10px)',
+              boxShadow: '0 4px 15px rgba(244, 208, 63, 0.2)',
+              transition: 'all 0.3s ease'
+            }}>🛍️ Vendors</TabsTrigger>
+            <TabsTrigger value="insights" style={{
+              background: 'linear-gradient(135deg, rgba(128, 0, 32, 0.2) 0%, rgba(30, 58, 138, 0.2) 100%)',
+              border: '2px solid rgba(128, 0, 32, 0.4)',
+              color: 'white',
+              fontWeight: '600',
+              borderRadius: '15px',
+              padding: '12px 16px',
+              backdropFilter: 'blur(10px)',
+              boxShadow: '0 4px 15px rgba(128, 0, 32, 0.2)',
+              transition: 'all 0.3s ease'
+            }}>🤖 AI Insights</TabsTrigger>
+            <TabsTrigger value="database" style={{
+              background: 'linear-gradient(135deg, rgba(30, 58, 138, 0.2) 0%, rgba(244, 208, 63, 0.2) 100%)',
+              border: '2px solid rgba(30, 58, 138, 0.4)',
+              color: 'white',
+              fontWeight: '600',
+              borderRadius: '15px',
+              padding: '12px 16px',
+              backdropFilter: 'blur(10px)',
+              boxShadow: '0 4px 15px rgba(30, 58, 138, 0.2)',
+              transition: 'all 0.3s ease'
+            }}>💾 Database</TabsTrigger>
           </TabsList>
 
           {/* Overview Tab */}
           <TabsContent value="overview" className="mt-8">
             <div className="space-y-8">
               {/* Key Metrics */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
-                <Card>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
+                <Card style={{
+                  background: 'linear-gradient(135deg, rgba(128, 0, 32, 0.15) 0%, rgba(128, 0, 32, 0.25) 100%)',
+                  backdropFilter: 'blur(15px)',
+                  border: '2px solid rgba(244, 208, 63, 0.3)',
+                  borderRadius: '20px',
+                  boxShadow: '0 8px 25px rgba(128, 0, 32, 0.3)',
+                  transition: 'all 0.3s ease'
+                }}>
                   <CardContent className="p-6">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-sm font-medium text-muted-foreground">Total Visitors</p>
-                        <p className="text-2xl font-bold">{data.overview.totalVisitors.toLocaleString()}</p>
+                        <p className="text-sm font-semibold mb-2" style={{ color: '#f4d03f' }}>👥 Total Visitors</p>
+                        <p className="text-3xl font-bold" style={{ color: 'white' }}>{data.overview.totalVisitors.toLocaleString()}</p>
                       </div>
-                      <Users className="h-8 w-8 text-[#800020]" />
+                      <div style={{
+                        background: 'linear-gradient(135deg, #f4d03f 0%, #d4af37 100%)',
+                        borderRadius: '15px',
+                        padding: '12px',
+                        boxShadow: '0 4px 15px rgba(244, 208, 63, 0.4)'
+                      }}>
+                        <Users className="h-8 w-8" style={{ color: '#800020' }} />
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
-                <Card>
-                  <CardContent className="p-6">
+                <Card style={{
+                  background: 'linear-gradient(135deg, rgba(244, 208, 63, 0.2) 0%, rgba(128, 0, 32, 0.2) 100%)',
+                  backdropFilter: 'blur(15px)',
+                  border: '2px solid rgba(244, 208, 63, 0.4)',
+                  borderRadius: '20px',
+                  boxShadow: '0 8px 25px rgba(244, 208, 63, 0.3)',
+                  transition: 'all 0.3s ease',
+                  cursor: 'pointer',
+                  position: 'relative',
+                  overflow: 'hidden'
+                }}>
+                  <div style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    background: 'linear-gradient(135deg, rgba(244, 208, 63, 0.1) 0%, rgba(128, 0, 32, 0.1) 100%)',
+                    backdropFilter: 'blur(10px)'
+                  }}></div>
+                  <CardContent className="p-6 relative z-10">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-sm font-medium text-muted-foreground">Total Revenue</p>
-                        <p className="text-2xl font-bold">₹{(data.overview.totalRevenue / 10000000).toFixed(1)}Cr</p>
+                        <p className="text-sm font-semibold mb-2" style={{ color: 'white', textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}>💰 Total Revenue</p>
+                        <p className="text-3xl font-bold" style={{ color: 'white', textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}>₹{(data.overview.totalRevenue / 10000000).toFixed(1)}Cr</p>
                       </div>
-                      <DollarSign className="h-8 w-8 text-[#f4d03f]" />
+                      <div style={{
+                        background: 'linear-gradient(135deg, #f4d03f 0%, #d4af37 100%)',
+                        borderRadius: '15px',
+                        padding: '12px',
+                        boxShadow: '0 6px 20px rgba(244, 208, 63, 0.4)',
+                        border: '2px solid rgba(244, 208, 63, 0.6)'
+                      }}>
+                        <DollarSign className="h-8 w-8" style={{ color: '#800020' }} />
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
-                <Card>
+                <Card style={{
+                  background: 'linear-gradient(135deg, rgba(30, 58, 138, 0.15) 0%, rgba(30, 58, 138, 0.25) 100%)',
+                  backdropFilter: 'blur(15px)',
+                  border: '2px solid rgba(30, 58, 138, 0.4)',
+                  borderRadius: '20px',
+                  boxShadow: '0 8px 25px rgba(30, 58, 138, 0.3)',
+                  transition: 'all 0.3s ease'
+                }}>
                   <CardContent className="p-6">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-sm font-medium text-muted-foreground">Satisfaction</p>
-                        <p className="text-2xl font-bold">{data.overview.averageSatisfaction.toFixed(1)}/5</p>
+                        <p className="text-sm font-semibold mb-2" style={{ color: '#f4d03f' }}>⭐ Satisfaction</p>
+                        <p className="text-3xl font-bold" style={{ color: 'white' }}>{data.overview.averageSatisfaction.toFixed(1)}/5</p>
                       </div>
-                      <Star className="h-8 w-8 text-[#f4d03f]" />
+                      <div style={{
+                        background: 'linear-gradient(135deg, #f4d03f 0%, #d4af37 100%)',
+                        borderRadius: '15px',
+                        padding: '12px',
+                        boxShadow: '0 4px 15px rgba(244, 208, 63, 0.4)'
+                      }}>
+                        <Star className="h-8 w-8" style={{ color: '#800020' }} />
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
-                <Card>
+                <Card style={{
+                  background: 'linear-gradient(135deg, rgba(128, 0, 32, 0.15) 0%, rgba(30, 58, 138, 0.15) 100%)',
+                  backdropFilter: 'blur(15px)',
+                  border: '2px solid rgba(244, 208, 63, 0.3)',
+                  borderRadius: '20px',
+                  boxShadow: '0 8px 25px rgba(128, 0, 32, 0.2)',
+                  transition: 'all 0.3s ease'
+                }}>
                   <CardContent className="p-6">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-sm font-medium text-muted-foreground">Bookings</p>
-                        <p className="text-2xl font-bold">{data.overview.totalBookings.toLocaleString()}</p>
+                        <p className="text-sm font-semibold mb-2" style={{ color: '#f4d03f' }}>📅 Bookings</p>
+                        <p className="text-3xl font-bold" style={{ color: 'white' }}>{data.overview.totalBookings.toLocaleString()}</p>
                       </div>
-                      <Calendar className="h-8 w-8 text-[#1e3a8a]" />
+                      <div style={{
+                        background: 'linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%)',
+                        borderRadius: '15px',
+                        padding: '12px',
+                        boxShadow: '0 4px 15px rgba(30, 58, 138, 0.4)'
+                      }}>
+                        <Calendar className="h-8 w-8" style={{ color: '#f4d03f' }} />
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
-                <Card>
+                <Card style={{
+                  background: 'linear-gradient(135deg, rgba(30, 58, 138, 0.15) 0%, rgba(244, 208, 63, 0.15) 100%)',
+                  backdropFilter: 'blur(15px)',
+                  border: '2px solid rgba(30, 58, 138, 0.3)',
+                  borderRadius: '20px',
+                  boxShadow: '0 8px 25px rgba(30, 58, 138, 0.2)',
+                  transition: 'all 0.3s ease'
+                }}>
                   <CardContent className="p-6">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-sm font-medium text-muted-foreground">Active Vendors</p>
-                        <p className="text-2xl font-bold">{data.overview.activeVendors}</p>
+                        <p className="text-sm font-semibold mb-2" style={{ color: '#f4d03f' }}>🛍️ Active Vendors</p>
+                        <p className="text-3xl font-bold" style={{ color: 'white' }}>{data.overview.activeVendors}</p>
                       </div>
-                      <ShoppingBag className="h-8 w-8 text-[#800020]" />
+                      <div style={{
+                        background: 'linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%)',
+                        borderRadius: '15px',
+                        padding: '12px',
+                        boxShadow: '0 4px 15px rgba(30, 58, 138, 0.4)'
+                      }}>
+                        <ShoppingBag className="h-8 w-8" style={{ color: '#f4d03f' }} />
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
-                <Card>
+                <Card style={{
+                  background: 'linear-gradient(135deg, rgba(30, 58, 138, 0.15) 0%, rgba(244, 208, 63, 0.15) 100%)',
+                  backdropFilter: 'blur(15px)',
+                  border: '2px solid rgba(30, 58, 138, 0.3)',
+                  borderRadius: '20px',
+                  boxShadow: '0 8px 25px rgba(30, 58, 138, 0.2)',
+                  transition: 'all 0.3s ease'
+                }}>
                   <CardContent className="p-6">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-sm font-medium text-muted-foreground">Feedbacks</p>
-                        <p className="text-2xl font-bold">{data.overview.totalFeedbacks}</p>
+                        <p className="text-sm font-semibold mb-2" style={{ color: '#f4d03f' }}>💬 Feedbacks</p>
+                        <p className="text-3xl font-bold" style={{ color: 'white' }}>{data.overview.totalFeedbacks}</p>
                       </div>
-                      <Activity className="h-8 w-8 text-[#1e3a8a]" />
+                      <div style={{
+                        background: 'linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%)',
+                        borderRadius: '15px',
+                        padding: '12px',
+                        boxShadow: '0 4px 15px rgba(30, 58, 138, 0.4)'
+                      }}>
+                        <Activity className="h-8 w-8" style={{ color: '#f4d03f' }} />
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
               </div>
 
               {/* Visitor Trends Chart */}
-              <Card>
+              <Card style={{
+                background: 'linear-gradient(135deg, rgba(128, 0, 32, 0.15) 0%, rgba(30, 58, 138, 0.15) 100%)',
+                backdropFilter: 'blur(20px)',
+                border: '2px solid rgba(244, 208, 63, 0.4)',
+                borderRadius: '24px',
+                boxShadow: '0 8px 32px rgba(128, 0, 32, 0.3)'
+              }}>
                 <CardHeader>
-                  <CardTitle>Visitor Trends Over Time</CardTitle>
-                  <CardDescription>Monthly visitor count and revenue trends</CardDescription>
+                  <CardTitle style={{
+                    color: '#f4d03f',
+                    fontSize: '1.5rem',
+                    fontWeight: '800',
+                    textShadow: '0 2px 4px rgba(244, 208, 63, 0.3)'
+                  }}>📈 Visitor Trends Over Time</CardTitle>
+                  <CardDescription style={{
+                    color: 'rgba(255, 255, 255, 0.8)',
+                    fontSize: '1rem'
+                  }}>Monthly visitor count and revenue trends</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <ResponsiveContainer width="100%" height={300}>
                     <AreaChart data={data.visitorTrends}>
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="month" />
-                      <YAxis />
-                      <Tooltip />
-                      <Area type="monotone" dataKey="visitors" stackId="1" stroke="#800020" fill="#800020" />
+                      <CartesianGrid strokeDasharray="3 3" stroke="rgba(244, 208, 63, 0.2)" />
+                      <XAxis dataKey="month" stroke="#f4d03f" />
+                      <YAxis stroke="#f4d03f" />
+                      <Tooltip 
+                        contentStyle={{
+                          background: 'linear-gradient(135deg, rgba(128, 0, 32, 0.9) 0%, rgba(30, 58, 138, 0.9) 100%)',
+                          border: '2px solid #f4d03f',
+                          borderRadius: '12px',
+                          color: 'white'
+                        }}
+                      />
+                      <Area type="monotone" dataKey="visitors" stackId="1" stroke="#f4d03f" fill="rgba(244, 208, 63, 0.3)" strokeWidth={3} />
                     </AreaChart>
                   </ResponsiveContainer>
                 </CardContent>
               </Card>
 
               {/* Sentiment Trends */}
-              <Card>
+              <Card style={{
+                background: 'linear-gradient(135deg, rgba(30, 58, 138, 0.15) 0%, rgba(244, 208, 63, 0.15) 100%)',
+                backdropFilter: 'blur(20px)',
+                border: '2px solid rgba(30, 58, 138, 0.4)',
+                borderRadius: '24px',
+                boxShadow: '0 8px 32px rgba(30, 58, 138, 0.3)'
+              }}>
                 <CardHeader>
-                  <CardTitle>Sentiment Analysis Trends</CardTitle>
-                  <CardDescription>Daily sentiment analysis of tourist feedback</CardDescription>
+                  <CardTitle style={{
+                    color: '#f4d03f',
+                    fontSize: '1.5rem',
+                    fontWeight: '800',
+                    textShadow: '0 2px 4px rgba(244, 208, 63, 0.3)'
+                  }}>🧠 Sentiment Analysis Trends</CardTitle>
+                  <CardDescription style={{
+                    color: 'rgba(255, 255, 255, 0.8)',
+                    fontSize: '1rem'
+                  }}>Daily sentiment analysis of tourist feedback</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <ResponsiveContainer width="100%" height={300}>
                     <LineChart data={data.sentimentTrends.slice(-30)}>
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="date" />
-                      <YAxis />
-                      <Tooltip />
-                      <Line type="monotone" dataKey="positive" stroke="#f4d03f" strokeWidth={2} />
-                      <Line type="monotone" dataKey="negative" stroke="#800020" strokeWidth={2} />
-                      <Line type="monotone" dataKey="neutral" stroke="#1e3a8a" strokeWidth={2} />
+                      <CartesianGrid strokeDasharray="3 3" stroke="rgba(244, 208, 63, 0.2)" />
+                      <XAxis dataKey="date" stroke="#f4d03f" />
+                      <YAxis stroke="#f4d03f" />
+                      <Tooltip 
+                        contentStyle={{
+                          background: 'linear-gradient(135deg, rgba(30, 58, 138, 0.9) 0%, rgba(128, 0, 32, 0.9) 100%)',
+                          border: '2px solid #f4d03f',
+                          borderRadius: '12px',
+                          color: 'white'
+                        }}
+                      />
+                      <Line type="monotone" dataKey="positive" stroke="#00ff88" strokeWidth={3} name="Positive" />
+                      <Line type="monotone" dataKey="negative" stroke="#ff4444" strokeWidth={3} name="Negative" />
+                      <Line type="monotone" dataKey="neutral" stroke="#f4d03f" strokeWidth={3} name="Neutral" />
                     </LineChart>
                   </ResponsiveContainer>
                 </CardContent>
@@ -395,9 +790,20 @@ export default function AnalyticsPage() {
             <div className="space-y-8">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 {/* Age Demographics */}
-                <Card>
+                <Card style={{
+                  background: 'linear-gradient(135deg, rgba(128, 0, 32, 0.15) 0%, rgba(30, 58, 138, 0.15) 100%)',
+                  backdropFilter: 'blur(20px)',
+                  border: '2px solid rgba(244, 208, 63, 0.4)',
+                  borderRadius: '24px',
+                  boxShadow: '0 8px 32px rgba(128, 0, 32, 0.3)'
+                }}>
                   <CardHeader>
-                    <CardTitle>Age Demographics</CardTitle>
+                    <CardTitle style={{
+                      color: '#f4d03f',
+                      fontSize: '1.5rem',
+                      fontWeight: '800',
+                      textShadow: '0 2px 4px rgba(244, 208, 63, 0.3)'
+                    }}>📈 Age Demographics</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <ResponsiveContainer width="100%" height={300}>
@@ -423,9 +829,20 @@ export default function AnalyticsPage() {
                 </Card>
 
                 {/* Origin States */}
-                <Card>
+                <Card style={{
+                  background: 'linear-gradient(135deg, rgba(30, 58, 138, 0.15) 0%, rgba(244, 208, 63, 0.15) 100%)',
+                  backdropFilter: 'blur(20px)',
+                  border: '2px solid rgba(30, 58, 138, 0.4)',
+                  borderRadius: '24px',
+                  boxShadow: '0 8px 32px rgba(30, 58, 138, 0.3)'
+                }}>
                   <CardHeader>
-                    <CardTitle>Visitor Origin</CardTitle>
+                    <CardTitle style={{
+                      color: '#f4d03f',
+                      fontSize: '1.5rem',
+                      fontWeight: '800',
+                      textShadow: '0 2px 4px rgba(244, 208, 63, 0.3)'
+                    }}>🗺️ Visitor Origin States</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <ResponsiveContainer width="100%" height={300}>
@@ -442,9 +859,20 @@ export default function AnalyticsPage() {
               </div>
 
               {/* Travel Purpose */}
-              <Card>
+              <Card style={{
+                background: 'linear-gradient(135deg, rgba(244, 208, 63, 0.15) 0%, rgba(128, 0, 32, 0.15) 100%)',
+                backdropFilter: 'blur(20px)',
+                border: '2px solid rgba(244, 208, 63, 0.4)',
+                borderRadius: '24px',
+                boxShadow: '0 8px 32px rgba(244, 208, 63, 0.3)'
+              }}>
                 <CardHeader>
-                  <CardTitle>Travel Purpose Distribution</CardTitle>
+                  <CardTitle style={{
+                    color: '#f4d03f',
+                    fontSize: '1.5rem',
+                    fontWeight: '800',
+                    textShadow: '0 2px 4px rgba(244, 208, 63, 0.3)'
+                  }}>🎯 Travel Purpose Distribution</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
@@ -470,10 +898,24 @@ export default function AnalyticsPage() {
           {/* Destinations Tab */}
           <TabsContent value="destinations" className="mt-8">
             <div className="space-y-8">
-              <Card>
+              <Card style={{
+                background: 'linear-gradient(135deg, rgba(128, 0, 32, 0.15) 0%, rgba(30, 58, 138, 0.15) 100%)',
+                backdropFilter: 'blur(20px)',
+                border: '2px solid rgba(244, 208, 63, 0.4)',
+                borderRadius: '24px',
+                boxShadow: '0 8px 32px rgba(128, 0, 32, 0.3)'
+              }}>
                 <CardHeader>
-                  <CardTitle>Destination Performance</CardTitle>
-                  <CardDescription>Visitor count, revenue, and satisfaction by destination</CardDescription>
+                  <CardTitle style={{
+                    color: '#f4d03f',
+                    fontSize: '1.5rem',
+                    fontWeight: '800',
+                    textShadow: '0 2px 4px rgba(244, 208, 63, 0.3)'
+                  }}>🏛️ Destination Performance</CardTitle>
+                  <CardDescription style={{
+                    color: 'rgba(255, 255, 255, 0.8)',
+                    fontSize: '1rem'
+                  }}>Visitor count, revenue, and satisfaction by destination</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
@@ -516,9 +958,20 @@ export default function AnalyticsPage() {
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card style={{
+                background: 'linear-gradient(135deg, rgba(30, 58, 138, 0.15) 0%, rgba(244, 208, 63, 0.15) 100%)',
+                backdropFilter: 'blur(20px)',
+                border: '2px solid rgba(30, 58, 138, 0.4)',
+                borderRadius: '24px',
+                boxShadow: '0 8px 32px rgba(30, 58, 138, 0.3)'
+              }}>
                 <CardHeader>
-                  <CardTitle>Revenue by Destination</CardTitle>
+                  <CardTitle style={{
+                    color: '#f4d03f',
+                    fontSize: '1.5rem',
+                    fontWeight: '800',
+                    textShadow: '0 2px 4px rgba(244, 208, 63, 0.3)'
+                  }}>💰 Revenue by Destination</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <ResponsiveContainer width="100%" height={400}>
@@ -538,10 +991,24 @@ export default function AnalyticsPage() {
           {/* Vendors Tab */}
           <TabsContent value="vendors" className="mt-8">
             <div className="space-y-8">
-              <Card>
+              <Card style={{
+                background: 'linear-gradient(135deg, rgba(128, 0, 32, 0.15) 0%, rgba(30, 58, 138, 0.15) 100%)',
+                backdropFilter: 'blur(20px)',
+                border: '2px solid rgba(244, 208, 63, 0.4)',
+                borderRadius: '24px',
+                boxShadow: '0 8px 32px rgba(128, 0, 32, 0.3)'
+              }}>
                 <CardHeader>
-                  <CardTitle>Top Performing Vendors</CardTitle>
-                  <CardDescription>Revenue, orders, and ratings by vendor</CardDescription>
+                  <CardTitle style={{
+                    color: '#f4d03f',
+                    fontSize: '1.5rem',
+                    fontWeight: '800',
+                    textShadow: '0 2px 4px rgba(244, 208, 63, 0.3)'
+                  }}>🏆 Top Performing Vendors</CardTitle>
+                  <CardDescription style={{
+                    color: 'rgba(255, 255, 255, 0.8)',
+                    fontSize: '1rem'
+                  }}>Revenue, orders, and ratings by vendor</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
@@ -586,9 +1053,20 @@ export default function AnalyticsPage() {
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card style={{
+                background: 'linear-gradient(135deg, rgba(30, 58, 138, 0.15) 0%, rgba(244, 208, 63, 0.15) 100%)',
+                backdropFilter: 'blur(20px)',
+                border: '2px solid rgba(30, 58, 138, 0.4)',
+                borderRadius: '24px',
+                boxShadow: '0 8px 32px rgba(30, 58, 138, 0.3)'
+              }}>
                 <CardHeader>
-                  <CardTitle>Vendor Revenue Distribution</CardTitle>
+                  <CardTitle style={{
+                    color: '#f4d03f',
+                    fontSize: '1.5rem',
+                    fontWeight: '800',
+                    textShadow: '0 2px 4px rgba(244, 208, 63, 0.3)'
+                  }}>📊 Vendor Revenue Distribution</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <ResponsiveContainer width="100%" height={300}>
@@ -619,11 +1097,22 @@ export default function AnalyticsPage() {
           <TabsContent value="insights" className="mt-8">
             <div className="space-y-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <Card>
+                <Card style={{
+                  background: 'linear-gradient(135deg, rgba(128, 0, 32, 0.15) 0%, rgba(30, 58, 138, 0.15) 100%)',
+                  backdropFilter: 'blur(20px)',
+                  border: '2px solid rgba(244, 208, 63, 0.4)',
+                  borderRadius: '24px',
+                  boxShadow: '0 8px 32px rgba(128, 0, 32, 0.3)'
+                }}>
                   <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
+                    <CardTitle className="flex items-center gap-2" style={{
+                      color: '#f4d03f',
+                      fontSize: '1.5rem',
+                      fontWeight: '800',
+                      textShadow: '0 2px 4px rgba(244, 208, 63, 0.3)'
+                    }}>
                       <Target className="h-5 w-5 text-[#f4d03f]" />
-                      AI Predictions
+                      🎯 AI Predictions
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">

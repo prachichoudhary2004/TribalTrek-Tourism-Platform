@@ -1,5 +1,6 @@
 "use client"
 
+import React from "react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -106,18 +107,39 @@ export default function AboutPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen" style={{
+      background: 'linear-gradient(135deg, #800020 0%, #1e3a8a 50%, #800020 100%)',
+      minHeight: '100vh'
+    }}>
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-r from-primary/10 via-primary/5 to-transparent">
+      <section className="relative py-20" style={{
+        background: 'linear-gradient(135deg, rgba(128, 0, 32, 0.15) 0%, rgba(30, 58, 138, 0.15) 100%)',
+        backdropFilter: 'blur(20px)',
+        borderBottom: '2px solid rgba(244, 208, 63, 0.3)'
+      }}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6 text-balance">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance" style={{
+              background: 'linear-gradient(135deg, #f4d03f 0%, #d4af37 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              textShadow: '0 4px 8px rgba(244, 208, 63, 0.3)',
+              fontWeight: '900'
+            }}>
               About Our Mission
-              <span className="text-primary block">Transforming Tourism</span>
+              <span className="block" style={{
+                background: 'linear-gradient(135deg, #f4d03f 0%, #ffffff 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent'
+              }}>Transforming Tourism</span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto text-pretty">
+            <p className="text-xl max-w-4xl mx-auto text-pretty" style={{
+              color: 'white',
+              textShadow: '0 2px 4px rgba(0,0,0,0.3)',
+              lineHeight: '1.8'
+            }}>
               We're building a bridge between authentic tribal culture and responsible tourism, creating opportunities
               that benefit both travelers and local communities
             </p>
@@ -129,43 +151,81 @@ export default function AboutPage() {
       <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6 text-balance">Our Mission</h2>
-              <p className="text-lg text-muted-foreground mb-6 text-pretty">
+            <div className="p-8 rounded-3xl" style={{
+              background: 'linear-gradient(135deg, rgba(244, 208, 63, 0.15) 0%, rgba(128, 0, 32, 0.15) 100%)',
+              backdropFilter: 'blur(20px)',
+              border: '2px solid rgba(244, 208, 63, 0.4)',
+              boxShadow: '0 8px 32px rgba(244, 208, 63, 0.3)'
+            }}>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-balance" style={{
+                color: '#f4d03f',
+                textShadow: '0 2px 4px rgba(244, 208, 63, 0.3)'
+              }}>🎯 Our Mission</h2>
+              <p className="text-lg mb-6 text-pretty" style={{
+                color: 'white',
+                lineHeight: '1.7'
+              }}>
                 To create a sustainable digital ecosystem that empowers tribal communities in Jharkhand through
                 responsible tourism, while preserving their rich cultural heritage and protecting the environment.
               </p>
-              <p className="text-lg text-muted-foreground text-pretty">
+              <p className="text-lg text-pretty" style={{
+                color: 'rgba(255, 255, 255, 0.9)',
+                lineHeight: '1.7'
+              }}>
                 We believe that tourism should be a force for good - creating economic opportunities, fostering cultural
                 exchange, and promoting environmental conservation.
               </p>
             </div>
             <div className="relative">
-              <img
-                src="/jharkhand-landscape-forest-mountains-tribal-cultur.jpg"
-                alt="Jharkhand landscape"
-                className="w-full rounded-lg shadow-2xl"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent rounded-lg"></div>
+              <div className="rounded-3xl overflow-hidden" style={{
+                border: '3px solid rgba(244, 208, 63, 0.5)',
+                boxShadow: '0 12px 40px rgba(244, 208, 63, 0.2)'
+              }}>
+                <img
+                  src="/jharkhand-landscape-forest-mountains-tribal-cultur.jpg"
+                  alt="Jharkhand landscape"
+                  className="w-full h-80 object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+              </div>
             </div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="order-2 lg:order-1 relative">
-              <img
-                src="/jharkhand-tribal-handicrafts-marketplace-artisans.jpg"
-                alt="Tribal artisans"
-                className="w-full rounded-lg shadow-2xl"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent rounded-lg"></div>
+              <div className="rounded-3xl overflow-hidden" style={{
+                border: '3px solid rgba(30, 58, 138, 0.5)',
+                boxShadow: '0 12px 40px rgba(30, 58, 138, 0.2)'
+              }}>
+                <img
+                  src="/jharkhand-tribal-handicrafts-marketplace-artisans.jpg"
+                  alt="Tribal artisans"
+                  className="w-full h-80 object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+              </div>
             </div>
-            <div className="order-1 lg:order-2">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6 text-balance">Our Vision</h2>
-              <p className="text-lg text-muted-foreground mb-6 text-pretty">
+            <div className="order-1 lg:order-2 p-8 rounded-3xl" style={{
+              background: 'linear-gradient(135deg, rgba(30, 58, 138, 0.15) 0%, rgba(244, 208, 63, 0.15) 100%)',
+              backdropFilter: 'blur(20px)',
+              border: '2px solid rgba(30, 58, 138, 0.4)',
+              boxShadow: '0 8px 32px rgba(30, 58, 138, 0.3)'
+            }}>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-balance" style={{
+                color: '#f4d03f',
+                textShadow: '0 2px 4px rgba(244, 208, 63, 0.3)'
+              }}>🌟 Our Vision</h2>
+              <p className="text-lg mb-6 text-pretty" style={{
+                color: 'white',
+                lineHeight: '1.7'
+              }}>
                 To make Jharkhand a global model for sustainable, community-driven tourism that celebrates indigenous
                 culture while creating lasting economic impact.
               </p>
-              <p className="text-lg text-muted-foreground text-pretty">
+              <p className="text-lg text-pretty" style={{
+                color: 'rgba(255, 255, 255, 0.9)',
+                lineHeight: '1.7'
+              }}>
                 We envision a future where every visitor contributes to the preservation of tribal heritage and the
                 prosperity of local communities.
               </p>
@@ -175,24 +235,40 @@ export default function AboutPage() {
       </section>
 
       {/* Core Values */}
-      <section className="py-20 bg-muted/30">
+      <section className="py-20" style={{
+        background: 'linear-gradient(135deg, rgba(128, 0, 32, 0.1) 0%, rgba(30, 58, 138, 0.1) 100%)'
+      }}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-balance">Our Core Values</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto text-pretty">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance" style={{
+              color: '#f4d03f',
+              textShadow: '0 2px 4px rgba(244, 208, 63, 0.3)'
+            }}>🎆 Our Core Values</h2>
+            <p className="text-xl max-w-3xl mx-auto text-pretty" style={{
+              color: 'white',
+              textShadow: '0 2px 4px rgba(0,0,0,0.3)'
+            }}>
               The principles that guide every decision we make and every partnership we build
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value, index) => (
-              <Card key={index} className="text-center p-8 hover:shadow-xl transition-shadow">
-                <div className="mx-auto w-16 h-16 bg-muted rounded-full flex items-center justify-center mb-6">
-                  {value.icon}
+              <div key={index} className="text-center p-8 rounded-3xl transition-all duration-300 hover:scale-105" style={{
+                background: 'linear-gradient(135deg, rgba(244, 208, 63, 0.15) 0%, rgba(128, 0, 32, 0.15) 100%)',
+                backdropFilter: 'blur(20px)',
+                border: '2px solid rgba(244, 208, 63, 0.3)',
+                boxShadow: '0 8px 32px rgba(244, 208, 63, 0.2)'
+              }}>
+                <div className="mx-auto w-16 h-16 rounded-full flex items-center justify-center mb-6" style={{
+                  background: 'linear-gradient(135deg, #f4d03f 0%, #d4af37 100%)',
+                  boxShadow: '0 4px 15px rgba(244, 208, 63, 0.4)'
+                }}>
+                  {React.cloneElement(value.icon, { className: 'h-8 w-8', style: { color: '#800020' } })}
                 </div>
-                <h3 className="text-xl font-bold text-foreground mb-4">{value.title}</h3>
-                <p className="text-muted-foreground text-pretty">{value.description}</p>
-              </Card>
+                <h3 className="text-xl font-bold mb-4" style={{ color: '#f4d03f' }}>{value.title}</h3>
+                <p className="text-pretty" style={{ color: 'white', lineHeight: '1.6' }}>{value.description}</p>
+              </div>
             ))}
           </div>
         </div>
@@ -202,29 +278,54 @@ export default function AboutPage() {
       <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-balance">Our Journey</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto text-pretty">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance" style={{
+              color: '#f4d03f',
+              textShadow: '0 2px 4px rgba(244, 208, 63, 0.3)'
+            }}>📅 Our Journey</h2>
+            <p className="text-xl max-w-3xl mx-auto text-pretty" style={{
+              color: 'white',
+              textShadow: '0 2px 4px rgba(0,0,0,0.3)'
+            }}>
               Key milestones in our mission to transform tourism in Jharkhand
             </p>
           </div>
 
           <div className="relative">
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-primary/20"></div>
+            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full" style={{
+              background: 'linear-gradient(180deg, #f4d03f 0%, #800020 50%, #1e3a8a 100%)'
+            }}></div>
             <div className="space-y-12">
               {milestones.map((milestone, index) => (
                 <div key={index} className={`flex items-center ${index % 2 === 0 ? "flex-row" : "flex-row-reverse"}`}>
                   <div className={`w-1/2 ${index % 2 === 0 ? "pr-8 text-right" : "pl-8 text-left"}`}>
-                    <Card className="p-6 hover:shadow-lg transition-shadow">
-                      <div className="flex items-center gap-2 mb-2">
-                        <Calendar className="h-4 w-4 text-primary" />
-                        <Badge variant="outline">{milestone.year}</Badge>
+                    <div className="p-6 rounded-2xl transition-all duration-300 hover:scale-105" style={{
+                      background: index % 2 === 0 
+                        ? 'linear-gradient(135deg, rgba(244, 208, 63, 0.15) 0%, rgba(128, 0, 32, 0.15) 100%)'
+                        : 'linear-gradient(135deg, rgba(30, 58, 138, 0.15) 0%, rgba(244, 208, 63, 0.15) 100%)',
+                      backdropFilter: 'blur(20px)',
+                      border: '2px solid rgba(244, 208, 63, 0.3)',
+                      boxShadow: '0 8px 32px rgba(244, 208, 63, 0.2)'
+                    }}>
+                      <div className="flex items-center gap-2 mb-2" style={{
+                        justifyContent: index % 2 === 0 ? 'flex-end' : 'flex-start'
+                      }}>
+                        <Calendar className="h-4 w-4" style={{ color: '#f4d03f' }} />
+                        <span className="px-3 py-1 rounded-full text-sm font-semibold" style={{
+                          background: 'rgba(244, 208, 63, 0.2)',
+                          border: '1px solid rgba(244, 208, 63, 0.4)',
+                          color: '#f4d03f'
+                        }}>{milestone.year}</span>
                       </div>
-                      <h3 className="text-xl font-bold text-foreground mb-2">{milestone.title}</h3>
-                      <p className="text-muted-foreground">{milestone.description}</p>
-                    </Card>
+                      <h3 className="text-xl font-bold mb-2" style={{ color: '#f4d03f' }}>{milestone.title}</h3>
+                      <p style={{ color: 'white', lineHeight: '1.6' }}>{milestone.description}</p>
+                    </div>
                   </div>
                   <div className="relative z-10">
-                    <div className="w-4 h-4 bg-primary rounded-full border-4 border-background"></div>
+                    <div className="w-6 h-6 rounded-full border-4" style={{
+                      background: 'linear-gradient(135deg, #f4d03f 0%, #d4af37 100%)',
+                      borderColor: '#800020',
+                      boxShadow: '0 4px 15px rgba(244, 208, 63, 0.4)'
+                    }}></div>
                   </div>
                   <div className="w-1/2"></div>
                 </div>
@@ -235,41 +336,63 @@ export default function AboutPage() {
       </section>
 
       {/* Team */}
-      <section className="py-20 bg-muted/30">
+      <section className="py-20" style={{
+        background: 'linear-gradient(135deg, rgba(30, 58, 138, 0.1) 0%, rgba(128, 0, 32, 0.1) 100%)'
+      }}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-balance">Meet Our Team</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto text-pretty">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance" style={{
+              color: '#f4d03f',
+              textShadow: '0 2px 4px rgba(244, 208, 63, 0.3)'
+            }}>👥 Meet Our Team</h2>
+            <p className="text-xl max-w-3xl mx-auto text-pretty" style={{
+              color: 'white',
+              textShadow: '0 2px 4px rgba(0,0,0,0.3)'
+            }}>
               Passionate individuals dedicated to sustainable tourism and community empowerment
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {team.map((member, index) => (
-              <Card key={index} className="text-center p-6 hover:shadow-xl transition-shadow">
-                <div className="mx-auto w-32 h-32 rounded-full overflow-hidden mb-6">
+              <div key={index} className="text-center p-6 rounded-3xl transition-all duration-300 hover:scale-105" style={{
+                background: 'linear-gradient(135deg, rgba(244, 208, 63, 0.15) 0%, rgba(30, 58, 138, 0.15) 100%)',
+                backdropFilter: 'blur(20px)',
+                border: '2px solid rgba(244, 208, 63, 0.3)',
+                boxShadow: '0 8px 32px rgba(244, 208, 63, 0.2)'
+              }}>
+                <div className="mx-auto w-32 h-32 rounded-full overflow-hidden mb-6" style={{
+                  border: '3px solid rgba(244, 208, 63, 0.5)',
+                  boxShadow: '0 4px 15px rgba(244, 208, 63, 0.3)'
+                }}>
                   <img
                     src={member.image || "/placeholder.svg"}
                     alt={member.name}
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <h3 className="text-xl font-bold text-foreground mb-2">{member.name}</h3>
-                <p className="text-primary font-medium mb-3">{member.role}</p>
-                <p className="text-sm text-muted-foreground mb-4">{member.bio}</p>
+                <h3 className="text-xl font-bold mb-2" style={{ color: '#f4d03f' }}>{member.name}</h3>
+                <p className="font-medium mb-3" style={{ color: '#800020' }}>{member.role}</p>
+                <p className="text-sm mb-4" style={{ color: 'white', lineHeight: '1.5' }}>{member.bio}</p>
                 <div className="flex items-center justify-center gap-2 mb-4">
-                  <MapPin className="h-4 w-4 text-muted-foreground" />
-                  <span className="text-sm text-muted-foreground">{member.location}</span>
+                  <MapPin className="h-4 w-4" style={{ color: '#f4d03f' }} />
+                  <span className="text-sm" style={{ color: 'white' }}>{member.location}</span>
                 </div>
                 <div className="flex justify-center gap-2">
-                  <Button size="sm" variant="outline">
-                    <Mail className="h-4 w-4" />
-                  </Button>
-                  <Button size="sm" variant="outline">
-                    <Linkedin className="h-4 w-4" />
-                  </Button>
+                  <button className="p-2 rounded-full transition-all duration-300 hover:scale-110" style={{
+                    background: 'rgba(244, 208, 63, 0.2)',
+                    border: '1px solid rgba(244, 208, 63, 0.4)'
+                  }}>
+                    <Mail className="h-4 w-4" style={{ color: '#f4d03f' }} />
+                  </button>
+                  <button className="p-2 rounded-full transition-all duration-300 hover:scale-110" style={{
+                    background: 'rgba(244, 208, 63, 0.2)',
+                    border: '1px solid rgba(244, 208, 63, 0.4)'
+                  }}>
+                    <Linkedin className="h-4 w-4" style={{ color: '#f4d03f' }} />
+                  </button>
                 </div>
-              </Card>
+              </div>
             ))}
           </div>
         </div>
