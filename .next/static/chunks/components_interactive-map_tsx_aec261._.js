@@ -13,10 +13,12 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$lea
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$leaflet$2f$lib$2f$GeoJSON$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/react-leaflet/lib/GeoJSON.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$leaflet$2f$lib$2f$Marker$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/react-leaflet/lib/Marker.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$leaflet$2f$dist$2f$leaflet$2d$src$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/leaflet/dist/leaflet-src.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$db$2f$places$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/db/places.js [app-client] (ecmascript)");
 "__TURBOPACK__ecmascript__hoisting__location__";
 ;
 var _s = __turbopack_refresh__.signature();
 "use client";
+;
 ;
 ;
 ;
@@ -33,7 +35,8 @@ function InteractiveMap() {
     const [geoData, setGeoData] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     const [districtColors, setDistrictColors] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({});
     const [markers, setMarkers] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
-    const [places, setPlaces] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
+    const [places] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(__TURBOPACK__imported__module__$5b$project$5d2f$db$2f$places$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"]);
+    const [isLoading, setIsLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(true);
     const mapRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
     const layerGroupRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])([]);
     const hoveredLayerRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
@@ -111,12 +114,9 @@ function InteractiveMap() {
                 }
             }
         }).catch((err)=>console.error("Failed to load geojson:", err));
-        // Fetch places data from backend API
-        fetch("http://localhost:5000/api/places").then((r)=>r.json()).then((response)=>{
-            if (response.success && response.data) {
-                setPlaces(response.data);
-            }
-        }).catch((err)=>console.error("Failed to load places:", err));
+        // Places data is now loaded from local file
+        console.log('Places loaded from local file:', places.length, 'places');
+        setIsLoading(false);
     }, []);
     const getLayerElement = (layer)=>{
         return layer._path || null;
@@ -224,7 +224,9 @@ function InteractiveMap() {
                             if (otherElement) otherElement.classList.add("dimmed");
                         }
                     });
+                    // Set markers immediately since places data is local
                     const districtPlaces = places.filter((place)=>place.district === districtName && place.streetView).slice(0, 2);
+                    console.log(`Setting markers for ${districtName}:`, districtPlaces.length, 'places');
                     setMarkers(districtPlaces);
                 } else {
                     setMarkers([]);
@@ -242,234 +244,261 @@ function InteractiveMap() {
             position: "relative",
             margin: "20px auto"
         },
-        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-            style: {
-                position: "relative",
-                height: "100%",
-                width: "100%",
-                borderRadius: "16px",
-                overflow: "hidden"
-            },
-            children: [
-                streetViewUrl ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "street-view-container",
-                    style: {
-                        height: "100%",
-                        width: "100%",
-                        position: "relative"
-                    },
-                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("iframe", {
-                        src: streetViewUrl,
-                        style: {
-                            border: 0,
-                            width: "100%",
-                            height: "100%"
-                        },
-                        allowFullScreen: true,
-                        loading: "lazy"
-                    }, void 0, false, {
-                        fileName: "[project]/components/interactive-map.tsx",
-                        lineNumber: 240,
-                        columnNumber: 13
-                    }, this)
+        children: [
+            isLoading && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                style: {
+                    position: "absolute",
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                    zIndex: 1000,
+                    background: "rgba(0,0,0,0.8)",
+                    color: "white",
+                    padding: "20px",
+                    borderRadius: "10px",
+                    textAlign: "center"
+                },
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    children: "Loading map data..."
                 }, void 0, false, {
-                    fileName: "[project]/components/interactive-map.tsx",
-                    lineNumber: 239,
-                    columnNumber: 11
-                }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$leaflet$2f$lib$2f$MapContainer$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["MapContainer"], {
-                    center: [
-                        23.6,
-                        85.3
-                    ],
-                    zoom: 7.5,
-                    zoomSnap: 0.1,
-                    style: {
-                        height: "100%",
-                        width: "100%"
-                    },
-                    ref: mapRef,
-                    dragging: false,
-                    touchZoom: false,
-                    doubleClickZoom: false,
-                    scrollWheelZoom: false,
-                    boxZoom: false,
-                    keyboard: false,
-                    zoomControl: false,
-                    attributionControl: false,
-                    children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$leaflet$2f$lib$2f$TileLayer$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TileLayer"], {
-                            attribution: '© <a href="https://carto.com/">Carto</a>',
-                            url: "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
-                            subdomains: [
-                                "a",
-                                "b",
-                                "c",
-                                "d"
-                            ]
-                        }, void 0, false, {
-                            fileName: "[project]/components/interactive-map.tsx",
-                            lineNumber: 263,
-                            columnNumber: 13
-                        }, this),
-                        geoData && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$leaflet$2f$lib$2f$GeoJSON$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["GeoJSON"], {
-                            data: geoData,
-                            onEachFeature: onEachFeature
-                        }, void 0, false, {
-                            fileName: "[project]/components/interactive-map.tsx",
-                            lineNumber: 268,
-                            columnNumber: 25
-                        }, this),
-                        markers.map((place, idx)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$leaflet$2f$lib$2f$Marker$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Marker"], {
-                                position: [
-                                    place.lat,
-                                    place.lon
-                                ],
-                                eventHandlers: {
-                                    click: ()=>setSelectedPlace(place)
-                                }
-                            }, idx, false, {
-                                fileName: "[project]/components/interactive-map.tsx",
-                                lineNumber: 271,
-                                columnNumber: 15
-                            }, this))
-                    ]
-                }, void 0, true, {
                     fileName: "[project]/components/interactive-map.tsx",
                     lineNumber: 248,
                     columnNumber: 11
-                }, this),
-                selectedPlace && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "info-box",
-                    children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "info-box-header",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                    className: "info-box-title",
-                                    children: selectedPlace.name
-                                }, void 0, false, {
+                }, this)
+            }, void 0, false, {
+                fileName: "[project]/components/interactive-map.tsx",
+                lineNumber: 236,
+                columnNumber: 9
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                style: {
+                    position: "relative",
+                    height: "100%",
+                    width: "100%",
+                    borderRadius: "16px",
+                    overflow: "hidden"
+                },
+                children: [
+                    streetViewUrl ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "street-view-container",
+                        style: {
+                            height: "100%",
+                            width: "100%",
+                            position: "relative"
+                        },
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("iframe", {
+                            src: streetViewUrl,
+                            style: {
+                                border: 0,
+                                width: "100%",
+                                height: "100%"
+                            },
+                            allowFullScreen: true,
+                            loading: "lazy"
+                        }, void 0, false, {
+                            fileName: "[project]/components/interactive-map.tsx",
+                            lineNumber: 254,
+                            columnNumber: 13
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "[project]/components/interactive-map.tsx",
+                        lineNumber: 253,
+                        columnNumber: 11
+                    }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$leaflet$2f$lib$2f$MapContainer$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["MapContainer"], {
+                        center: [
+                            23.6,
+                            85.3
+                        ],
+                        zoom: 7.5,
+                        zoomSnap: 0.1,
+                        style: {
+                            height: "100%",
+                            width: "100%"
+                        },
+                        ref: mapRef,
+                        dragging: false,
+                        touchZoom: false,
+                        doubleClickZoom: false,
+                        scrollWheelZoom: false,
+                        boxZoom: false,
+                        keyboard: false,
+                        zoomControl: false,
+                        attributionControl: false,
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$leaflet$2f$lib$2f$TileLayer$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TileLayer"], {
+                                attribution: '© <a href="https://carto.com/">Carto</a>',
+                                url: "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+                                subdomains: [
+                                    "a",
+                                    "b",
+                                    "c",
+                                    "d"
+                                ]
+                            }, void 0, false, {
+                                fileName: "[project]/components/interactive-map.tsx",
+                                lineNumber: 277,
+                                columnNumber: 13
+                            }, this),
+                            geoData && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$leaflet$2f$lib$2f$GeoJSON$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["GeoJSON"], {
+                                data: geoData,
+                                onEachFeature: onEachFeature
+                            }, void 0, false, {
+                                fileName: "[project]/components/interactive-map.tsx",
+                                lineNumber: 282,
+                                columnNumber: 25
+                            }, this),
+                            markers.map((place, idx)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$leaflet$2f$lib$2f$Marker$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Marker"], {
+                                    position: [
+                                        place.lat,
+                                        place.lon
+                                    ],
+                                    eventHandlers: {
+                                        click: ()=>setSelectedPlace(place)
+                                    }
+                                }, idx, false, {
                                     fileName: "[project]/components/interactive-map.tsx",
                                     lineNumber: 285,
                                     columnNumber: 15
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                    className: "info-box-close",
-                                    onClick: ()=>setSelectedPlace(null),
-                                    children: "×"
-                                }, void 0, false, {
-                                    fileName: "[project]/components/interactive-map.tsx",
-                                    lineNumber: 286,
-                                    columnNumber: 15
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/components/interactive-map.tsx",
-                            lineNumber: 284,
-                            columnNumber: 13
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "info-box-content",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "info-box-image",
-                                    children: selectedPlace.imageId ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                        src: `http://localhost:5000/api/images/${selectedPlace.imageId}`,
-                                        alt: selectedPlace.name,
-                                        onLoad: ()=>console.log(`Image loaded: ${selectedPlace.name}`),
-                                        onError: (e)=>{
-                                            console.error(`Failed to load image for ${selectedPlace.name}:`, e);
-                                            const img = e.target;
-                                            img.src = `http://localhost:5000/api/images/place-name/${encodeURIComponent(selectedPlace.name)}`;
-                                        },
-                                        style: {
-                                            maxWidth: '100%',
-                                            height: 'auto'
-                                        }
+                                }, this))
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/components/interactive-map.tsx",
+                        lineNumber: 262,
+                        columnNumber: 11
+                    }, this),
+                    selectedPlace && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "info-box",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "info-box-header",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        className: "info-box-title",
+                                        children: selectedPlace.name
                                     }, void 0, false, {
                                         fileName: "[project]/components/interactive-map.tsx",
-                                        lineNumber: 296,
-                                        columnNumber: 19
-                                    }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                        src: `http://localhost:5000/api/images/place-name/${encodeURIComponent(selectedPlace.name)}`,
-                                        alt: selectedPlace.name,
-                                        onError: (e)=>{
-                                            const img = e.target;
-                                            img.style.display = 'none';
-                                        },
-                                        style: {
-                                            maxWidth: '100%',
-                                            height: 'auto'
-                                        }
+                                        lineNumber: 299,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                        className: "info-box-close",
+                                        onClick: ()=>setSelectedPlace(null),
+                                        children: "×"
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/interactive-map.tsx",
+                                        lineNumber: 300,
+                                        columnNumber: 15
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/components/interactive-map.tsx",
+                                lineNumber: 298,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "info-box-content",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "info-box-image",
+                                        children: selectedPlace.imageId ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                            src: `http://localhost:5000/api/images/${selectedPlace.imageId}`,
+                                            alt: selectedPlace.name,
+                                            onLoad: ()=>console.log(`Image loaded: ${selectedPlace.name}`),
+                                            onError: (e)=>{
+                                                console.error(`Failed to load image for ${selectedPlace.name}:`, e);
+                                                const img = e.target;
+                                                img.src = `http://localhost:5000/api/images/place-name/${encodeURIComponent(selectedPlace.name)}`;
+                                            },
+                                            style: {
+                                                maxWidth: '100%',
+                                                height: 'auto'
+                                            }
+                                        }, void 0, false, {
+                                            fileName: "[project]/components/interactive-map.tsx",
+                                            lineNumber: 310,
+                                            columnNumber: 19
+                                        }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                            src: `http://localhost:5000/api/images/place-name/${encodeURIComponent(selectedPlace.name)}`,
+                                            alt: selectedPlace.name,
+                                            onError: (e)=>{
+                                                const img = e.target;
+                                                img.style.display = 'none';
+                                            },
+                                            style: {
+                                                maxWidth: '100%',
+                                                height: 'auto'
+                                            }
+                                        }, void 0, false, {
+                                            fileName: "[project]/components/interactive-map.tsx",
+                                            lineNumber: 322,
+                                            columnNumber: 19
+                                        }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/interactive-map.tsx",
                                         lineNumber: 308,
-                                        columnNumber: 19
+                                        columnNumber: 15
+                                    }, this),
+                                    selectedPlace.streetView && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                        className: "explore-button",
+                                        onClick: ()=>{
+                                            setStreetViewUrl(selectedPlace.streetView);
+                                            setSelectedPlace(null);
+                                        },
+                                        children: "Explore Now!"
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/interactive-map.tsx",
+                                        lineNumber: 334,
+                                        columnNumber: 17
                                     }, this)
-                                }, void 0, false, {
-                                    fileName: "[project]/components/interactive-map.tsx",
-                                    lineNumber: 294,
-                                    columnNumber: 15
-                                }, this),
-                                selectedPlace.streetView && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                    className: "explore-button",
-                                    onClick: ()=>{
-                                        setStreetViewUrl(selectedPlace.streetView);
-                                        setSelectedPlace(null);
-                                    },
-                                    children: "Explore Now!"
-                                }, void 0, false, {
-                                    fileName: "[project]/components/interactive-map.tsx",
-                                    lineNumber: 320,
-                                    columnNumber: 17
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/components/interactive-map.tsx",
-                            lineNumber: 293,
-                            columnNumber: 13
-                        }, this)
-                    ]
-                }, void 0, true, {
-                    fileName: "[project]/components/interactive-map.tsx",
-                    lineNumber: 283,
-                    columnNumber: 11
-                }, this),
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "deselect-button",
-                    onClick: ()=>{
-                        if (streetViewUrl) {
-                            setStreetViewUrl(null);
-                            setTimeout(()=>reapplySelection(), 50);
-                        } else {
-                            handleDeselect();
-                        }
-                    },
-                    title: streetViewUrl ? "Back to Map" : "Deselect district",
-                    style: {
-                        display: selectedLayerRef.current || streetViewUrl ? "flex" : "none",
-                        position: "absolute",
-                        top: "15px",
-                        right: "15px"
-                    },
-                    children: "×"
-                }, void 0, false, {
-                    fileName: "[project]/components/interactive-map.tsx",
-                    lineNumber: 334,
-                    columnNumber: 9
-                }, this)
-            ]
-        }, void 0, true, {
-            fileName: "[project]/components/interactive-map.tsx",
-            lineNumber: 237,
-            columnNumber: 7
-        }, this)
-    }, void 0, false, {
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/components/interactive-map.tsx",
+                                lineNumber: 307,
+                                columnNumber: 13
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/components/interactive-map.tsx",
+                        lineNumber: 297,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "deselect-button",
+                        onClick: ()=>{
+                            if (streetViewUrl) {
+                                setStreetViewUrl(null);
+                                setTimeout(()=>reapplySelection(), 50);
+                            } else {
+                                handleDeselect();
+                            }
+                        },
+                        title: streetViewUrl ? "Back to Map" : "Deselect district",
+                        style: {
+                            display: selectedLayerRef.current || streetViewUrl ? "flex" : "none",
+                            position: "absolute",
+                            top: "15px",
+                            right: "15px"
+                        },
+                        children: "×"
+                    }, void 0, false, {
+                        fileName: "[project]/components/interactive-map.tsx",
+                        lineNumber: 348,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/components/interactive-map.tsx",
+                lineNumber: 251,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
         fileName: "[project]/components/interactive-map.tsx",
-        lineNumber: 236,
+        lineNumber: 234,
         columnNumber: 5
     }, this);
 }
-_s(InteractiveMap, "eeamzsrmzeIAlOGcIUCTwEHMyJ0=");
+_s(InteractiveMap, "X7Vjom+NtMcuLCeVK0GfrVGdi6c=");
 _c = InteractiveMap;
 var _c;
 __turbopack_refresh__.register(_c, "InteractiveMap");

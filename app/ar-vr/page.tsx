@@ -6,23 +6,12 @@ import Link from 'next/link';
 import Navigation from '@/components/navigation';
 import Footer from '@/components/footer';
 import dynamic from 'next/dynamic';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
 
 const InteractiveMap = dynamic(() => import('@/components/interactive-map'), {
   ssr: false,
 });
 
 const ARVRPage = () => {
-  // Initialize AOS
-  useEffect(() => {
-    AOS.init({
-      duration: 600,
-      easing: 'ease-out-cubic',
-      once: true,
-      offset: 30
-    })
-  }, [])
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#1e3a8a] to-[#800020] text-white">
@@ -30,10 +19,10 @@ const ARVRPage = () => {
       <main>
       <section className="hero-section">
         <div className="hero-content">
-        <h1 className="text-5xl md:text-7xl font-bold mb-4" data-aos="fade-up" data-aos-delay="200">
+        <h1 className="text-5xl md:text-7xl font-bold mb-4">
           Step into <span className="text-gold">Jharkhand's</span> Heritage
         </h1>
-        <p className="text-lg md:text-xl max-w-3xl mx-auto mb-8" data-aos="fade-up" data-aos-delay="400">
+        <p className="text-lg md:text-xl max-w-3xl mx-auto mb-8">
           Experience the vibrant culture and breathtaking landscapes of Jharkhand like never before. Our augmented and virtual reality features transport you to the heart of its most iconic destinations.
         </p>
         </div>
@@ -41,15 +30,15 @@ const ARVRPage = () => {
 
         <div className="container mx-auto px-4 py-16 text-center">
           <div className="grid md:grid-cols-2 gap-8 w-full max-w-5xl mb-12 mx-auto">
-            <div className="p-6 rounded-lg" style={{ background: 'linear-gradient(135deg, rgba(128, 0, 32, 0.95) 0%, rgba(30, 58, 138, 0.95) 100%)' }} data-aos="fade-right" data-aos-delay="200">
-              <h2 className="text-3xl font-bold mb-3 text-gold" data-aos="fade-up" data-aos-delay="400">Augmented Reality</h2>
-              <p className="text-base" style={{ color: 'white' }} data-aos="fade-up" data-aos-delay="600">
+            <div className="p-6 rounded-lg" style={{ background: 'linear-gradient(135deg, rgba(128, 0, 32, 0.95) 0%, rgba(30, 58, 138, 0.95) 100%)' }}>
+              <h2 className="text-3xl font-bold mb-3 text-gold">Augmented Reality</h2>
+              <p className="text-base" style={{ color: 'white' }}>
               Experience history like never before as artifacts and monuments come to life before your eyes. At each tourist spot, uncover hidden stories, fascinating facts, and rich details that reveal the true essence of the place.
               </p>
             </div>
-            <div className="p-6 rounded-lg" style={{ background: 'linear-gradient(135deg, rgba(128, 0, 32, 0.95) 0%, rgba(30, 58, 138, 0.95) 100%)' }} data-aos="fade-left" data-aos-delay="300">
-              <h2 className="text-3xl font-bold mb-3 text-gold" data-aos="fade-up" data-aos-delay="500">Virtual Reality</h2>
-              <p className="text-base" style={{ color: 'white' }} data-aos="fade-up" data-aos-delay="700">
+            <div className="p-6 rounded-lg" style={{ background: 'linear-gradient(135deg, rgba(128, 0, 32, 0.95) 0%, rgba(30, 58, 138, 0.95) 100%)' }}>
+              <h2 className="text-3xl font-bold mb-3 text-gold">Virtual Reality</h2>
+              <p className="text-base" style={{ color: 'white' }}>
               Embark on a breathtaking virtual journey through Jharkhand's enchanting landscapes — from the thundering waterfalls and lush green forests to the timeless charm of its ancient temples. Explore every corner in stunning 360°, uncover fascinating stories and legends, and feel as if you're truly there, all from the comfort of your home.
               </p>
             </div>

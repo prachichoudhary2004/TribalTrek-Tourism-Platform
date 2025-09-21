@@ -2,10 +2,10 @@
 
 import React, { useEffect, useState, useRef } from "react";
 import { MapContainer, TileLayer, GeoJSON, Marker } from "react-leaflet";
-// Removed local import - now fetching from API
 import L, { LatLngExpression, Layer, Icon } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { Feature, FeatureCollection } from "geojson";
+import jharkhandTouristPlaces from "../db/places";
 
 // Fix for default marker icon
 delete (Icon.Default.prototype as any)._getIconUrl;
@@ -30,7 +30,9 @@ export default function InteractiveMap() {
   const [geoData, setGeoData] = useState<FeatureCollection | null>(null);
   const [districtColors, setDistrictColors] = useState<{ [key: string]: string }>({});
   const [markers, setMarkers] = useState<Place[]>([]);
-  const [places, setPlaces] = useState<Place[]>([]);
+  const [places] = useState<Place[]>(jharkhandTouristPlaces);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [imageError, setImageError] = useState<{ [key: string]: boolean }>({});
   const mapRef = useRef<L.Map | null>(null);
   const layerGroupRef = useRef<Layer[]>([]);
   const hoveredLayerRef = useRef<Layer | null>(null);
@@ -66,6 +68,36 @@ export default function InteractiveMap() {
     return colorMap;
   };
 
+  // Function to get image path for a place
+  const getImagePath = (placeName: string) => {
+    // Try different extensions in order of preference
+    const extensions = ['jpg', 'jpeg', 'png', 'JPG'];
+    
+    // First try exact match - images should be in public/arvrPics folder
+    for (const ext of extensions) {
+      const imagePath = `/arvrPics/${placeName}.${ext}`;
+      return imagePath;
+    }
+    
+    return null;
+  };
+
+  // Function to handle image loading errors
+  const handleImageError = (placeName: string, currentExt: string) => {
+    const extensions = ['jpg', 'jpeg', 'png', 'JPG'];
+    const currentIndex = extensions.indexOf(currentExt);
+    
+    if (currentIndex < extensions.length - 1) {
+      // Try next extension
+      const nextExt = extensions[currentIndex + 1];
+      return `/arvrPics/${placeName}.${nextExt}`;
+    }
+    
+    // All extensions failed, mark as error
+    setImageError(prev => ({ ...prev, [placeName]: true }));
+    return null;
+  };
+
   useEffect(() => {
     // Fetch GeoJSON data
     fetch("/JHARKHAND_DISTRICTS.geojson")
@@ -87,15 +119,9 @@ export default function InteractiveMap() {
       })
       .catch((err) => console.error("Failed to load geojson:", err));
 
-    // Fetch places data from backend API
-    fetch("http://localhost:5000/api/places")
-      .then((r) => r.json())
-      .then((response) => {
-        if (response.success && response.data) {
-          setPlaces(response.data);
-        }
-      })
-      .catch((err) => console.error("Failed to load places:", err));
+    // Places data is now loaded from local file
+    console.log('Places loaded from local file:', places.length, 'places');
+    setIsLoading(false);
   }, []);
 
   const getLayerElement = (layer: any) => {
@@ -217,9 +243,11 @@ export default function InteractiveMap() {
             }
           });
 
+          // Set markers immediately since places data is local
           const districtPlaces = places
             .filter((place) => place.district === districtName && place.streetView)
             .slice(0, 2);
+          console.log(`Setting markers for ${districtName}:`, districtPlaces.length, 'places');
           setMarkers(districtPlaces);
         } else {
           setMarkers([]);
@@ -232,8 +260,25 @@ export default function InteractiveMap() {
     resetAll();
   };
 
+
   return (
     <div style={{ height: "70vh", width: "70%", position: "relative", margin: "20px auto" }}>
+      {isLoading && (
+        <div style={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          zIndex: 1000,
+          background: "rgba(0,0,0,0.8)",
+          color: "white",
+          padding: "20px",
+          borderRadius: "10px",
+          textAlign: "center"
+        }}>
+          <div>Loading map data...</div>
+        </div>
+      )}
       <div style={{ position: "relative", height: "100%", width: "100%", borderRadius: "16px", overflow: "hidden" }}>
         {streetViewUrl ? (
           <div className="street-view-container" style={{ height: "100%", width: "100%", position: "relative" }}>
@@ -292,28 +337,51 @@ export default function InteractiveMap() {
             </div>
             <div className="info-box-content">
               <div className="info-box-image">
-                {selectedPlace.imageId ? (
+                {!imageError[selectedPlace.name] ? (
                   <img 
-                    src={`http://localhost:5000/api/images/${selectedPlace.imageId}`}
+                    src={getImagePath(selectedPlace.name) || ''}
                     alt={selectedPlace.name}
-                    onLoad={() => console.log(`Image loaded: ${selectedPlace.name}`)}
-                    onError={(e) => {
-                      console.error(`Failed to load image for ${selectedPlace.name}:`, e);
-                      const img = e.target as HTMLImageElement;
-                      img.src = `http://localhost:5000/api/images/place-name/${encodeURIComponent(selectedPlace.name)}`;
+                    style={{ 
+                      width: '100%', 
+                      height: '120px', 
+                      objectFit: 'cover',
+                      borderRadius: '8px'
                     }}
-                    style={{ maxWidth: '100%', height: 'auto' }}
-                  />
-                ) : (
-                  <img 
-                    src={`http://localhost:5000/api/images/place-name/${encodeURIComponent(selectedPlace.name)}`}
-                    alt={selectedPlace.name}
                     onError={(e) => {
                       const img = e.target as HTMLImageElement;
-                      img.style.display = 'none';
+                      const currentSrc = img.src;
+                      const fileName = currentSrc.split('/').pop();
+                      const currentExt = fileName?.split('.').pop() || 'jpg';
+                      
+                      const nextSrc = handleImageError(selectedPlace.name, currentExt);
+                      if (nextSrc) {
+                        img.src = nextSrc;
+                      } else {
+                        // Show fallback
+                        img.style.display = 'none';
+                      }
                     }}
-                    style={{ maxWidth: '100%', height: 'auto' }}
+                    onLoad={() => {
+                      console.log(`Image loaded successfully: ${selectedPlace.name}`);
+                    }}
                   />
+                ) : null}
+                
+                {imageError[selectedPlace.name] && (
+                  <div style={{ 
+                    width: '100%', 
+                    height: '120px', 
+                    background: 'linear-gradient(135deg, #800020, #1e3a8a)', 
+                    borderRadius: '8px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: '#f4d03f',
+                    fontSize: '14px',
+                    textAlign: 'center'
+                  }}>
+                    📍 {selectedPlace.name}
+                  </div>
                 )}
               </div>
               {selectedPlace.streetView && (

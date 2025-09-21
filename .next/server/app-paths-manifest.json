@@ -2,12 +2,10 @@
   "/page": "app/page.js",
   "/api/feedback/route": "app/api/feedback/route.js",
   "/api/analytics/route": "app/api/analytics/route.js",
-  "/destinations/page": "app/destinations/page.js",
-  "/destinations/[destination]/page": "app/destinations/[destination]/page.js",
-  "/api/wikipedia/route": "app/api/wikipedia/route.js",
-  "/travel-planner/page": "app/travel-planner/page.js",
   "/ai-features/page": "app/ai-features/page.js",
-  "/marketplace/page": "app/marketplace/page.js",
   "/feedback/page": "app/feedback/page.js",
-  "/about/page": "app/about/page.js"
+  "/destinations/page": "app/destinations/page.js",
+  "/analytics/page": "app/analytics/page.js",
+  "/about/page": "app/about/page.js",
+  "/api/chatbot/message/route": "app/api/chatbot/message/route.js"
 }

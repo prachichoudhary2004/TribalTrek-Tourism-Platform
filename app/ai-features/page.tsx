@@ -1,8 +1,6 @@
 "use client"
 
 import React, { useState, useEffect } from "react"
-import AOS from "aos"
-import "aos/dist/aos.css"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
@@ -67,15 +65,6 @@ export default function AIFeaturesPage() {
   })
   const [generatedItinerary, setGeneratedItinerary] = useState<GeneratedItinerary | null>(null)
 
-  // Initialize AOS
-  useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      easing: 'ease-in-out',
-      once: true,
-      offset: 100
-    })
-  }, [])
 
   const features = [
     {
@@ -171,27 +160,27 @@ export default function AIFeaturesPage() {
       {/* Hero Section */}
       <section className="hero-section">
         <div className="hero-content">
-          <h1 data-aos="fade-up">
+          <h1>
             Smart Tourism
             <span className="text-gold block">Powered by AI</span>
           </h1>
-          <p data-aos="fade-up" data-aos-delay="200">
+          <p>
             Experience the future of travel with our cutting-edge AI technology, blockchain security, and immersive
             AR/VR experiences
           </p>
 
           <div className="grid grid-cols-3 gap-6 mt-8">
-            <div className="feature-card" data-aos="fade-up" data-aos-delay="300">
+            <div className="feature-card">
               <div className="feature-icon"><Brain className="h-8 w-8" /></div>
               <h3>AI-Powered</h3>
               <p>Advanced algorithms for personalized experiences</p>
             </div>
-            <div className="feature-card" data-aos="fade-up" data-aos-delay="400">
+            <div className="feature-card">
               <div className="feature-icon"><Lock className="h-8 w-8" /></div>
               <h3>Blockchain Secured</h3>
               <p>Transparent and secure transactions</p>
             </div>
-            <div className="feature-card" data-aos="fade-up" data-aos-delay="500">
+            <div className="feature-card">
               <div className="feature-icon"><Zap className="h-8 w-8" /></div>
               <h3>Real-time Updates</h3>
               <p>Live information and instant assistance</p>
@@ -204,8 +193,8 @@ export default function AIFeaturesPage() {
       <section className="smart-tourism-section">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="glass-card p-8">
-            <h2 className="text-center mb-4" data-aos="fade-up">Explore AI Features</h2>
-            <p className="subtitle text-center mb-8" data-aos="fade-up" data-aos-delay="200">Interactive demonstrations of our cutting-edge technology stack</p>
+            <h2 className="text-center mb-4">Explore AI Features</h2>
+            <p className="subtitle text-center mb-8">Interactive demonstrations of our cutting-edge technology stack</p>
             
             {/* Feature Buttons */}
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-3 max-w-4xl mx-auto mb-8">
@@ -230,7 +219,7 @@ export default function AIFeaturesPage() {
               background: 'rgba(255, 255, 255, 0.1)',
               border: '1px solid rgba(244, 208, 63, 0.2)',
               color: 'white'
-            }} data-aos="fade-up" data-aos-delay="1000">
+            }}>
               <div className="flex items-start gap-4 mb-6">
                 <div className="feature-icon" style={{padding: '12px', borderRadius: '12px'}}>{activeFeature.icon}</div>
                 <div className="flex-1">
@@ -243,7 +232,7 @@ export default function AIFeaturesPage() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                 {activeFeature.benefits.map((benefit, index) => (
-                  <div key={index} className="flex items-start gap-3" data-aos="fade-up" data-aos-delay={1100 + (index * 100)}>
+                  <div key={index} className="flex items-start gap-3">
                     <CheckCircle className="h-5 w-5 mt-0.5 flex-shrink-0 text-gold" />
                     <span className="text-white">{benefit}</span>
                   </div>
@@ -254,8 +243,6 @@ export default function AIFeaturesPage() {
                 <Link href="/travel-planner">
                   <button 
                     className="btn primary"
-                    data-aos="fade-up" 
-                    data-aos-delay="1500"
                   >
                     Try This Feature
                     <ArrowRight className="ml-2 h-5 w-5" />
@@ -263,7 +250,7 @@ export default function AIFeaturesPage() {
                 </Link>
               ) : (
                 <Link href={activeDemo === "analytics" ? "/analytics" : activeDemo === "ar-vr" ? "/ar-vr" : "#"}>
-                  <button className="btn primary" data-aos="fade-up" data-aos-delay="1500">
+                  <button className="btn primary">
                     Try This Feature
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </button>
@@ -286,8 +273,8 @@ export default function AIFeaturesPage() {
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text'
-              }} data-aos="fade-up">Experience the Future of Tourism</h2>
-              <p className="text-xl text-maroon mb-8 max-w-3xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="200">
+              }}>Experience the Future of Tourism</h2>
+              <p className="text-xl text-maroon mb-8 max-w-3xl mx-auto leading-relaxed">
                 Join the revolution in smart tourism with AI-powered planning and blockchain security
               </p>
               <div className="button-group flex justify-center">
@@ -301,8 +288,6 @@ export default function AIFeaturesPage() {
                       fontSize: '18px',
                       transition: 'all 0.3s ease'
                     }}
-                    data-aos="fade-up" 
-                    data-aos-delay="400"
                   >
                     Start Planning
                   </button>

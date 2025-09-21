@@ -8,8 +8,6 @@ import { Badge } from "@/components/ui/badge"
 import { Label } from "@/components/ui/label"
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
-import AOS from 'aos'
-import 'aos/dist/aos.css'
 import {
   MapPin,
   Users,
@@ -159,15 +157,6 @@ export default function HomePage() {
     loadRandomDestinations();
   }, []);
 
-  // Initialize AOS
-  useEffect(() => {
-    AOS.init({
-      duration: 600,
-      easing: 'ease-out-cubic',
-      once: true,
-      offset: 30
-    })
-  }, [])
 
   // Auto-rotate features (pause when user is interacting)
   useEffect(() => {
@@ -306,9 +295,9 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="hero-section">
         <div className="hero-content">
-          <h1 data-aos="fade-up" data-aos-delay="200">Discover the Heart of Jharkhand</h1>
-          <p data-aos="fade-up" data-aos-delay="400">Experience pristine forest, rich tribal culture, ancient temples, and vibrant festivals – all powered by AI.</p>
-          <div className="hero-buttons" data-aos="fade-up" data-aos-delay="600">
+          <h1>Discover the Heart of Jharkhand</h1>
+          <p>Experience pristine forest, rich tribal culture, ancient temples, and vibrant festivals – all powered by AI.</p>
+          <div className="hero-buttons">
             <Link href="/destinations">
               <button className="btn primary">Start Your Journey</button>
             </Link>
@@ -321,16 +310,14 @@ export default function HomePage() {
 
       {/* Smart Tourism Section */}
       <section className="smart-tourism-section">
-        <h2 data-aos="fade-up">Smart Tourism Technology</h2>
-        <p className="subtitle" data-aos="fade-up" data-aos-delay="200">Powered by AI, secured by blockchain, and designed for authentic cultural experiences</p>
+        <h2>Smart Tourism Technology</h2>
+        <p className="subtitle">Powered by AI, secured by blockchain, and designed for authentic cultural experiences</p>
 
         <div className="feature-grid">
           {features.map((feature, index) => (
             <div
               key={index}
               className="feature-card"
-              data-aos="fade-up"
-              data-aos-delay={100 + (index * 50)}
             >
               <div className="feature-icon">{feature.icon}</div>
               <h3>{feature.title}</h3>
@@ -341,14 +328,14 @@ export default function HomePage() {
           ))}
         </div>
         <Link href="/ai-features">
-          <button className="btn primary" data-aos="fade-up" data-aos-delay="900">Explore All Features</button>
+          <button className="btn primary">Explore All Features</button>
         </Link>
       </section>
 
       {/* Iconic Destinations Section */}
       <section className="iconic-destinations-section">
-        <h2 data-aos="fade-up">Explore Iconic Destinations</h2>
-        <p className="subtitle" data-aos="fade-up" data-aos-delay="200">From mystical waterfalls to sacred temples, discover Jharkhand's hidden gems</p>
+        <h2>Explore Iconic Destinations</h2>
+        <p className="subtitle">From mystical waterfalls to sacred temples, discover Jharkhand's hidden gems</p>
 
         {destinationsLoading ? (
           <div className="text-center py-12">
@@ -360,8 +347,6 @@ export default function HomePage() {
               <div 
                 key={destination.id} 
                 className="destination-card clickable"
-                data-aos="fade-up"
-                data-aos-delay={300 + (index * 150)}
               >
                 <img src={destination.image || "/placeholder.svg"} alt={destination.name} />
                 <div className="card-info">
@@ -374,7 +359,7 @@ export default function HomePage() {
           </div>
         )}
         <Link href="/destinations">
-          <button className="btn primary" data-aos="fade-up" data-aos-delay="750">View All Destinations</button>
+          <button className="btn primary">View All Destinations</button>
         </Link>
       </section>
 
@@ -382,16 +367,16 @@ export default function HomePage() {
       <section className="analytics-dashboard-section">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4" data-aos="fade-up">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
               Live Tourism Analytics
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Real-time insights powered by AI and community feedback
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            <div className="analytics-card" data-aos="fade-up" data-aos-delay="300">
+            <div className="analytics-card">
               <div className="analytics-card-icon">
                 <Users className="h-8 w-8" />
               </div>
@@ -407,7 +392,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="analytics-card" data-aos="fade-up" data-aos-delay="450">
+            <div className="analytics-card">
               <div className="analytics-card-icon">
                 <Star className="h-8 w-8" />
               </div>
@@ -421,7 +406,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="analytics-card" data-aos="fade-up" data-aos-delay="600">
+            <div className="analytics-card">
               <div className="analytics-card-icon">
                 <MessageCircle className="h-8 w-8" />
               </div>
@@ -451,7 +436,7 @@ export default function HomePage() {
           </div>
 
           <div className="text-center">
-            <button className="btn primary" data-aos="fade-up" data-aos-delay="750">
+            <button className="btn primary">
               <Link href="/analytics">
                 View Full Analytics Dashboard
                 <BarChart3 className="ml-2 h-5 w-5" />
@@ -464,9 +449,9 @@ export default function HomePage() {
 
       {/* Call to Action Section */}
       <section className="call-to-action-section">
-        <h2 data-aos="fade-up">Ready to Explore Jharkhand?</h2>
-        <p data-aos="fade-up" data-aos-delay="200">Join thousands of travelers discovering authentic experiences and supporting local communities</p>
-        <div className="cta-buttons" data-aos="fade-up" data-aos-delay="400" style={{justifyContent: 'center'}}>
+        <h2>Ready to Explore Jharkhand?</h2>
+        <p>Join thousands of travelers discovering authentic experiences and supporting local communities</p>
+        <div className="cta-buttons" style={{justifyContent: 'center'}}>
           <Link href="/destinations">
             <button className="btn primary">Plan Your Trip</button>
           </Link>
