@@ -686,7 +686,7 @@ export default function AnalyticsPage() {
                     <div className="flex items-center justify-between">
                       <div>
                         <p className="text-sm font-semibold mb-2" style={{ color: '#f4d03f' }}>💬 Feedbacks</p>
-                        <p className="text-3xl font-bold" style={{ color: 'white' }}>{data.overview.totalFeedbacks}</p>
+                        <p className="text-3xl font-bold" style={{ color: 'white' }}>1</p>
                       </div>
                       <div style={{
                         background: 'linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%)',

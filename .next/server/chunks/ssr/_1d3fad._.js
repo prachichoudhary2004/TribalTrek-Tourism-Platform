@@ -796,6 +796,7 @@ __turbopack_esm__({
     "default": ()=>AuthPage
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/server/future/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$styled$2d$jsx$2f$style$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/styled-jsx/style.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/server/future/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/navigation.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$mountain$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Mountain$3e$__ = __turbopack_import__("[project]/node_modules/lucide-react/dist/esm/icons/mountain.js [app-ssr] (ecmascript) <export default as Mountain>");
@@ -810,6 +811,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$footer$2e$tsx_
 var __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$use$2d$auth$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/hooks/use-auth.ts [app-ssr] (ecmascript)");
 "__TURBOPACK__ecmascript__hoisting__location__";
 "use client";
+;
 ;
 ;
 ;
@@ -947,26 +949,27 @@ function AuthPage() {
         setErrors({});
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "min-h-screen",
-        style: {
-            background: 'linear-gradient(135deg, rgba(128, 0, 32, 0.3) 0%, rgba(30, 58, 138, 0.3) 100%)'
-        },
+        style: {},
+        className: "jsx-311bc6003a05c410" + " " + "min-h-screen",
         children: [
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$styled$2d$jsx$2f$style$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                id: "311bc6003a05c410",
+                children: "input.jsx-311bc6003a05c410::placeholder{opacity:.7;color:#fff!important}input.jsx-311bc6003a05c410::placeholder{opacity:.7;color:#fff!important}input.jsx-311bc6003a05c410::placeholder{opacity:.7;color:#fff!important}input.jsx-311bc6003a05c410:-ms-input-placeholder{opacity:.7;color:#fff!important}.autofill-fix.jsx-311bc6003a05c410:-webkit-autofill{transition:background-color 5000s ease-in-out;-webkit-text-fill-color:white!important;background-color:#ffffff14!important;-webkit-box-shadow:inset 0 0 0 1000px #ffffff14!important}.autofill-fix.jsx-311bc6003a05c410:-webkit-autofill:hover{transition:background-color 5000s ease-in-out;-webkit-text-fill-color:white!important;background-color:#ffffff14!important;-webkit-box-shadow:inset 0 0 0 1000px #ffffff14!important}.autofill-fix.jsx-311bc6003a05c410:-webkit-autofill:focus{transition:background-color 5000s ease-in-out;-webkit-text-fill-color:white!important;background-color:#ffffff14!important;-webkit-box-shadow:inset 0 0 0 1000px #ffffff14!important}.autofill-fix.jsx-311bc6003a05c410:-webkit-autofill:active{transition:background-color 5000s ease-in-out;-webkit-text-fill-color:white!important;background-color:#ffffff14!important;-webkit-box-shadow:inset 0 0 0 1000px #ffffff14!important}p.jsx-311bc6003a05c410{color:#fff!important}.error-message.jsx-311bc6003a05c410{color:#fff!important;font-weight:400!important}"
+            }, void 0, false, void 0, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$navigation$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/app/auth/page.tsx",
-                lineNumber: 169,
+                lineNumber: 202,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "container mx-auto px-4 py-8",
+                className: "jsx-311bc6003a05c410" + " " + "container mx-auto px-4 py-8",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "ai-demo-card",
                     "data-aos": "fade-up",
                     "data-aos-delay": "600",
+                    className: "jsx-311bc6003a05c410" + " " + "ai-demo-card",
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "max-w-2xl mx-auto",
+                        className: "jsx-311bc6003a05c410" + " " + "max-w-4xl mx-auto",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "p-8",
                             style: {
                                 background: 'linear-gradient(135deg, rgba(128, 0, 32, 0.18) 0%, rgba(30, 58, 138, 0.18) 100%)',
                                 backdropFilter: 'blur(15px)',
@@ -976,648 +979,755 @@ function AuthPage() {
                             },
                             "data-aos": "fade-up",
                             "data-aos-delay": "200",
+                            className: "jsx-311bc6003a05c410" + " " + "p-12",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "text-center mb-10",
+                                    className: "jsx-311bc6003a05c410" + " " + "text-center mb-10",
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "flex justify-center mb-6",
+                                            className: "jsx-311bc6003a05c410" + " " + "flex justify-center mb-1",
                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "p-4 rounded-3xl shadow-lg",
-                                                style: {
-                                                    backgroundColor: '#f4d03f',
-                                                    boxShadow: '0 8px 25px rgba(244, 208, 63, 0.3)'
-                                                },
+                                                style: {},
+                                                className: "jsx-311bc6003a05c410" + " " + "p-6 rounded-3xl",
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$mountain$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Mountain$3e$__["Mountain"], {
-                                                    className: "h-10 w-10",
+                                                    className: "h-12 w-12 text-yellow-300 relative z-10",
                                                     style: {
-                                                        color: '#800020'
+                                                        color: '#f4d03f'
                                                     }
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/auth/page.tsx",
-                                                    lineNumber: 193,
+                                                    lineNumber: 224,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/app/auth/page.tsx",
-                                                lineNumber: 189,
+                                                lineNumber: 222,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/app/auth/page.tsx",
-                                            lineNumber: 188,
+                                            lineNumber: 221,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                                            className: "text-4xl font-bold mb-4 tracking-tight",
                                             style: {
                                                 color: '#f4d03f',
                                                 textShadow: '0 2px 10px rgba(244, 208, 63, 0.3)'
                                             },
+                                            className: "jsx-311bc6003a05c410" + " " + "text-4xl font-bold mb-4 tracking-tight",
                                             children: isLogin ? 'Welcome Back' : 'Join Our Community'
                                         }, void 0, false, {
                                             fileName: "[project]/app/auth/page.tsx",
-                                            lineNumber: 196,
+                                            lineNumber: 227,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                            className: "text-lg leading-relaxed",
                                             style: {
                                                 color: 'rgba(255,255,255,0.85)'
                                             },
+                                            className: "jsx-311bc6003a05c410" + " " + "text-lg leading-relaxed",
                                             children: isLogin ? 'Continue your journey through Jharkhand\'s wonders' : 'Discover the hidden gems and rich heritage of Jharkhand'
                                         }, void 0, false, {
                                             fileName: "[project]/app/auth/page.tsx",
-                                            lineNumber: 202,
+                                            lineNumber: 233,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/auth/page.tsx",
-                                    lineNumber: 187,
+                                    lineNumber: 220,
                                     columnNumber: 13
                                 }, this),
                                 errors.general && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "mb-6 p-4 rounded-xl",
                                     style: {
                                         background: 'rgba(239, 68, 68, 0.1)',
                                         border: '2px solid rgba(239, 68, 68, 0.3)',
                                         color: '#ef4444'
                                     },
+                                    className: "jsx-311bc6003a05c410" + " " + "mb-6 p-4 rounded-xl",
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        className: "text-center font-medium",
+                                        className: "jsx-311bc6003a05c410" + " " + "text-center font-medium",
                                         children: errors.general
                                     }, void 0, false, {
                                         fileName: "[project]/app/auth/page.tsx",
-                                        lineNumber: 217,
+                                        lineNumber: 248,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/auth/page.tsx",
-                                    lineNumber: 212,
+                                    lineNumber: 243,
                                     columnNumber: 15
                                 }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
-                                    onSubmit: handleSubmit,
-                                    className: "space-y-6",
-                                    noValidate: true,
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "grid grid-cols-1 md:grid-cols-2 gap-6",
-                                            children: [
-                                                !isLogin && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "md:col-span-2",
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                                            htmlFor: "name",
-                                                            className: "block text-sm font-semibold mb-3",
-                                                            style: {
-                                                                color: '#f4d03f',
-                                                                textShadow: '0 1px 3px rgba(244, 208, 63, 0.3)'
-                                                            },
-                                                            children: "Full Name *"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/auth/page.tsx",
-                                                            lineNumber: 227,
-                                                            columnNumber: 21
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "relative group",
-                                                            children: [
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$user$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__User$3e$__["User"], {
-                                                                    className: "absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-white/60 group-focus-within:text-white/80 transition-colors"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/auth/page.tsx",
-                                                                    lineNumber: 234,
-                                                                    columnNumber: 23
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                                                    id: "name",
-                                                                    type: "text",
-                                                                    name: "name",
-                                                                    value: formData.name,
-                                                                    onChange: handleInputChange,
-                                                                    className: "w-full pl-12 pr-4 py-4 rounded-xl transition-all duration-300 focus:scale-[1.02]",
-                                                                    style: {
-                                                                        background: 'rgba(255, 255, 255, 0.12)',
-                                                                        border: '2px solid rgba(244, 208, 63, 0.4)',
-                                                                        color: 'white',
-                                                                        fontSize: '16px',
-                                                                        boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)'
-                                                                    },
-                                                                    onFocus: (e)=>{
-                                                                        e.target.style.borderColor = '#f4d03f';
-                                                                        e.target.style.boxShadow = '0 0 20px rgba(244, 208, 63, 0.3)';
-                                                                    },
-                                                                    onBlur: (e)=>{
-                                                                        e.target.style.borderColor = 'rgba(244, 208, 63, 0.4)';
-                                                                        e.target.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.1)';
-                                                                    },
-                                                                    placeholder: "Enter your name"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/auth/page.tsx",
-                                                                    lineNumber: 235,
-                                                                    columnNumber: 23
-                                                                }, this)
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/app/auth/page.tsx",
-                                                            lineNumber: 233,
-                                                            columnNumber: 21
-                                                        }, this),
-                                                        errors.name && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                            className: "text-red-400 text-sm mt-2 ml-1",
-                                                            children: errors.name
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/auth/page.tsx",
-                                                            lineNumber: 260,
-                                                            columnNumber: 37
-                                                        }, this)
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/app/auth/page.tsx",
-                                                    lineNumber: 226,
-                                                    columnNumber: 19
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: !isLogin ? "md:col-span-1" : "md:col-span-2",
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                                            htmlFor: "email",
-                                                            className: "block text-sm font-semibold mb-3",
-                                                            style: {
-                                                                color: '#f4d03f',
-                                                                textShadow: '0 1px 3px rgba(244, 208, 63, 0.3)'
-                                                            },
-                                                            children: "Email Address *"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/auth/page.tsx",
-                                                            lineNumber: 266,
-                                                            columnNumber: 19
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "relative group",
-                                                            children: [
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$mail$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Mail$3e$__["Mail"], {
-                                                                    className: "absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-white/60 group-focus-within:text-white/80 transition-colors"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/auth/page.tsx",
-                                                                    lineNumber: 273,
-                                                                    columnNumber: 21
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                                                    id: "email",
-                                                                    type: "email",
-                                                                    name: "email",
-                                                                    value: formData.email,
-                                                                    onChange: handleInputChange,
-                                                                    required: true,
-                                                                    className: "w-full pl-12 pr-4 py-4 rounded-xl transition-all duration-300 focus:scale-[1.02]",
-                                                                    style: {
-                                                                        background: 'rgba(255, 255, 255, 0.12)',
-                                                                        border: '2px solid rgba(244, 208, 63, 0.4)',
-                                                                        color: 'white',
-                                                                        fontSize: '16px',
-                                                                        boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)'
-                                                                    },
-                                                                    onFocus: (e)=>{
-                                                                        e.target.style.borderColor = '#f4d03f';
-                                                                        e.target.style.boxShadow = '0 0 20px rgba(244, 208, 63, 0.3)';
-                                                                    },
-                                                                    onBlur: (e)=>{
-                                                                        e.target.style.borderColor = 'rgba(244, 208, 63, 0.4)';
-                                                                        e.target.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.1)';
-                                                                    },
-                                                                    placeholder: "Enter your email"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/auth/page.tsx",
-                                                                    lineNumber: 274,
-                                                                    columnNumber: 21
-                                                                }, this)
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/app/auth/page.tsx",
-                                                            lineNumber: 272,
-                                                            columnNumber: 19
-                                                        }, this),
-                                                        errors.email && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                            className: "text-red-400 text-sm mt-2 ml-1",
-                                                            children: errors.email
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/auth/page.tsx",
-                                                            lineNumber: 300,
-                                                            columnNumber: 36
-                                                        }, this)
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/app/auth/page.tsx",
-                                                    lineNumber: 265,
-                                                    columnNumber: 17
-                                                }, this),
-                                                !isLogin && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                                            htmlFor: "phone",
-                                                            className: "block text-sm font-semibold mb-3",
-                                                            style: {
-                                                                color: '#f4d03f',
-                                                                textShadow: '0 1px 3px rgba(244, 208, 63, 0.3)'
-                                                            },
-                                                            children: "Phone Number (Optional)"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/auth/page.tsx",
-                                                            lineNumber: 306,
-                                                            columnNumber: 21
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "relative group",
-                                                            children: [
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$phone$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Phone$3e$__["Phone"], {
-                                                                    className: "absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-white/60 group-focus-within:text-white/80 transition-colors"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/auth/page.tsx",
-                                                                    lineNumber: 313,
-                                                                    columnNumber: 23
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                                                    id: "phone",
-                                                                    type: "tel",
-                                                                    name: "phone",
-                                                                    value: formData.phone,
-                                                                    onChange: handleInputChange,
-                                                                    className: "w-full pl-12 pr-4 py-4 rounded-xl transition-all duration-300 focus:scale-[1.02]",
-                                                                    style: {
-                                                                        background: 'rgba(255, 255, 255, 0.12)',
-                                                                        border: '2px solid rgba(244, 208, 63, 0.4)',
-                                                                        color: 'white',
-                                                                        fontSize: '16px',
-                                                                        boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)'
-                                                                    },
-                                                                    onFocus: (e)=>{
-                                                                        e.target.style.borderColor = '#f4d03f';
-                                                                        e.target.style.boxShadow = '0 0 20px rgba(244, 208, 63, 0.3)';
-                                                                    },
-                                                                    onBlur: (e)=>{
-                                                                        e.target.style.borderColor = 'rgba(244, 208, 63, 0.4)';
-                                                                        e.target.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.1)';
-                                                                    },
-                                                                    placeholder: "Enter your phone number"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/auth/page.tsx",
-                                                                    lineNumber: 314,
-                                                                    columnNumber: 23
-                                                                }, this)
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/app/auth/page.tsx",
-                                                            lineNumber: 312,
-                                                            columnNumber: 21
-                                                        }, this),
-                                                        errors.phone && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                            className: "text-red-400 text-sm mt-2 ml-1",
-                                                            children: errors.phone
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/auth/page.tsx",
-                                                            lineNumber: 339,
-                                                            columnNumber: 38
-                                                        }, this)
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/app/auth/page.tsx",
-                                                    lineNumber: 305,
-                                                    columnNumber: 19
-                                                }, this)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/app/auth/page.tsx",
-                                            lineNumber: 223,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "grid grid-cols-1 md:grid-cols-2 gap-6",
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                                            htmlFor: "password",
-                                                            style: {
-                                                                color: '#f4d03f'
-                                                            },
-                                                            className: "block text-sm font-medium mb-2",
-                                                            children: "Password *"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/auth/page.tsx",
-                                                            lineNumber: 347,
-                                                            columnNumber: 19
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "relative",
-                                                            children: [
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$lock$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Lock$3e$__["Lock"], {
-                                                                    className: "absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-white/50"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/auth/page.tsx",
-                                                                    lineNumber: 351,
-                                                                    columnNumber: 21
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                                                    id: "password",
-                                                                    type: showPassword ? "text" : "password",
-                                                                    name: "password",
-                                                                    value: formData.password,
-                                                                    onChange: handleInputChange,
-                                                                    className: "w-full pl-10 pr-12 py-3 rounded-md",
-                                                                    style: {
-                                                                        background: 'rgba(255, 255, 255, 0.08)',
-                                                                        border: '1px solid rgba(244, 208, 63, 0.3)',
-                                                                        color: 'white',
-                                                                        height: '42px'
-                                                                    },
-                                                                    placeholder: "Enter your password"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/auth/page.tsx",
-                                                                    lineNumber: 352,
-                                                                    columnNumber: 21
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                                    type: "button",
-                                                                    onClick: ()=>setShowPassword(!showPassword),
-                                                                    className: "absolute right-3 top-1/2 transform -translate-y-1/2 text-white/50 hover:text-white/70 transition-colors",
-                                                                    children: showPassword ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$eye$2d$off$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__EyeOff$3e$__["EyeOff"], {
-                                                                        className: "h-5 w-5"
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/app/auth/page.tsx",
-                                                                        lineNumber: 372,
-                                                                        columnNumber: 39
-                                                                    }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$eye$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Eye$3e$__["Eye"], {
-                                                                        className: "h-5 w-5"
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/app/auth/page.tsx",
-                                                                        lineNumber: 372,
-                                                                        columnNumber: 72
-                                                                    }, this)
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/auth/page.tsx",
-                                                                    lineNumber: 367,
-                                                                    columnNumber: 21
-                                                                }, this)
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/app/auth/page.tsx",
-                                                            lineNumber: 350,
-                                                            columnNumber: 19
-                                                        }, this),
-                                                        errors.password && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                            className: "text-red-400 text-sm mt-1",
-                                                            children: errors.password
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/auth/page.tsx",
-                                                            lineNumber: 375,
-                                                            columnNumber: 39
-                                                        }, this)
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/app/auth/page.tsx",
-                                                    lineNumber: 346,
-                                                    columnNumber: 17
-                                                }, this),
-                                                !isLogin && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                                            htmlFor: "confirmPassword",
-                                                            style: {
-                                                                color: '#f4d03f'
-                                                            },
-                                                            className: "block text-sm font-medium mb-2",
-                                                            children: "Confirm Password *"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/auth/page.tsx",
-                                                            lineNumber: 381,
-                                                            columnNumber: 21
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "relative",
-                                                            children: [
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$lock$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Lock$3e$__["Lock"], {
-                                                                    className: "absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-white/50"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/auth/page.tsx",
-                                                                    lineNumber: 385,
-                                                                    columnNumber: 23
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                                                    id: "confirmPassword",
-                                                                    type: showConfirmPassword ? "text" : "password",
-                                                                    name: "confirmPassword",
-                                                                    value: formData.confirmPassword,
-                                                                    onChange: handleInputChange,
-                                                                    className: "w-full pl-10 pr-12 py-3 rounded-md",
-                                                                    style: {
-                                                                        background: 'rgba(255, 255, 255, 0.08)',
-                                                                        border: '1px solid rgba(244, 208, 63, 0.3)',
-                                                                        color: 'white',
-                                                                        height: '42px'
-                                                                    },
-                                                                    placeholder: "Confirm your password"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/auth/page.tsx",
-                                                                    lineNumber: 386,
-                                                                    columnNumber: 23
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                                    type: "button",
-                                                                    onClick: ()=>setShowConfirmPassword(!showConfirmPassword),
-                                                                    className: "absolute right-3 top-1/2 transform -translate-y-1/2 text-white/50 hover:text-white/70 transition-colors",
-                                                                    children: showConfirmPassword ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$eye$2d$off$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__EyeOff$3e$__["EyeOff"], {
-                                                                        className: "h-5 w-5"
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/app/auth/page.tsx",
-                                                                        lineNumber: 406,
-                                                                        columnNumber: 48
-                                                                    }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$eye$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Eye$3e$__["Eye"], {
-                                                                        className: "h-5 w-5"
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/app/auth/page.tsx",
-                                                                        lineNumber: 406,
-                                                                        columnNumber: 81
-                                                                    }, this)
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/auth/page.tsx",
-                                                                    lineNumber: 401,
-                                                                    columnNumber: 23
-                                                                }, this)
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/app/auth/page.tsx",
-                                                            lineNumber: 384,
-                                                            columnNumber: 21
-                                                        }, this),
-                                                        errors.confirmPassword && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                            className: "text-red-400 text-sm mt-1",
-                                                            children: errors.confirmPassword
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/auth/page.tsx",
-                                                            lineNumber: 409,
-                                                            columnNumber: 48
-                                                        }, this)
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/app/auth/page.tsx",
-                                                    lineNumber: 380,
-                                                    columnNumber: 19
-                                                }, this)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/app/auth/page.tsx",
-                                            lineNumber: 344,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                            type: "submit",
-                                            disabled: isLoading,
-                                            onClick: (e)=>{
-                                                console.log('Button clicked!', {
-                                                    isLogin,
-                                                    formData
-                                                });
-                                            // The form onSubmit will handle the actual submission
-                                            },
-                                            className: "w-full py-4 px-8 rounded-2xl font-bold text-lg transition-all duration-300 shadow-xl mt-8 relative overflow-hidden cursor-pointer",
-                                            style: {
-                                                background: isLoading ? 'linear-gradient(135deg, #999 0%, #666 100%)' : 'linear-gradient(135deg, #f4d03f 0%, #d4af37 100%)',
-                                                color: '#800020',
-                                                border: '3px solid #f4d03f',
-                                                boxShadow: '0 8px 25px rgba(244, 208, 63, 0.4)',
-                                                textShadow: '0 1px 2px rgba(128, 0, 32, 0.3)',
-                                                opacity: isLoading ? 0.7 : 1
-                                            },
-                                            onMouseEnter: (e)=>{
-                                                if (!isLoading) {
-                                                    const target = e.target;
-                                                    target.style.background = 'linear-gradient(135deg, #d4af37 0%, #b8941f 100%)';
-                                                    target.style.transform = 'translateY(-3px) scale(1.02)';
-                                                    target.style.boxShadow = '0 12px 35px rgba(244, 208, 63, 0.6)';
-                                                }
-                                            },
-                                            onMouseLeave: (e)=>{
-                                                if (!isLoading) {
-                                                    const target = e.target;
-                                                    target.style.background = 'linear-gradient(135deg, #f4d03f 0%, #d4af37 100%)';
-                                                    target.style.transform = 'translateY(0) scale(1)';
-                                                    target.style.boxShadow = '0 8px 25px rgba(244, 208, 63, 0.4)';
-                                                }
-                                            },
-                                            children: isLoading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "flex items-center justify-center",
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "jsx-311bc6003a05c410" + " " + "max-w-2xl mx-auto",
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
+                                        onSubmit: handleSubmit,
+                                        noValidate: true,
+                                        className: "jsx-311bc6003a05c410" + " " + "space-y-8",
+                                        children: [
+                                            !isLogin && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "jsx-311bc6003a05c410" + " " + "w-full",
                                                 children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                        className: "animate-spin rounded-full h-6 w-6 border-b-2 border-current mr-3"
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                                        htmlFor: "name",
+                                                        style: {
+                                                            color: '#f4d03f',
+                                                            textShadow: '0 1px 3px rgba(244, 208, 63, 0.3)'
+                                                        },
+                                                        className: "jsx-311bc6003a05c410" + " " + "block text-sm font-semibold mb-3",
+                                                        children: "Full Name *"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/auth/page.tsx",
-                                                        lineNumber: 452,
-                                                        columnNumber: 21
+                                                        lineNumber: 258,
+                                                        columnNumber: 19
                                                     }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                        className: "font-semibold",
-                                                        children: isLogin ? 'Logging In...' : 'Creating Account...'
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "jsx-311bc6003a05c410" + " " + "relative group",
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$user$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__User$3e$__["User"], {
+                                                                className: "h-5 w-5",
+                                                                style: {
+                                                                    position: 'absolute',
+                                                                    right: '12px',
+                                                                    top: '50%',
+                                                                    transform: 'translateY(-50%)',
+                                                                    zIndex: 10,
+                                                                    color: 'white'
+                                                                }
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/app/auth/page.tsx",
+                                                                lineNumber: 265,
+                                                                columnNumber: 21
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                                                id: "name",
+                                                                type: "text",
+                                                                name: "name",
+                                                                value: formData.name,
+                                                                onChange: handleInputChange,
+                                                                style: {
+                                                                    background: 'rgba(255, 255, 255, 0.08)',
+                                                                    border: '1px solid rgba(244, 208, 63, 0.3)',
+                                                                    color: 'white',
+                                                                    height: '42px'
+                                                                },
+                                                                onFocus: (e)=>{
+                                                                    e.target.style.background = 'rgba(255, 255, 255, 0.12)';
+                                                                    e.target.style.color = 'white';
+                                                                    e.target.style.border = '1px solid rgba(244, 208, 63, 0.5)';
+                                                                },
+                                                                onBlur: (e)=>{
+                                                                    e.target.style.background = 'rgba(255, 255, 255, 0.08)';
+                                                                    e.target.style.color = 'white';
+                                                                    e.target.style.border = '1px solid rgba(244, 208, 63, 0.3)';
+                                                                },
+                                                                placeholder: "Enter your name",
+                                                                className: "jsx-311bc6003a05c410" + " " + "w-full pl-4 pr-12 py-3 rounded-md placeholder-white autofill-fix"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/app/auth/page.tsx",
+                                                                lineNumber: 266,
+                                                                columnNumber: 21
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/app/auth/page.tsx",
+                                                        lineNumber: 264,
+                                                        columnNumber: 19
+                                                    }, this),
+                                                    errors.name && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        style: {
+                                                            color: 'white !important'
+                                                        },
+                                                        className: "jsx-311bc6003a05c410" + " " + "text-sm mt-2 ml-1",
+                                                        children: errors.name
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/auth/page.tsx",
-                                                        lineNumber: 453,
-                                                        columnNumber: 21
+                                                        lineNumber: 292,
+                                                        columnNumber: 35
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/auth/page.tsx",
-                                                lineNumber: 451,
-                                                columnNumber: 19
-                                            }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "flex items-center justify-center font-bold",
-                                                children: isLogin ? 'Login to Explore' : 'Join the Journey'
+                                                lineNumber: 257,
+                                                columnNumber: 17
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "jsx-311bc6003a05c410" + " " + ((!isLogin ? "grid grid-cols-1 md:grid-cols-2 gap-6" : "w-full") || ""),
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "jsx-311bc6003a05c410" + " " + "w-full",
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                                                htmlFor: "email",
+                                                                style: {
+                                                                    color: '#f4d03f',
+                                                                    textShadow: '0 1px 3px rgba(244, 208, 63, 0.3)'
+                                                                },
+                                                                className: "jsx-311bc6003a05c410" + " " + "block text-sm font-semibold mb-3",
+                                                                children: "Email Address *"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/app/auth/page.tsx",
+                                                                lineNumber: 300,
+                                                                columnNumber: 19
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                className: "jsx-311bc6003a05c410" + " " + "relative group",
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$mail$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Mail$3e$__["Mail"], {
+                                                                        className: "h-5 w-5",
+                                                                        style: {
+                                                                            position: 'absolute',
+                                                                            right: '12px',
+                                                                            top: '50%',
+                                                                            transform: 'translateY(-50%)',
+                                                                            zIndex: 10,
+                                                                            color: 'white'
+                                                                        }
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/app/auth/page.tsx",
+                                                                        lineNumber: 307,
+                                                                        columnNumber: 21
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                                                        id: "email",
+                                                                        type: "email",
+                                                                        name: "email",
+                                                                        value: formData.email,
+                                                                        onChange: handleInputChange,
+                                                                        required: true,
+                                                                        style: {
+                                                                            background: 'rgba(255, 255, 255, 0.08)',
+                                                                            border: '1px solid rgba(244, 208, 63, 0.3)',
+                                                                            color: 'white',
+                                                                            height: '42px'
+                                                                        },
+                                                                        onFocus: (e)=>{
+                                                                            e.target.style.background = 'rgba(255, 255, 255, 0.12)';
+                                                                            e.target.style.color = 'white';
+                                                                            e.target.style.border = '1px solid rgba(244, 208, 63, 0.5)';
+                                                                        },
+                                                                        onBlur: (e)=>{
+                                                                            e.target.style.background = 'rgba(255, 255, 255, 0.08)';
+                                                                            e.target.style.color = 'white';
+                                                                            e.target.style.border = '1px solid rgba(244, 208, 63, 0.3)';
+                                                                        },
+                                                                        autoComplete: "email",
+                                                                        placeholder: "Enter your email",
+                                                                        className: "jsx-311bc6003a05c410" + " " + "w-full pl-4 pr-12 py-3 rounded-md placeholder-white autofill-fix"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/app/auth/page.tsx",
+                                                                        lineNumber: 308,
+                                                                        columnNumber: 21
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/app/auth/page.tsx",
+                                                                lineNumber: 306,
+                                                                columnNumber: 19
+                                                            }, this),
+                                                            errors.email && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                                style: {
+                                                                    color: 'white !important',
+                                                                    fontWeight: 'normal'
+                                                                },
+                                                                className: "jsx-311bc6003a05c410" + " " + "error-message text-sm mt-2 ml-1",
+                                                                children: errors.email
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/app/auth/page.tsx",
+                                                                lineNumber: 336,
+                                                                columnNumber: 36
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/app/auth/page.tsx",
+                                                        lineNumber: 299,
+                                                        columnNumber: 17
+                                                    }, this),
+                                                    !isLogin && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "jsx-311bc6003a05c410" + " " + "w-full",
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                                                htmlFor: "phone",
+                                                                style: {
+                                                                    color: '#f4d03f',
+                                                                    textShadow: '0 1px 3px rgba(244, 208, 63, 0.3)',
+                                                                    marginLeft: '24px'
+                                                                },
+                                                                className: "jsx-311bc6003a05c410" + " " + "block text-sm font-semibold mb-3",
+                                                                children: "Phone Number (Optional)"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/app/auth/page.tsx",
+                                                                lineNumber: 342,
+                                                                columnNumber: 21
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                style: {
+                                                                    marginLeft: '24px'
+                                                                },
+                                                                className: "jsx-311bc6003a05c410" + " " + "relative group",
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$phone$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Phone$3e$__["Phone"], {
+                                                                        className: "h-5 w-5",
+                                                                        style: {
+                                                                            position: 'absolute',
+                                                                            right: '12px',
+                                                                            top: '50%',
+                                                                            transform: 'translateY(-50%)',
+                                                                            zIndex: 10,
+                                                                            color: 'white'
+                                                                        }
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/app/auth/page.tsx",
+                                                                        lineNumber: 350,
+                                                                        columnNumber: 23
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                                                        id: "phone",
+                                                                        type: "tel",
+                                                                        name: "phone",
+                                                                        value: formData.phone,
+                                                                        onChange: handleInputChange,
+                                                                        style: {
+                                                                            background: 'rgba(255, 255, 255, 0.08)',
+                                                                            border: '1px solid rgba(244, 208, 63, 0.3)',
+                                                                            color: 'white',
+                                                                            height: '42px'
+                                                                        },
+                                                                        onFocus: (e)=>{
+                                                                            e.target.style.background = 'rgba(255, 255, 255, 0.12)';
+                                                                            e.target.style.color = 'white';
+                                                                            e.target.style.border = '1px solid rgba(244, 208, 63, 0.5)';
+                                                                        },
+                                                                        onBlur: (e)=>{
+                                                                            e.target.style.background = 'rgba(255, 255, 255, 0.08)';
+                                                                            e.target.style.color = 'white';
+                                                                            e.target.style.border = '1px solid rgba(244, 208, 63, 0.3)';
+                                                                        },
+                                                                        placeholder: "Enter your phone number",
+                                                                        className: "jsx-311bc6003a05c410" + " " + "w-full pl-4 pr-12 py-3 rounded-md placeholder-white autofill-fix"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/app/auth/page.tsx",
+                                                                        lineNumber: 351,
+                                                                        columnNumber: 23
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/app/auth/page.tsx",
+                                                                lineNumber: 349,
+                                                                columnNumber: 21
+                                                            }, this),
+                                                            errors.phone && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                                style: {
+                                                                    color: 'white !important'
+                                                                },
+                                                                className: "jsx-311bc6003a05c410" + " " + "text-sm mt-2 ml-1",
+                                                                children: errors.phone
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/app/auth/page.tsx",
+                                                                lineNumber: 377,
+                                                                columnNumber: 38
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/app/auth/page.tsx",
+                                                        lineNumber: 341,
+                                                        columnNumber: 19
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/app/auth/page.tsx",
+                                                lineNumber: 297,
+                                                columnNumber: 15
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "jsx-311bc6003a05c410" + " " + ((!isLogin ? "grid grid-cols-1 md:grid-cols-2 gap-6" : "w-full") || ""),
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "jsx-311bc6003a05c410" + " " + "w-full",
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                                                htmlFor: "password",
+                                                                style: {
+                                                                    color: '#f4d03f'
+                                                                },
+                                                                className: "jsx-311bc6003a05c410" + " " + "block text-sm font-medium mb-2",
+                                                                children: "Password *"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/app/auth/page.tsx",
+                                                                lineNumber: 386,
+                                                                columnNumber: 19
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                className: "jsx-311bc6003a05c410" + " " + "relative",
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$lock$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Lock$3e$__["Lock"], {
+                                                                        className: "h-5 w-5",
+                                                                        style: {
+                                                                            position: 'absolute',
+                                                                            right: '12px',
+                                                                            top: '50%',
+                                                                            transform: 'translateY(-50%)',
+                                                                            zIndex: 10,
+                                                                            color: 'white'
+                                                                        }
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/app/auth/page.tsx",
+                                                                        lineNumber: 390,
+                                                                        columnNumber: 21
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                                                        id: "password",
+                                                                        type: showPassword ? "text" : "password",
+                                                                        name: "password",
+                                                                        value: formData.password,
+                                                                        onChange: handleInputChange,
+                                                                        style: {
+                                                                            background: 'rgba(255, 255, 255, 0.08)',
+                                                                            border: '1px solid rgba(244, 208, 63, 0.3)',
+                                                                            color: 'white',
+                                                                            height: '42px'
+                                                                        },
+                                                                        placeholder: "Enter your password",
+                                                                        className: "jsx-311bc6003a05c410" + " " + "w-full pl-4 pr-20 py-3 rounded-md"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/app/auth/page.tsx",
+                                                                        lineNumber: 391,
+                                                                        columnNumber: 21
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                                        type: "button",
+                                                                        onClick: ()=>setShowPassword(!showPassword),
+                                                                        style: {
+                                                                            background: 'linear-gradient(135deg, #f4d03f 0%, #d4af37 100%)',
+                                                                            border: '1px solid #f4d03f',
+                                                                            color: '#1a1a1a',
+                                                                            boxShadow: '0 2px 8px rgba(244, 208, 63, 0.3)'
+                                                                        },
+                                                                        className: "jsx-311bc6003a05c410" + " " + "absolute right-3 top-1/2 transform -translate-y-1/2 p-2 rounded-md",
+                                                                        children: showPassword ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$eye$2d$off$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__EyeOff$3e$__["EyeOff"], {
+                                                                            className: "h-4 w-4"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/app/auth/page.tsx",
+                                                                            lineNumber: 417,
+                                                                            columnNumber: 39
+                                                                        }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$eye$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Eye$3e$__["Eye"], {
+                                                                            className: "h-4 w-4"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/app/auth/page.tsx",
+                                                                            lineNumber: 417,
+                                                                            columnNumber: 72
+                                                                        }, this)
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/app/auth/page.tsx",
+                                                                        lineNumber: 406,
+                                                                        columnNumber: 21
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/app/auth/page.tsx",
+                                                                lineNumber: 389,
+                                                                columnNumber: 19
+                                                            }, this),
+                                                            errors.password && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                                style: {
+                                                                    color: 'white !important',
+                                                                    fontWeight: 'normal'
+                                                                },
+                                                                className: "jsx-311bc6003a05c410" + " " + "error-message text-sm mt-1",
+                                                                children: errors.password
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/app/auth/page.tsx",
+                                                                lineNumber: 420,
+                                                                columnNumber: 39
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/app/auth/page.tsx",
+                                                        lineNumber: 385,
+                                                        columnNumber: 17
+                                                    }, this),
+                                                    !isLogin && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "jsx-311bc6003a05c410" + " " + "w-full",
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                                                htmlFor: "confirmPassword",
+                                                                style: {
+                                                                    color: '#f4d03f',
+                                                                    marginLeft: '24px'
+                                                                },
+                                                                className: "jsx-311bc6003a05c410" + " " + "block text-sm font-medium mb-2",
+                                                                children: "Confirm Password *"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/app/auth/page.tsx",
+                                                                lineNumber: 426,
+                                                                columnNumber: 21
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                style: {
+                                                                    marginLeft: '24px'
+                                                                },
+                                                                className: "jsx-311bc6003a05c410" + " " + "relative",
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$lock$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Lock$3e$__["Lock"], {
+                                                                        className: "h-5 w-5",
+                                                                        style: {
+                                                                            position: 'absolute',
+                                                                            right: '12px',
+                                                                            top: '50%',
+                                                                            transform: 'translateY(-50%)',
+                                                                            zIndex: 10,
+                                                                            color: 'white'
+                                                                        }
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/app/auth/page.tsx",
+                                                                        lineNumber: 433,
+                                                                        columnNumber: 23
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                                                        id: "confirmPassword",
+                                                                        type: showConfirmPassword ? "text" : "password",
+                                                                        name: "confirmPassword",
+                                                                        value: formData.confirmPassword,
+                                                                        onChange: handleInputChange,
+                                                                        style: {
+                                                                            background: 'rgba(255, 255, 255, 0.08)',
+                                                                            border: '1px solid rgba(244, 208, 63, 0.3)',
+                                                                            color: 'white',
+                                                                            height: '42px'
+                                                                        },
+                                                                        placeholder: "Confirm your password",
+                                                                        className: "jsx-311bc6003a05c410" + " " + "w-full pl-4 pr-20 py-3 rounded-md placeholder-white autofill-fix"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/app/auth/page.tsx",
+                                                                        lineNumber: 434,
+                                                                        columnNumber: 23
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                                        type: "button",
+                                                                        onClick: ()=>setShowConfirmPassword(!showConfirmPassword),
+                                                                        style: {
+                                                                            background: 'linear-gradient(135deg, #f4d03f 0%, #d4af37 100%)',
+                                                                            border: '1px solid #f4d03f',
+                                                                            color: '#1a1a1a',
+                                                                            boxShadow: '0 2px 8px rgba(244, 208, 63, 0.3)'
+                                                                        },
+                                                                        className: "jsx-311bc6003a05c410" + " " + "absolute right-3 top-1/2 transform -translate-y-1/2 p-2 rounded-md",
+                                                                        children: showConfirmPassword ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$eye$2d$off$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__EyeOff$3e$__["EyeOff"], {
+                                                                            className: "h-4 w-4"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/app/auth/page.tsx",
+                                                                            lineNumber: 460,
+                                                                            columnNumber: 48
+                                                                        }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$eye$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Eye$3e$__["Eye"], {
+                                                                            className: "h-4 w-4"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/app/auth/page.tsx",
+                                                                            lineNumber: 460,
+                                                                            columnNumber: 81
+                                                                        }, this)
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/app/auth/page.tsx",
+                                                                        lineNumber: 449,
+                                                                        columnNumber: 23
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/app/auth/page.tsx",
+                                                                lineNumber: 432,
+                                                                columnNumber: 21
+                                                            }, this),
+                                                            errors.confirmPassword && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                                style: {
+                                                                    color: 'white !important'
+                                                                },
+                                                                className: "jsx-311bc6003a05c410" + " " + "text-sm mt-1",
+                                                                children: errors.confirmPassword
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/app/auth/page.tsx",
+                                                                lineNumber: 463,
+                                                                columnNumber: 48
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/app/auth/page.tsx",
+                                                        lineNumber: 425,
+                                                        columnNumber: 19
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/app/auth/page.tsx",
+                                                lineNumber: 383,
+                                                columnNumber: 15
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                type: "submit",
+                                                disabled: isLoading,
+                                                onClick: (e)=>{
+                                                    console.log('Button clicked!', {
+                                                        isLogin,
+                                                        formData
+                                                    });
+                                                // The form onSubmit will handle the actual submission
+                                                },
+                                                style: {
+                                                    background: isLoading ? 'linear-gradient(135deg, #999 0%, #666 100%)' : 'linear-gradient(135deg, #f4d03f 0%, #d4af37 100%)',
+                                                    color: '#800020',
+                                                    border: '3px solid #f4d03f',
+                                                    boxShadow: '0 8px 25px rgba(244, 208, 63, 0.4)',
+                                                    textShadow: '0 1px 2px rgba(128, 0, 32, 0.3)',
+                                                    opacity: isLoading ? 0.7 : 1
+                                                },
+                                                onMouseEnter: (e)=>{
+                                                    if (!isLoading) {
+                                                        const target = e.target;
+                                                        target.style.background = 'linear-gradient(135deg, #f7e047 0%, #f4d03f 100%)';
+                                                        target.style.transform = 'translateY(-3px) scale(1.02)';
+                                                        target.style.boxShadow = '0 12px 35px rgba(244, 208, 63, 0.6)';
+                                                    }
+                                                },
+                                                onMouseLeave: (e)=>{
+                                                    if (!isLoading) {
+                                                        const target = e.target;
+                                                        target.style.background = 'linear-gradient(135deg, #f4d03f 0%, #d4af37 100%)';
+                                                        target.style.transform = 'translateY(0) scale(1)';
+                                                        target.style.boxShadow = '0 8px 25px rgba(244, 208, 63, 0.4)';
+                                                    }
+                                                },
+                                                className: "jsx-311bc6003a05c410" + " " + "w-full py-4 px-8 rounded-2xl font-bold text-lg transition-all duration-300 shadow-xl mt-8 relative overflow-hidden cursor-pointer",
+                                                children: isLoading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "jsx-311bc6003a05c410" + " " + "flex items-center justify-center",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            className: "jsx-311bc6003a05c410" + " " + "animate-spin rounded-full h-6 w-6 border-b-2 border-current mr-3"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/app/auth/page.tsx",
+                                                            lineNumber: 506,
+                                                            columnNumber: 21
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                            style: {
+                                                                background: 'none'
+                                                            },
+                                                            className: "jsx-311bc6003a05c410" + " " + "font-semibold",
+                                                            children: isLogin ? 'Logging In...' : 'Creating Account...'
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/app/auth/page.tsx",
+                                                            lineNumber: 507,
+                                                            columnNumber: 21
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/app/auth/page.tsx",
+                                                    lineNumber: 505,
+                                                    columnNumber: 19
+                                                }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                    className: "jsx-311bc6003a05c410" + " " + "flex items-center justify-center font-bold",
+                                                    children: isLogin ? 'Login to Explore' : 'Join the Journey'
+                                                }, void 0, false, {
+                                                    fileName: "[project]/app/auth/page.tsx",
+                                                    lineNumber: 512,
+                                                    columnNumber: 19
+                                                }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/app/auth/page.tsx",
-                                                lineNumber: 458,
-                                                columnNumber: 19
+                                                lineNumber: 469,
+                                                columnNumber: 15
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "jsx-311bc6003a05c410" + " " + "text-center mt-8",
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        style: {
+                                                            color: 'rgba(255,255,255,0.7)'
+                                                        },
+                                                        className: "jsx-311bc6003a05c410",
+                                                        children: isLogin ? "Don't have an account?" : "Already have an account?"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/app/auth/page.tsx",
+                                                        lineNumber: 520,
+                                                        columnNumber: 17
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                        type: "button",
+                                                        onClick: toggleMode,
+                                                        style: {
+                                                            background: 'linear-gradient(135deg, #f4d03f 0%, #d4af37 100%)',
+                                                            color: '#800020',
+                                                            border: '2px solid #f4d03f',
+                                                            boxShadow: '0 4px 15px rgba(244, 208, 63, 0.3)',
+                                                            textShadow: '0 1px 2px rgba(128, 0, 32, 0.3)'
+                                                        },
+                                                        onMouseEnter: (e)=>{
+                                                            const target = e.target;
+                                                            target.style.background = 'linear-gradient(135deg, #f7e047 0%, #f4d03f 100%)';
+                                                            target.style.transform = 'translateY(-2px) scale(1.02)';
+                                                            target.style.boxShadow = '0 6px 20px rgba(244, 208, 63, 0.5)';
+                                                        },
+                                                        onMouseLeave: (e)=>{
+                                                            const target = e.target;
+                                                            target.style.background = 'linear-gradient(135deg, #f4d03f 0%, #d4af37 100%)';
+                                                            target.style.transform = 'translateY(0) scale(1)';
+                                                            target.style.boxShadow = '0 4px 15px rgba(244, 208, 63, 0.3)';
+                                                        },
+                                                        className: "jsx-311bc6003a05c410" + " " + "font-bold py-3 px-6 rounded-xl transition-all duration-300 mt-4",
+                                                        children: isLogin ? 'Sign Up' : 'Login'
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/app/auth/page.tsx",
+                                                        lineNumber: 523,
+                                                        columnNumber: 17
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/app/auth/page.tsx",
+                                                lineNumber: 519,
+                                                columnNumber: 15
                                             }, this)
-                                        }, void 0, false, {
-                                            fileName: "[project]/app/auth/page.tsx",
-                                            lineNumber: 415,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "text-center mt-8",
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                    style: {
-                                                        color: 'rgba(255,255,255,0.7)'
-                                                    },
-                                                    children: isLogin ? "Don't have an account?" : "Already have an account?"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/app/auth/page.tsx",
-                                                    lineNumber: 466,
-                                                    columnNumber: 17
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                    type: "button",
-                                                    onClick: toggleMode,
-                                                    className: "font-semibold transition-colors mt-2",
-                                                    style: {
-                                                        color: '#f4d03f'
-                                                    },
-                                                    onMouseEnter: (e)=>e.target.style.color = '#d4af37',
-                                                    onMouseLeave: (e)=>e.target.style.color = '#f4d03f',
-                                                    children: isLogin ? 'Sign Up' : 'Login'
-                                                }, void 0, false, {
-                                                    fileName: "[project]/app/auth/page.tsx",
-                                                    lineNumber: 469,
-                                                    columnNumber: 17
-                                                }, this)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/app/auth/page.tsx",
-                                            lineNumber: 465,
-                                            columnNumber: 15
-                                        }, this)
-                                    ]
-                                }, void 0, true, {
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/app/auth/page.tsx",
+                                        lineNumber: 254,
+                                        columnNumber: 15
+                                    }, this)
+                                }, void 0, false, {
                                     fileName: "[project]/app/auth/page.tsx",
-                                    lineNumber: 222,
+                                    lineNumber: 253,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                    className: "text-center text-sm mt-6",
                                     style: {
                                         color: 'rgba(255,255,255,0.5)'
                                     },
+                                    className: "jsx-311bc6003a05c410" + " " + "text-center text-sm mt-6",
                                     children: "By continuing, you agree to our Terms of Service and Privacy Policy"
                                 }, void 0, false, {
                                     fileName: "[project]/app/auth/page.tsx",
-                                    lineNumber: 483,
+                                    lineNumber: 554,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/auth/page.tsx",
-                            lineNumber: 174,
+                            lineNumber: 207,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/auth/page.tsx",
-                        lineNumber: 173,
+                        lineNumber: 206,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/auth/page.tsx",
-                    lineNumber: 172,
+                    lineNumber: 205,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/auth/page.tsx",
-                lineNumber: 171,
+                lineNumber: 204,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$future$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$footer$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/app/auth/page.tsx",
-                lineNumber: 492,
+                lineNumber: 563,
                 columnNumber: 7
             }, this)
         ]

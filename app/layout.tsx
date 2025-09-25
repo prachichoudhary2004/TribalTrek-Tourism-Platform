@@ -10,9 +10,9 @@ export const metadata: Metadata = {
   description: 'Experience the vibrant culture and breathtaking landscapes of Jharkhand with AI-powered tourism platform',
   generator: 'TribalTrek',
   icons: {
-    icon: '/Full.ico',
-    shortcut: '/Full.ico',
-    apple: '/Full.ico',
+    icon: '/Icon.png',
+    shortcut: '/Icon.png',
+    apple: '/Icon.png',
   },
 }
 

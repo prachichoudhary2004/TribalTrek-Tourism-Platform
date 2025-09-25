@@ -2521,7 +2521,7 @@ function AnalyticsPage() {
                                                                             style: {
                                                                                 color: 'white'
                                                                             },
-                                                                            children: data.overview.totalFeedbacks
+                                                                            children: "1"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/analytics/page.tsx",
                                                                             lineNumber: 689,

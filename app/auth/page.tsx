@@ -164,15 +164,48 @@ export default function AuthPage() {
 
   return (
     <div className="min-h-screen" style={{
-      background: 'linear-gradient(135deg, rgba(128, 0, 32, 0.3) 0%, rgba(30, 58, 138, 0.3) 100%)'
     }}>
+      <style jsx>{`
+        input::placeholder {
+          color: white !important;
+          opacity: 0.7;
+        }
+        input::-webkit-input-placeholder {
+          color: white !important;
+          opacity: 0.7;
+        }
+        input::-moz-placeholder {
+          color: white !important;
+          opacity: 0.7;
+        }
+        input:-ms-input-placeholder {
+          color: white !important;
+          opacity: 0.7;
+        }
+        .autofill-fix:-webkit-autofill,
+        .autofill-fix:-webkit-autofill:hover,
+        .autofill-fix:-webkit-autofill:focus,
+        .autofill-fix:-webkit-autofill:active {
+          -webkit-box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0.08) inset !important;
+          -webkit-text-fill-color: white !important;
+          background-color: rgba(255, 255, 255, 0.08) !important;
+          transition: background-color 5000s ease-in-out 0s;
+        }
+        p {
+          color: white !important;
+        }
+        .error-message {
+          color: white !important;
+          font-weight: normal !important;
+        }
+      `}</style>
       <Navigation />
 
       <div className="container mx-auto px-4 py-8">
         <div className="ai-demo-card" data-aos="fade-up" data-aos-delay="600">
-          <div className="max-w-2xl mx-auto">
+          <div className="max-w-4xl mx-auto">
             <div 
-              className="p-8"
+              className="p-12"
               style={{
                 background: 'linear-gradient(135deg, rgba(128, 0, 32, 0.18) 0%, rgba(30, 58, 138, 0.18) 100%)',
                 backdropFilter: 'blur(15px)',
@@ -185,12 +218,10 @@ export default function AuthPage() {
             >
             {/* Header */}
             <div className="text-center mb-10">
-              <div className="flex justify-center mb-6">
-                <div className="p-4 rounded-3xl shadow-lg" style={{
-                  backgroundColor: '#f4d03f',
-                  boxShadow: '0 8px 25px rgba(244, 208, 63, 0.3)'
+              <div className="flex justify-center mb-1">
+                <div className="p-6 rounded-3xl" style={{
                 }}>
-                  <Mountain className="h-10 w-10" style={{color: '#800020'}} />
+                  <Mountain className="h-12 w-12 text-yellow-300 relative z-10" style={{ color: '#f4d03f' }} />
                 </div>
               </div>
               <h2 className="text-4xl font-bold mb-4 tracking-tight" style={{
@@ -219,50 +250,53 @@ export default function AuthPage() {
             )}
 
             {/* Form */}
-            <form onSubmit={handleSubmit} className="space-y-6" noValidate>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {/* Name Field (Register only) */}
-                {!isLogin && (
-                  <div className="md:col-span-2">
-                    <label htmlFor="name" className="block text-sm font-semibold mb-3" style={{
-                      color: '#f4d03f',
-                      textShadow: '0 1px 3px rgba(244, 208, 63, 0.3)'
-                    }}>
-                      Full Name *
-                    </label>
-                    <div className="relative group">
-                      <User className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-white/60 group-focus-within:text-white/80 transition-colors" />
-                      <input
-                        id="name"
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        className="w-full pl-12 pr-4 py-4 rounded-xl transition-all duration-300 focus:scale-[1.02]"
-                        style={{
-                          background: 'rgba(255, 255, 255, 0.12)',
-                          border: '2px solid rgba(244, 208, 63, 0.4)',
-                          color: 'white',
-                          fontSize: '16px',
-                          boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)'
-                        }}
-                        onFocus={(e) => {
-                          e.target.style.borderColor = '#f4d03f';
-                          e.target.style.boxShadow = '0 0 20px rgba(244, 208, 63, 0.3)';
-                        }}
-                        onBlur={(e) => {
-                          e.target.style.borderColor = 'rgba(244, 208, 63, 0.4)';
-                          e.target.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.1)';
-                        }}
-                        placeholder="Enter your name"
-                      />
-                    </div>
-                    {errors.name && <p className="text-red-400 text-sm mt-2 ml-1">{errors.name}</p>}
+            <div className="max-w-2xl mx-auto">
+              <form onSubmit={handleSubmit} className="space-y-8" noValidate>
+              {/* Name Field (Register only) - Full width at top */}
+              {!isLogin && (
+                <div className="w-full">
+                  <label htmlFor="name" className="block text-sm font-semibold mb-3" style={{
+                    color: '#f4d03f',
+                    textShadow: '0 1px 3px rgba(244, 208, 63, 0.3)'
+                  }}>
+                    Full Name *
+                  </label>
+                  <div className="relative group">
+                    <User className="h-5 w-5" style={{ position: 'absolute', right: '12px', top: '50%', transform: 'translateY(-50%)', zIndex: 10, color: 'white' }} />
+                    <input
+                      id="name"
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      className="w-full pl-4 pr-12 py-3 rounded-md placeholder-white autofill-fix"
+                      style={{
+                        background: 'rgba(255, 255, 255, 0.08)',
+                        border: '1px solid rgba(244, 208, 63, 0.3)',
+                        color: 'white',
+                        height: '42px'
+                      }}
+                      onFocus={(e) => {
+                        e.target.style.background = 'rgba(255, 255, 255, 0.12)';
+                        e.target.style.color = 'white';
+                        e.target.style.border = '1px solid rgba(244, 208, 63, 0.5)';
+                      }}
+                      onBlur={(e) => {
+                        e.target.style.background = 'rgba(255, 255, 255, 0.08)';
+                        e.target.style.color = 'white';
+                        e.target.style.border = '1px solid rgba(244, 208, 63, 0.3)';
+                      }}
+                      placeholder="Enter your name"
+                    />
                   </div>
-                )}
+                  {errors.name && <p className="text-sm mt-2 ml-1" style={{ color: 'white !important' }}>{errors.name}</p>}
+                </div>
+              )}
 
+              {/* Email and Phone Row (Register) / Email Full Width (Login) */}
+              <div className={!isLogin ? "grid grid-cols-1 md:grid-cols-2 gap-6" : "w-full"}>
                 {/* Email Field */}
-                <div className={!isLogin ? "md:col-span-1" : "md:col-span-2"}>
+                <div className="w-full">
                   <label htmlFor="email" className="block text-sm font-semibold mb-3" style={{
                     color: '#f4d03f',
                     textShadow: '0 1px 3px rgba(244, 208, 63, 0.3)'
@@ -270,7 +304,7 @@ export default function AuthPage() {
                     Email Address *
                   </label>
                   <div className="relative group">
-                    <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-white/60 group-focus-within:text-white/80 transition-colors" />
+                    <Mail className="h-5 w-5" style={{ position: 'absolute', right: '12px', top: '50%', transform: 'translateY(-50%)', zIndex: 10, color: 'white' }} />
                     <input
                       id="email"
                       type="email"
@@ -278,84 +312,89 @@ export default function AuthPage() {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full pl-12 pr-4 py-4 rounded-xl transition-all duration-300 focus:scale-[1.02]"
+                      className="w-full pl-4 pr-12 py-3 rounded-md placeholder-white autofill-fix"
                       style={{
-                        background: 'rgba(255, 255, 255, 0.12)',
-                        border: '2px solid rgba(244, 208, 63, 0.4)',
+                        background: 'rgba(255, 255, 255, 0.08)',
+                        border: '1px solid rgba(244, 208, 63, 0.3)',
                         color: 'white',
-                        fontSize: '16px',
-                        boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)'
+                        height: '42px'
                       }}
                       onFocus={(e) => {
-                        e.target.style.borderColor = '#f4d03f';
-                        e.target.style.boxShadow = '0 0 20px rgba(244, 208, 63, 0.3)';
+                        e.target.style.background = 'rgba(255, 255, 255, 0.12)';
+                        e.target.style.color = 'white';
+                        e.target.style.border = '1px solid rgba(244, 208, 63, 0.5)';
                       }}
                       onBlur={(e) => {
-                        e.target.style.borderColor = 'rgba(244, 208, 63, 0.4)';
-                        e.target.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.1)';
+                        e.target.style.background = 'rgba(255, 255, 255, 0.08)';
+                        e.target.style.color = 'white';
+                        e.target.style.border = '1px solid rgba(244, 208, 63, 0.3)';
                       }}
+                      autoComplete="email"
                       placeholder="Enter your email"
                     />
                   </div>
-                  {errors.email && <p className="text-red-400 text-sm mt-2 ml-1">{errors.email}</p>}
+                  {errors.email && <p className="error-message text-sm mt-2 ml-1" style={{ color: 'white !important', fontWeight: 'normal' }}>{errors.email}</p>}
                 </div>
 
                 {/* Phone Field (Register only) */}
                 {!isLogin && (
-                  <div>
+                  <div className="w-full">
                     <label htmlFor="phone" className="block text-sm font-semibold mb-3" style={{
                       color: '#f4d03f',
-                      textShadow: '0 1px 3px rgba(244, 208, 63, 0.3)'
+                      textShadow: '0 1px 3px rgba(244, 208, 63, 0.3)',
+                      marginLeft: '24px'
                     }}>
                       Phone Number (Optional)
                     </label>
-                    <div className="relative group">
-                      <Phone className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-white/60 group-focus-within:text-white/80 transition-colors" />
+                    <div className="relative group" style={{ marginLeft: '24px' }}>
+                      <Phone className="h-5 w-5" style={{ position: 'absolute', right: '12px', top: '50%', transform: 'translateY(-50%)', zIndex: 10, color: 'white' }} />
                       <input
                         id="phone"
                         type="tel"
                         name="phone"
                         value={formData.phone}
                         onChange={handleInputChange}
-                        className="w-full pl-12 pr-4 py-4 rounded-xl transition-all duration-300 focus:scale-[1.02]"
+                        className="w-full pl-4 pr-12 py-3 rounded-md placeholder-white autofill-fix"
                         style={{
-                          background: 'rgba(255, 255, 255, 0.12)',
-                          border: '2px solid rgba(244, 208, 63, 0.4)',
+                          background: 'rgba(255, 255, 255, 0.08)',
+                          border: '1px solid rgba(244, 208, 63, 0.3)',
                           color: 'white',
-                          fontSize: '16px',
-                          boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)'
+                          height: '42px'
                         }}
                         onFocus={(e) => {
-                          e.target.style.borderColor = '#f4d03f';
-                          e.target.style.boxShadow = '0 0 20px rgba(244, 208, 63, 0.3)';
+                          e.target.style.background = 'rgba(255, 255, 255, 0.12)';
+                          e.target.style.color = 'white';
+                          e.target.style.border = '1px solid rgba(244, 208, 63, 0.5)';
                         }}
                         onBlur={(e) => {
-                          e.target.style.borderColor = 'rgba(244, 208, 63, 0.4)';
-                          e.target.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.1)';
+                          e.target.style.background = 'rgba(255, 255, 255, 0.08)';
+                          e.target.style.color = 'white';
+                          e.target.style.border = '1px solid rgba(244, 208, 63, 0.3)';
                         }}
                         placeholder="Enter your phone number"
                       />
                     </div>
-                    {errors.phone && <p className="text-red-400 text-sm mt-2 ml-1">{errors.phone}</p>}
+                    {errors.phone && <p className="text-sm mt-2" style={{ color: 'white !important', marginLeft: '25px' }}>{errors.phone}</p>}
                   </div>
                 )}
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Password Fields Row */}
+              <div className={!isLogin ? "grid grid-cols-1 md:grid-cols-2 gap-6" : "w-full"}>
                 {/* Password Field */}
-                <div>
+                <div className="w-full">
                   <label htmlFor="password" style={{color: '#f4d03f'}} className="block text-sm font-medium mb-2">
                     Password *
                   </label>
                   <div className="relative">
-                    <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-white/50" />
+                    <Lock className="h-5 w-5" style={{ position: 'absolute', right: '12px', top: '50%', transform: 'translateY(-50%)', zIndex: 10, color: 'white' }} />
                     <input
                       id="password"
                       type={showPassword ? "text" : "password"}
                       name="password"
                       value={formData.password}
                       onChange={handleInputChange}
-                      className="w-full pl-10 pr-12 py-3 rounded-md"
+                      className="w-full pl-4 pr-20 py-3 rounded-md"
                       style={{
                         background: 'rgba(255, 255, 255, 0.08)',
                         border: '1px solid rgba(244, 208, 63, 0.3)',
@@ -367,29 +406,38 @@ export default function AuthPage() {
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-3 top-1/2 transform -translate-y-1/2 text-white/50 hover:text-white/70 transition-colors"
+                      className="absolute right-3 top-1/2 transform -translate-y-1/2 p-2 rounded-md"
+                      style={{
+                        background: 'linear-gradient(135deg, #f4d03f 0%, #d4af37 100%)',
+                        border: '1px solid #f4d03f',
+                        color: '#1a1a1a',
+                        boxShadow: '0 2px 8px rgba(244, 208, 63, 0.3)'
+                      }}
                     >
-                      {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                      {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                     </button>
                   </div>
-                  {errors.password && <p className="text-red-400 text-sm mt-1">{errors.password}</p>}
+                  {errors.password && <p className="error-message text-sm mt-1" style={{ color: 'white !important', fontWeight: 'normal' }}>{errors.password}</p>}
                 </div>
 
                 {/* Confirm Password Field (Register only) */}
                 {!isLogin && (
-                  <div>
-                    <label htmlFor="confirmPassword" style={{color: '#f4d03f'}} className="block text-sm font-medium mb-2">
+                  <div className="w-full">
+                    <label htmlFor="confirmPassword" className="block text-sm font-medium mb-2" style={{
+                      color: '#f4d03f',
+                      marginLeft: '24px'
+                    }}>
                       Confirm Password *
                     </label>
-                    <div className="relative">
-                      <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-white/50" />
+                    <div className="relative" style={{ marginLeft: '24px' }}>
+                      <Lock className="h-5 w-5" style={{ position: 'absolute', right: '12px', top: '50%', transform: 'translateY(-50%)', zIndex: 10, color: 'white' }} />
                       <input
                         id="confirmPassword"
                         type={showConfirmPassword ? "text" : "password"}
                         name="confirmPassword"
                         value={formData.confirmPassword}
                         onChange={handleInputChange}
-                        className="w-full pl-10 pr-12 py-3 rounded-md"
+                        className="w-full pl-4 pr-20 py-3 rounded-md placeholder-white autofill-fix"
                         style={{
                           background: 'rgba(255, 255, 255, 0.08)',
                           border: '1px solid rgba(244, 208, 63, 0.3)',
@@ -401,12 +449,18 @@ export default function AuthPage() {
                       <button
                         type="button"
                         onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-white/50 hover:text-white/70 transition-colors"
+                        className="absolute right-3 top-1/2 transform -translate-y-1/2 p-2 rounded-md"
+                        style={{
+                          background: 'linear-gradient(135deg, #f4d03f 0%, #d4af37 100%)',
+                          border: '1px solid #f4d03f',
+                          color: '#1a1a1a',
+                          boxShadow: '0 2px 8px rgba(244, 208, 63, 0.3)'
+                        }}
                       >
-                        {showConfirmPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                        {showConfirmPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                       </button>
                     </div>
-                    {errors.confirmPassword && <p className="text-red-400 text-sm mt-1">{errors.confirmPassword}</p>}
+                    {errors.confirmPassword && <p className="text-sm mt-1" style={{ color: 'white !important', marginLeft: '24px' }}>{errors.confirmPassword}</p>}
                   </div>
                 )}
               </div>
@@ -433,7 +487,7 @@ export default function AuthPage() {
                 onMouseEnter={(e) => {
                   if (!isLoading) {
                     const target = e.target as HTMLButtonElement;
-                    target.style.background = 'linear-gradient(135deg, #d4af37 0%, #b8941f 100%)';
+                    target.style.background = 'linear-gradient(135deg, #f7e047 0%, #f4d03f 100%)';
                     target.style.transform = 'translateY(-3px) scale(1.02)';
                     target.style.boxShadow = '0 12px 35px rgba(244, 208, 63, 0.6)';
                   }
@@ -450,7 +504,7 @@ export default function AuthPage() {
                 {isLoading ? (
                   <div className="flex items-center justify-center">
                     <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-current mr-3"></div>
-                    <span className="font-semibold">
+                    <span className="font-semibold" style={{background: 'none'}}>
                       {isLogin ? 'Logging In...' : 'Creating Account...'}
                     </span>
                   </div>
@@ -469,15 +523,32 @@ export default function AuthPage() {
                 <button
                   type="button"
                   onClick={toggleMode}
-                  className="font-semibold transition-colors mt-2"
-                  style={{color: '#f4d03f'}}
-                  onMouseEnter={(e) => (e.target as HTMLButtonElement).style.color = '#d4af37'}
-                  onMouseLeave={(e) => (e.target as HTMLButtonElement).style.color = '#f4d03f'}
+                  className="font-bold py-3 px-6 rounded-xl transition-all duration-300 mt-4"
+                  style={{
+                    background: 'linear-gradient(135deg, #f4d03f 0%, #d4af37 100%)',
+                    color: '#800020',
+                    border: '2px solid #f4d03f',
+                    boxShadow: '0 4px 15px rgba(244, 208, 63, 0.3)',
+                    textShadow: '0 1px 2px rgba(128, 0, 32, 0.3)'
+                  }}
+                  onMouseEnter={(e: React.MouseEvent<HTMLButtonElement>) => {
+                    const target = e.target as HTMLButtonElement;
+                    target.style.background = 'linear-gradient(135deg, #f7e047 0%, #f4d03f 100%)';
+                    target.style.transform = 'translateY(-2px) scale(1.02)';
+                    target.style.boxShadow = '0 6px 20px rgba(244, 208, 63, 0.5)';
+                  }}
+                  onMouseLeave={(e: React.MouseEvent<HTMLButtonElement>) => {
+                    const target = e.target as HTMLButtonElement;
+                    target.style.background = 'linear-gradient(135deg, #f4d03f 0%, #d4af37 100%)';
+                    target.style.transform = 'translateY(0) scale(1)';
+                    target.style.boxShadow = '0 4px 15px rgba(244, 208, 63, 0.3)';
+                  }}
                 >
                   {isLogin ? 'Sign Up' : 'Login'}
                 </button>
               </div>
             </form>
+            </div>
 
             {/* Terms */}
             <p className="text-center text-sm mt-6" style={{color: 'rgba(255,255,255,0.5)'}}>
