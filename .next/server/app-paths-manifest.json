@@ -3,11 +3,7 @@
   "/api/feedback/route": "app/api/feedback/route.js",
   "/api/analytics/route": "app/api/analytics/route.js",
   "/auth/page": "app/auth/page.js",
-  "/api/chatbot/message/route": "app/api/chatbot/message/route.js",
-  "/_not-found/page": "app/_not-found/page.js",
   "/destinations/page": "app/destinations/page.js",
   "/profile/page": "app/profile/page.js",
-  "/marketplace/page": "app/marketplace/page.js",
-  "/marketplace/product/[id]/page": "app/marketplace/product/[id]/page.js",
-  "/order/success/page": "app/order/success/page.js"
+  "/feedback/page": "app/feedback/page.js"
 }

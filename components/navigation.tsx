@@ -50,53 +50,40 @@ export default function Navigation() {
               </button>
               
               {isUserMenuOpen && (
-                <div className="absolute right-0 mt-2 w-48 rounded-xl shadow-xl z-50" style={{
+                <div className="absolute right-0 mt-2 w-64 shadow-xl z-50" style={{
+                  borderRadius: '24px',
                   background: 'linear-gradient(135deg, rgba(128, 0, 32, 0.2) 0%, rgba(30, 58, 138, 0.2) 100%)',
                   backdropFilter: 'blur(15px)',
-                  border: '1px solid rgba(244, 208, 63, 0.3)',
+                  border: '3px solid rgba(244, 208, 63, 0.4)',
                   boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2)'
                 }}>
-                  <div className="py-2">
+                  <div className="py-6">
                     <Link
                       href="/profile"
-                      className="flex items-center px-4 py-3 text-sm font-medium transition-all duration-300 hover:scale-105"
+                      className="flex items-center px-6 py-4 text-base font-medium mb-6"
                       style={{
                         color: '#f4d03f',
                         textShadow: '0 1px 3px rgba(244, 208, 63, 0.3)'
                       }}
-                      onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => {
-                        (e.target as HTMLAnchorElement).style.background = 'rgba(244, 208, 63, 0.1)';
-                        (e.target as HTMLAnchorElement).style.borderRadius = '8px';
-                      }}
-                      onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => {
-                        (e.target as HTMLAnchorElement).style.background = 'transparent';
-                      }}
                       onClick={() => setIsUserMenuOpen(false)}
                     >
-                      <User className="h-4 w-4 mr-3" style={{ color: '#f4d03f' }} />
+                      <User className="h-5 w-5 mr-4" style={{ color: '#f4d03f' }} />
                       Profile
                     </Link>
-                    <button
+                    <div
                       onClick={() => {
                         logout()
                         setIsUserMenuOpen(false)
                       }}
-                      className="flex items-center w-full px-4 py-3 text-sm font-medium transition-all duration-300 hover:scale-105"
+                      className="flex items-center px-6 py-4 text-base font-medium cursor-pointer"
                       style={{
                         color: '#f4d03f',
                         textShadow: '0 1px 3px rgba(244, 208, 63, 0.3)'
                       }}
-                      onMouseEnter={(e: React.MouseEvent<HTMLButtonElement>) => {
-                        (e.target as HTMLButtonElement).style.background = 'rgba(244, 208, 63, 0.1)';
-                        (e.target as HTMLButtonElement).style.borderRadius = '8px';
-                      }}
-                      onMouseLeave={(e: React.MouseEvent<HTMLButtonElement>) => {
-                        (e.target as HTMLButtonElement).style.background = 'transparent';
-                      }}
                     >
-                      <LogOut className="h-4 w-4 mr-3" style={{ color: '#f4d03f' }} />
+                      <LogOut className="h-5 w-5 mr-4" style={{ color: '#f4d03f' }} />
                       Logout
-                    </button>
+                    </div>
                   </div>
                 </div>
               )}
