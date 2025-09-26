@@ -455,7 +455,7 @@ export default function AnalyticsPage() {
         </div>
 
         <Tabs defaultValue="overview" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2" style={{
+          <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-7 gap-2" style={{
             background: 'linear-gradient(135deg, rgba(128, 0, 32, 0.2) 0%, rgba(30, 58, 138, 0.2) 100%)',
             backdropFilter: 'blur(15px)',
             border: '2px solid rgba(244, 208, 63, 0.3)',
@@ -529,6 +529,17 @@ export default function AnalyticsPage() {
               boxShadow: '0 4px 15px rgba(30, 58, 138, 0.2)',
               transition: 'all 0.3s ease'
             }}>💾 Database</TabsTrigger>
+            <TabsTrigger value="sentiment" style={{
+              background: 'linear-gradient(135deg, rgba(244, 208, 63, 0.2) 0%, rgba(128, 0, 32, 0.2) 100%)',
+              border: '2px solid rgba(244, 208, 63, 0.4)',
+              color: 'white',
+              fontWeight: '600',
+              borderRadius: '15px',
+              padding: '12px 16px',
+              backdropFilter: 'blur(10px)',
+              boxShadow: '0 4px 15px rgba(244, 208, 63, 0.2)',
+              transition: 'all 0.3s ease'
+            }}>😊 Sentiment</TabsTrigger>
           </TabsList>
 
           {/* Overview Tab */}
@@ -822,7 +833,6 @@ export default function AnalyticsPage() {
                             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                           ))}
                         </Pie>
-                        <Tooltip />
                       </PieChart>
                     </ResponsiveContainer>
                   </CardContent>
@@ -847,11 +857,44 @@ export default function AnalyticsPage() {
                   <CardContent>
                     <ResponsiveContainer width="100%" height={300}>
                       <BarChart data={data.demographics.origin}>
-                        <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="state" />
-                        <YAxis />
-                        <Tooltip />
-                        <Bar dataKey="count" fill="#800020" />
+                        <CartesianGrid 
+                          strokeDasharray="3 3" 
+                          stroke="#f4d03f" 
+                          strokeOpacity={0.3}
+                        />
+                        <XAxis 
+                          dataKey="state" 
+                          stroke="#f4d03f"
+                          fontSize={12}
+                          fontWeight={600}
+                        />
+                        <YAxis 
+                          stroke="#f4d03f"
+                          fontSize={12}
+                          fontWeight={600}
+                        />
+                        <Tooltip 
+                          contentStyle={{
+                            background: 'rgba(128, 0, 32, 0.9)',
+                            border: '2px solid #f4d03f',
+                            borderRadius: '12px',
+                            color: 'white',
+                            backdropFilter: 'blur(15px)',
+                            boxShadow: '0 8px 25px rgba(0, 0, 0, 0.4)',
+                            fontSize: '14px',
+                            fontWeight: 'bold'
+                          }}
+                          labelStyle={{ color: '#f4d03f', fontWeight: 'bold', fontSize: '14px' }}
+                          itemStyle={{ color: 'white', fontWeight: 'bold' }}
+                          cursor={{ fill: 'rgba(244, 208, 63, 0.1)' }}
+                        />
+                        <Bar 
+                          dataKey="count" 
+                          fill="#800020"
+                          stroke="#f4d03f"
+                          strokeWidth={1}
+                          radius={[4, 4, 0, 0]}
+                        />
                       </BarChart>
                     </ResponsiveContainer>
                   </CardContent>
@@ -875,15 +918,46 @@ export default function AnalyticsPage() {
                   }}>🎯 Travel Purpose Distribution</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
                     {data.demographics.purpose.map((purpose, index) => (
-                      <Card key={purpose.type}>
-                        <CardContent className="p-4 text-center">
-                          <div className="text-2xl font-bold text-[#800020] mb-2">
+                      <Card key={purpose.type} style={{
+                        background: index === 0 
+                          ? 'linear-gradient(135deg, rgba(128, 0, 32, 0.15) 0%, rgba(128, 0, 32, 0.25) 100%)'
+                          : index === 1 
+                          ? 'linear-gradient(135deg, rgba(244, 208, 63, 0.2) 0%, rgba(128, 0, 32, 0.2) 100%)'
+                          : index === 2 
+                          ? 'linear-gradient(135deg, rgba(30, 58, 138, 0.15) 0%, rgba(30, 58, 138, 0.25) 100%)'
+                          : index === 3 
+                          ? 'linear-gradient(135deg, rgba(128, 0, 32, 0.15) 0%, rgba(30, 58, 138, 0.15) 100%)'
+                          : 'linear-gradient(135deg, rgba(30, 58, 138, 0.15) 0%, rgba(244, 208, 63, 0.15) 100%)',
+                        backdropFilter: 'blur(15px)',
+                        border: index === 0 
+                          ? '2px solid rgba(244, 208, 63, 0.3)'
+                          : index === 1 
+                          ? '2px solid rgba(244, 208, 63, 0.4)'
+                          : index === 2 
+                          ? '2px solid rgba(30, 58, 138, 0.4)'
+                          : index === 3 
+                          ? '2px solid rgba(244, 208, 63, 0.3)'
+                          : '2px solid rgba(30, 58, 138, 0.3)',
+                        borderRadius: '20px',
+                        boxShadow: index === 0 
+                          ? '0 8px 25px rgba(128, 0, 32, 0.3)'
+                          : index === 1 
+                          ? '0 8px 25px rgba(244, 208, 63, 0.3)'
+                          : index === 2 
+                          ? '0 8px 25px rgba(30, 58, 138, 0.3)'
+                          : index === 3 
+                          ? '0 8px 25px rgba(128, 0, 32, 0.2)'
+                          : '0 8px 25px rgba(30, 58, 138, 0.2)',
+                        transition: 'all 0.3s ease'
+                      }}>
+                        <CardContent className="p-6 text-center">
+                          <div className="text-3xl font-bold mb-2" style={{ color: 'white' }}>
                             {purpose.percentage}%
                           </div>
-                          <div className="text-sm font-medium">{purpose.type}</div>
-                          <div className="text-xs text-muted-foreground">
+                          <div className="text-sm font-semibold mb-2" style={{ color: '#f4d03f' }}>{purpose.type}</div>
+                          <div className="text-xs" style={{ color: 'rgba(255, 255, 255, 0.8)' }}>
                             {purpose.count.toLocaleString()} visitors
                           </div>
                         </CardContent>
@@ -920,36 +994,45 @@ export default function AnalyticsPage() {
                 <CardContent>
                   <div className="space-y-4">
                     {data.destinations.map((destination, index) => (
-                      <div key={destination.name} className="flex items-center justify-between p-4 border rounded-lg">
+                      <div key={destination.name} className="flex items-center justify-between p-4 rounded-lg" style={{
+                        background: 'rgba(255, 255, 255, 0.08)',
+                        border: '1px solid rgba(244, 208, 63, 0.3)',
+                        backdropFilter: 'blur(10px)'
+                      }}>
                         <div className="flex items-center gap-4">
-                          <div className="w-8 h-8 bg-[#800020]/10 rounded-full flex items-center justify-center">
-                            <MapPin className="h-4 w-4 text-[#800020]" />
+                          <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{
+                            background: 'linear-gradient(135deg, #f4d03f 0%, #d4af37 100%)',
+                            boxShadow: '0 4px 15px rgba(244, 208, 63, 0.4)'
+                          }}>
+                            <MapPin className="h-4 w-4" style={{ color: '#800020' }} />
                           </div>
                           <div>
-                            <h3 className="font-semibold">{destination.name}</h3>
-                            <p className="text-sm text-muted-foreground">
+                            <h3 className="font-semibold" style={{ color: '#f4d03f' }}>{destination.name}</h3>
+                            <p className="text-sm" style={{ color: 'rgba(255, 255, 255, 0.8)' }}>
                               {destination.visitors.toLocaleString()} visitors
                             </p>
                           </div>
                         </div>
                         <div className="flex items-center gap-6">
                           <div className="text-right">
-                            <p className="font-medium">₹{(destination.revenue / 1000000).toFixed(1)}M</p>
-                            <p className="text-sm text-muted-foreground">Revenue</p>
+                            <p className="font-medium" style={{ color: 'white' }}>₹{(destination.revenue / 1000000).toFixed(1)}M</p>
+                            <p className="text-sm" style={{ color: '#f4d03f' }}>Revenue</p>
                           </div>
                           <div className="text-right">
                             <div className="flex items-center gap-1">
-                              <Star className="h-4 w-4 fill-current text-[#f4d03f]" />
-                              <span className="font-medium">{destination.satisfaction}</span>
+                              <Star className="h-4 w-4 fill-current" style={{ color: '#f4d03f' }} />
+                              <span className="font-medium" style={{ color: 'white' }}>{destination.satisfaction}</span>
                             </div>
-                            <p className="text-sm text-muted-foreground">Rating</p>
+                            <p className="text-sm" style={{ color: '#f4d03f' }}>Rating</p>
                           </div>
                           <div className="text-right">
-                            <div className={`flex items-center gap-1 ${destination.growth > 0 ? 'text-[#f4d03f]' : 'text-[#800020]'}`}>
+                            <div className={`flex items-center gap-1`} style={{ 
+                              color: destination.growth > 0 ? '#f4d03f' : '#ff6b6b' 
+                            }}>
                               {destination.growth > 0 ? <TrendingUp className="h-4 w-4" /> : <TrendingDown className="h-4 w-4" />}
                               <span className="font-medium">{destination.growth > 0 ? '+' : ''}{destination.growth}%</span>
                             </div>
-                            <p className="text-sm text-muted-foreground">Growth</p>
+                            <p className="text-sm" style={{ color: '#f4d03f' }}>Growth</p>
                           </div>
                         </div>
                       </div>
@@ -976,11 +1059,45 @@ export default function AnalyticsPage() {
                 <CardContent>
                   <ResponsiveContainer width="100%" height={400}>
                     <BarChart data={data.destinations}>
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="name" />
-                      <YAxis />
-                      <Tooltip formatter={(value) => [`₹${(Number(value) / 1000000).toFixed(1)}M`, 'Revenue']} />
-                      <Bar dataKey="revenue" fill="#1e3a8a" />
+                      <CartesianGrid 
+                        strokeDasharray="3 3" 
+                        stroke="#f4d03f" 
+                        strokeOpacity={0.3}
+                      />
+                      <XAxis 
+                        dataKey="name" 
+                        stroke="#f4d03f"
+                        fontSize={12}
+                        fontWeight={600}
+                      />
+                      <YAxis 
+                        stroke="#f4d03f"
+                        fontSize={12}
+                        fontWeight={600}
+                      />
+                      <Tooltip 
+                        formatter={(value) => [`₹${(Number(value) / 1000000).toFixed(1)}M`, 'Revenue']}
+                        contentStyle={{
+                          background: 'rgba(128, 0, 32, 0.9)',
+                          border: '2px solid #f4d03f',
+                          borderRadius: '12px',
+                          color: 'white',
+                          backdropFilter: 'blur(15px)',
+                          boxShadow: '0 8px 25px rgba(0, 0, 0, 0.4)',
+                          fontSize: '14px',
+                          fontWeight: 'bold'
+                        }}
+                        labelStyle={{ color: '#f4d03f', fontWeight: 'bold', fontSize: '14px' }}
+                        itemStyle={{ color: 'white', fontWeight: 'bold' }}
+                        cursor={{ fill: 'rgba(244, 208, 63, 0.1)' }}
+                      />
+                      <Bar 
+                        dataKey="revenue" 
+                        fill="#1e3a8a"
+                        stroke="#f4d03f"
+                        strokeWidth={1}
+                        radius={[4, 4, 0, 0]}
+                      />
                     </BarChart>
                   </ResponsiveContainer>
                 </CardContent>
@@ -1013,38 +1130,52 @@ export default function AnalyticsPage() {
                 <CardContent>
                   <div className="space-y-4">
                     {data.vendorPerformance.map((vendor, index) => (
-                      <div key={vendor.name} className="flex items-center justify-between p-4 border rounded-lg">
+                      <div key={vendor.name} className="flex items-center justify-between p-4 rounded-lg" style={{
+                        background: 'rgba(255, 255, 255, 0.08)',
+                        border: '1px solid rgba(244, 208, 63, 0.3)',
+                        backdropFilter: 'blur(10px)'
+                      }}>
                         <div className="flex items-center gap-4">
-                          <div className="w-8 h-8 bg-[#f4d03f]/10 rounded-full flex items-center justify-center">
-                            <Award className="h-4 w-4 text-[#f4d03f]" />
+                          <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{
+                            background: 'linear-gradient(135deg, #f4d03f 0%, #d4af37 100%)',
+                            boxShadow: '0 4px 15px rgba(244, 208, 63, 0.4)'
+                          }}>
+                            <Award className="h-4 w-4" style={{ color: '#800020' }} />
                           </div>
                           <div>
-                            <h3 className="font-semibold">{vendor.name}</h3>
-                            <Badge variant="outline">{vendor.category}</Badge>
+                            <h3 className="font-semibold" style={{ color: '#f4d03f' }}>{vendor.name}</h3>
+                            <Badge variant="outline" style={{
+                              background: 'rgba(244, 208, 63, 0.15)',
+                              border: '1px solid rgba(244, 208, 63, 0.3)',
+                              color: '#f4d03f',
+                              borderRadius: '8px'
+                            }}>{vendor.category}</Badge>
                           </div>
                         </div>
                         <div className="flex items-center gap-6">
                           <div className="text-right">
-                            <p className="font-medium">₹{(vendor.revenue / 1000).toFixed(0)}K</p>
-                            <p className="text-sm text-muted-foreground">Revenue</p>
+                            <p className="font-medium" style={{ color: 'white' }}>₹{(vendor.revenue / 1000).toFixed(0)}K</p>
+                            <p className="text-sm" style={{ color: '#f4d03f' }}>Revenue</p>
                           </div>
                           <div className="text-right">
-                            <p className="font-medium">{vendor.orders}</p>
-                            <p className="text-sm text-muted-foreground">Orders</p>
+                            <p className="font-medium" style={{ color: 'white' }}>{vendor.orders}</p>
+                            <p className="text-sm" style={{ color: '#f4d03f' }}>Orders</p>
                           </div>
                           <div className="text-right">
                             <div className="flex items-center gap-1">
-                              <Star className="h-4 w-4 fill-current text-[#f4d03f]" />
-                              <span className="font-medium">{vendor.rating}</span>
+                              <Star className="h-4 w-4 fill-current" style={{ color: '#f4d03f' }} />
+                              <span className="font-medium" style={{ color: 'white' }}>{vendor.rating}</span>
                             </div>
-                            <p className="text-sm text-muted-foreground">Rating</p>
+                            <p className="text-sm" style={{ color: '#f4d03f' }}>Rating</p>
                           </div>
                           <div className="text-right">
-                            <div className={`flex items-center gap-1 ${vendor.growth > 0 ? 'text-[#f4d03f]' : 'text-[#800020]'}`}>
+                            <div className={`flex items-center gap-1`} style={{ 
+                              color: vendor.growth > 0 ? '#f4d03f' : '#ff6b6b' 
+                            }}>
                               {vendor.growth > 0 ? <TrendingUp className="h-4 w-4" /> : <TrendingDown className="h-4 w-4" />}
                               <span className="font-medium">{vendor.growth > 0 ? '+' : ''}{vendor.growth}%</span>
                             </div>
-                            <p className="text-sm text-muted-foreground">Growth</p>
+                            <p className="text-sm" style={{ color: '#f4d03f' }}>Growth</p>
                           </div>
                         </div>
                       </div>
@@ -1095,8 +1226,8 @@ export default function AnalyticsPage() {
 
           {/* AI Insights Tab */}
           <TabsContent value="insights" className="mt-8">
-            <div className="space-y-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="space-y-10">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                 <Card style={{
                   background: 'linear-gradient(135deg, rgba(128, 0, 32, 0.15) 0%, rgba(30, 58, 138, 0.15) 100%)',
                   backdropFilter: 'blur(20px)',
@@ -1117,34 +1248,48 @@ export default function AnalyticsPage() {
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div>
-                      <h4 className="font-medium mb-2">Next Month Forecast</h4>
-                      <p className="text-2xl font-bold text-[#800020]">
-                        {data?.predictions?.nextMonthVisitors?.toLocaleString() || '2,300'} visitors
+                      <h4 className="font-medium mb-2" style={{ color: '#f4d03f' }}>Next Month Forecast</h4>
+                      <p className="text-2xl font-bold" style={{ color: 'white' }}>
+                        {data?.predictions?.nextMonthVisitors?.toLocaleString() || '852'} visitors
                       </p>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-sm" style={{ color: 'rgba(255, 255, 255, 0.8)' }}>
                         +15% increase expected
                       </p>
                     </div>
                     <div>
-                      <h4 className="font-medium mb-2">Peak Season</h4>
-                      <p className="text-foreground">{data?.predictions?.peakSeason || 'October-December'}</p>
+                      <h4 className="font-medium mb-2" style={{ color: '#f4d03f' }}>Peak Season</h4>
+                      <p style={{ color: 'white' }}>{data?.predictions?.peakSeason || 'November-December (Chhath Puja & Winter season)'}</p>
                     </div>
                   </CardContent>
                 </Card>
 
-                <Card>
+                <Card style={{
+                  background: 'linear-gradient(135deg, rgba(30, 58, 138, 0.15) 0%, rgba(244, 208, 63, 0.15) 100%)',
+                  backdropFilter: 'blur(20px)',
+                  border: '2px solid rgba(30, 58, 138, 0.4)',
+                  borderRadius: '24px',
+                  boxShadow: '0 8px 32px rgba(30, 58, 138, 0.3)'
+                }}>
                   <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <Compass className="h-5 w-5 text-[#1e3a8a]" />
-                      Emerging Destinations
+                    <CardTitle className="flex items-center gap-2" style={{
+                      color: '#f4d03f',
+                      fontSize: '1.5rem',
+                      fontWeight: '800',
+                      textShadow: '0 2px 4px rgba(244, 208, 63, 0.3)'
+                    }}>
+                      <Compass className="h-5 w-5" style={{ color: '#f4d03f' }} />
+                      🌟 Emerging Destinations
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="space-y-2">
-                      {(data?.predictions?.emergingDestinations || ['Palamau Fort', 'Rajrappa Temple', 'Lodh Falls']).map((destination, index) => (
-                        <div key={destination} className="flex items-center gap-2">
-                          <TrendingUp className="h-4 w-4 text-[#f4d03f]" />
-                          <span>{destination}</span>
+                    <div className="space-y-4">
+                      {(data?.predictions?.emergingDestinations || ['Netarhat', 'Hundru Falls', 'Dassam Falls']).map((destination, index) => (
+                        <div key={destination} className="flex items-center gap-3 p-3 rounded-lg" style={{
+                          background: 'rgba(255, 255, 255, 0.08)',
+                          border: '1px solid rgba(244, 208, 63, 0.3)'
+                        }}>
+                          <TrendingUp className="h-5 w-5" style={{ color: '#f4d03f' }} />
+                          <span style={{ color: 'white', fontWeight: '600' }}>{destination}</span>
                         </div>
                       ))}
                     </div>
@@ -1152,46 +1297,79 @@ export default function AnalyticsPage() {
                 </Card>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <Card>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <Card style={{
+                  background: 'linear-gradient(135deg, rgba(128, 0, 32, 0.15) 0%, rgba(30, 58, 138, 0.15) 100%)',
+                  backdropFilter: 'blur(20px)',
+                  border: '2px solid rgba(244, 208, 63, 0.4)',
+                  borderRadius: '24px',
+                  boxShadow: '0 8px 32px rgba(128, 0, 32, 0.3)'
+                }}>
                   <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <AlertTriangle className="h-5 w-5 text-red-600" />
-                      Risk Areas
+                    <CardTitle className="flex items-center gap-2" style={{
+                      color: '#f4d03f',
+                      fontSize: '1.5rem',
+                      fontWeight: '800',
+                      textShadow: '0 2px 4px rgba(244, 208, 63, 0.3)'
+                    }}>
+                      <AlertTriangle className="h-5 w-5" style={{ color: '#ff6b6b' }} />
+                      ⚠️ Risk Areas
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="space-y-2">
-                      {(data?.predictions?.riskAreas || ['Transport connectivity', 'Accommodation quality', 'Language barriers']).map((area, index) => (
-                        <div key={area} className="flex items-center gap-2">
-                          <AlertTriangle className="h-4 w-4 text-red-600" />
-                          <span>{area}</span>
-                          <Badge variant="destructive" className="ml-auto">Needs Attention</Badge>
+                    <div className="space-y-4">
+                      {(data?.predictions?.riskAreas || ['Hundru Falls', 'Hazaribagh National Park']).map((area, index) => (
+                        <div key={area} className="flex items-center justify-between p-3 rounded-lg" style={{
+                          background: 'rgba(255, 255, 255, 0.08)',
+                          border: '1px solid rgba(244, 208, 63, 0.3)'
+                        }}>
+                          <div className="flex items-center gap-3">
+                            <AlertTriangle className="h-5 w-5" style={{ color: '#ff6b6b' }} />
+                            <span style={{ color: 'white', fontWeight: '600' }}>{area}</span>
+                          </div>
+                          <Badge variant="destructive" style={{
+                            background: 'rgba(255, 107, 107, 0.2)',
+                            border: '1px solid #ff6b6b',
+                            color: '#ff6b6b'
+                          }}>Needs Attention</Badge>
                         </div>
                       ))}
                     </div>
                   </CardContent>
                 </Card>
 
-                <Card>
+                <Card style={{
+                  background: 'linear-gradient(135deg, rgba(30, 58, 138, 0.15) 0%, rgba(244, 208, 63, 0.15) 100%)',
+                  backdropFilter: 'blur(20px)',
+                  border: '2px solid rgba(30, 58, 138, 0.4)',
+                  borderRadius: '24px',
+                  boxShadow: '0 8px 32px rgba(30, 58, 138, 0.3)'
+                }}>
                   <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <Eye className="h-5 w-5 text-purple-600" />
-                      Recommended Actions
+                    <CardTitle className="flex items-center gap-2" style={{
+                      color: '#f4d03f',
+                      fontSize: '1.5rem',
+                      fontWeight: '800',
+                      textShadow: '0 2px 4px rgba(244, 208, 63, 0.3)'
+                    }}>
+                      <Eye className="h-5 w-5" style={{ color: '#f4d03f' }} />
+                      💡 Recommended Actions
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="space-y-3">
+                    <div className="space-y-4">
                       {(data?.predictions?.recommendedActions || [
                         'Improve transport infrastructure to remote destinations',
                         'Develop multilingual guide training programs', 
                         'Expand homestay capacity for peak season',
-                        'Implement digital payment systems for vendors',
-                        'Create emergency response protocols for tourist areas'
+                        'Implement digital payment systems for vendors'
                       ]).map((action, index) => (
-                        <div key={index} className="flex items-start gap-2">
-                          <div className="w-2 h-2 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
-                          <span className="text-sm">{action}</span>
+                        <div key={index} className="flex items-start gap-3 p-3 rounded-lg" style={{
+                          background: 'rgba(255, 255, 255, 0.08)',
+                          border: '1px solid rgba(244, 208, 63, 0.3)'
+                        }}>
+                          <div className="w-3 h-3 rounded-full mt-1 flex-shrink-0" style={{ background: '#f4d03f' }}></div>
+                          <span className="text-sm" style={{ color: 'white', fontWeight: '500' }}>{action}</span>
                         </div>
                       ))}
                     </div>
@@ -1199,30 +1377,53 @@ export default function AnalyticsPage() {
                 </Card>
               </div>
 
-              <Card>
+              <Card style={{
+                background: 'linear-gradient(135deg, rgba(244, 208, 63, 0.15) 0%, rgba(128, 0, 32, 0.15) 100%)',
+                backdropFilter: 'blur(20px)',
+                border: '2px solid rgba(244, 208, 63, 0.4)',
+                borderRadius: '24px',
+                boxShadow: '0 8px 32px rgba(244, 208, 63, 0.3)'
+              }}>
                 <CardHeader>
-                  <CardTitle>AI-Powered Insights Summary</CardTitle>
+                  <CardTitle style={{
+                    color: '#f4d03f',
+                    fontSize: '1.5rem',
+                    fontWeight: '800',
+                    textShadow: '0 2px 4px rgba(244, 208, 63, 0.3)'
+                  }}>🤖 AI-Powered Insights Summary</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div className="text-center p-4 bg-green-50 rounded-lg">
-                      <TrendingUp className="h-8 w-8 text-green-600 mx-auto mb-2" />
-                      <h3 className="font-semibold text-green-800">Growth Opportunity</h3>
-                      <p className="text-sm text-green-700 mt-1">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div className="text-center p-6 rounded-lg" style={{
+                      background: 'rgba(16, 185, 129, 0.15)',
+                      border: '2px solid rgba(16, 185, 129, 0.3)',
+                      backdropFilter: 'blur(10px)'
+                    }}>
+                      <TrendingUp className="h-8 w-8 mx-auto mb-3" style={{ color: '#10b981' }} />
+                      <h3 className="font-semibold mb-2" style={{ color: '#f4d03f' }}>Growth Opportunity</h3>
+                      <p className="text-sm" style={{ color: 'white' }}>
                         Netarhat showing 22% growth potential for eco-tourism
                       </p>
                     </div>
-                    <div className="text-center p-4 bg-yellow-50 rounded-lg">
-                      <AlertTriangle className="h-8 w-8 text-yellow-600 mx-auto mb-2" />
-                      <h3 className="font-semibold text-yellow-800">Attention Needed</h3>
-                      <p className="text-sm text-yellow-700 mt-1">
+                    <div className="text-center p-6 rounded-lg" style={{
+                      background: 'rgba(255, 107, 107, 0.15)',
+                      border: '2px solid rgba(255, 107, 107, 0.3)',
+                      backdropFilter: 'blur(10px)'
+                    }}>
+                      <AlertTriangle className="h-8 w-8 mx-auto mb-3" style={{ color: '#ff6b6b' }} />
+                      <h3 className="font-semibold mb-2" style={{ color: '#f4d03f' }}>Attention Needed</h3>
+                      <p className="text-sm" style={{ color: 'white' }}>
                         Service quality issues detected in 2 locations
                       </p>
                     </div>
-                    <div className="text-center p-4 bg-blue-50 rounded-lg">
-                      <Target className="h-8 w-8 text-blue-600 mx-auto mb-2" />
-                      <h3 className="font-semibold text-blue-800">Strategic Focus</h3>
-                      <p className="text-sm text-blue-700 mt-1">
+                    <div className="text-center p-6 rounded-lg" style={{
+                      background: 'rgba(59, 130, 246, 0.15)',
+                      border: '2px solid rgba(59, 130, 246, 0.3)',
+                      backdropFilter: 'blur(10px)'
+                    }}>
+                      <Target className="h-8 w-8 mx-auto mb-3" style={{ color: '#3b82f6' }} />
+                      <h3 className="font-semibold mb-2" style={{ color: '#f4d03f' }}>Strategic Focus</h3>
+                      <p className="text-sm" style={{ color: 'white' }}>
                         Expand homestay capacity for upcoming peak season
                       </p>
                     </div>
@@ -1403,105 +1604,206 @@ export default function AnalyticsPage() {
 
           {/* Database Tab */}
           <TabsContent value="database" className="mt-8">
-            <div className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <Card>
+            <div className="space-y-10">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <Card style={{
+                  background: 'linear-gradient(135deg, rgba(128, 0, 32, 0.15) 0%, rgba(30, 58, 138, 0.15) 100%)',
+                  backdropFilter: 'blur(20px)',
+                  border: '2px solid rgba(244, 208, 63, 0.4)',
+                  borderRadius: '24px',
+                  boxShadow: '0 8px 32px rgba(128, 0, 32, 0.3)'
+                }}>
                   <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <Database className="h-5 w-5 text-blue-600" />
-                      Database Status
+                    <CardTitle className="flex items-center gap-2" style={{
+                      color: '#f4d03f',
+                      fontSize: '1.5rem',
+                      fontWeight: '800',
+                      textShadow: '0 2px 4px rgba(244, 208, 63, 0.3)'
+                    }}>
+                      <Database className="h-5 w-5" style={{ color: '#f4d03f' }} />
+                      💾 Database Status
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="space-y-3">
-                      <div className="flex justify-between items-center">
-                        <span>Connection Status</span>
-                        <Badge className="bg-green-100 text-green-800">Active</Badge>
+                    <div className="space-y-4">
+                      <div className="flex justify-between items-center p-3 rounded-lg" style={{
+                        background: 'rgba(255, 255, 255, 0.08)',
+                        border: '1px solid rgba(244, 208, 63, 0.3)'
+                      }}>
+                        <span style={{ color: '#f4d03f', fontWeight: '600' }}>Connection Status</span>
+                        <Badge style={{
+                          background: 'rgba(16, 185, 129, 0.2)',
+                          border: '1px solid #10b981',
+                          color: '#10b981'
+                        }}>Active</Badge>
                       </div>
-                      <div className="flex justify-between items-center">
-                        <span>Total Records</span>
-                        <span className="font-medium">{data?.overview.totalFeedbacks || 0}</span>
+                      <div className="flex justify-between items-center p-3 rounded-lg" style={{
+                        background: 'rgba(255, 255, 255, 0.08)',
+                        border: '1px solid rgba(244, 208, 63, 0.3)'
+                      }}>
+                        <span style={{ color: '#f4d03f', fontWeight: '600' }}>Total Records</span>
+                        <span className="font-medium" style={{ color: 'white' }}>100</span>
                       </div>
-                      <div className="flex justify-between items-center">
-                        <span>Storage Used</span>
-                        <span className="font-medium">2.4 GB</span>
+                      <div className="flex justify-between items-center p-3 rounded-lg" style={{
+                        background: 'rgba(255, 255, 255, 0.08)',
+                        border: '1px solid rgba(244, 208, 63, 0.3)'
+                      }}>
+                        <span style={{ color: '#f4d03f', fontWeight: '600' }}>Storage Used</span>
+                        <span className="font-medium" style={{ color: 'white' }}>2.4 GB</span>
                       </div>
-                      <div className="flex justify-between items-center">
-                        <span>Last Backup</span>
-                        <span className="font-medium">2 hours ago</span>
+                      <div className="flex justify-between items-center p-3 rounded-lg" style={{
+                        background: 'rgba(255, 255, 255, 0.08)',
+                        border: '1px solid rgba(244, 208, 63, 0.3)'
+                      }}>
+                        <span style={{ color: '#f4d03f', fontWeight: '600' }}>Last Backup</span>
+                        <span className="font-medium" style={{ color: 'white' }}>2 hours ago</span>
                       </div>
                     </div>
                   </CardContent>
                 </Card>
 
-                <Card>
+                <Card style={{
+                  background: 'linear-gradient(135deg, rgba(30, 58, 138, 0.15) 0%, rgba(244, 208, 63, 0.15) 100%)',
+                  backdropFilter: 'blur(20px)',
+                  border: '2px solid rgba(30, 58, 138, 0.4)',
+                  borderRadius: '24px',
+                  boxShadow: '0 8px 32px rgba(30, 58, 138, 0.3)'
+                }}>
                   <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <Brain className="h-5 w-5 text-purple-600" />
-                      AI Data Processing
+                    <CardTitle className="flex items-center gap-2" style={{
+                      color: '#f4d03f',
+                      fontSize: '1.5rem',
+                      fontWeight: '800',
+                      textShadow: '0 2px 4px rgba(244, 208, 63, 0.3)'
+                    }}>
+                      <Brain className="h-5 w-5" style={{ color: '#f4d03f' }} />
+                      🧠 AI Data Processing
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="space-y-3">
-                      <div className="flex justify-between items-center">
-                        <span>Processed Today</span>
-                        <span className="font-medium">1,247 items</span>
+                    <div className="space-y-4">
+                      <div className="flex justify-between items-center p-3 rounded-lg" style={{
+                        background: 'rgba(255, 255, 255, 0.08)',
+                        border: '1px solid rgba(244, 208, 63, 0.3)'
+                      }}>
+                        <span style={{ color: '#f4d03f', fontWeight: '600' }}>Processed Today</span>
+                        <span className="font-medium" style={{ color: 'white' }}>1,247 items</span>
                       </div>
-                      <div className="flex justify-between items-center">
-                        <span>Voice Analysis</span>
-                        <Badge className="bg-blue-100 text-blue-800">342 files</Badge>
+                      <div className="flex justify-between items-center p-3 rounded-lg" style={{
+                        background: 'rgba(255, 255, 255, 0.08)',
+                        border: '1px solid rgba(244, 208, 63, 0.3)'
+                      }}>
+                        <span style={{ color: '#f4d03f', fontWeight: '600' }}>Voice Analysis</span>
+                        <Badge style={{
+                          background: 'rgba(59, 130, 246, 0.2)',
+                          border: '1px solid #3b82f6',
+                          color: '#3b82f6'
+                        }}>342 files</Badge>
                       </div>
-                      <div className="flex justify-between items-center">
-                        <span>Image Recognition</span>
-                        <Badge className="bg-green-100 text-green-800">156 images</Badge>
+                      <div className="flex justify-between items-center p-3 rounded-lg" style={{
+                        background: 'rgba(255, 255, 255, 0.08)',
+                        border: '1px solid rgba(244, 208, 63, 0.3)'
+                      }}>
+                        <span style={{ color: '#f4d03f', fontWeight: '600' }}>Image Recognition</span>
+                        <Badge style={{
+                          background: 'rgba(16, 185, 129, 0.2)',
+                          border: '1px solid #10b981',
+                          color: '#10b981'
+                        }}>156 images</Badge>
                       </div>
-                      <div className="flex justify-between items-center">
-                        <span>Sentiment Analysis</span>
-                        <Badge className="bg-purple-100 text-purple-800">749 texts</Badge>
+                      <div className="flex justify-between items-center p-3 rounded-lg" style={{
+                        background: 'rgba(255, 255, 255, 0.08)',
+                        border: '1px solid rgba(244, 208, 63, 0.3)'
+                      }}>
+                        <span style={{ color: '#f4d03f', fontWeight: '600' }}>Sentiment Analysis</span>
+                        <Badge style={{
+                          background: 'rgba(168, 85, 247, 0.2)',
+                          border: '1px solid #a855f7',
+                          color: '#a855f7'
+                        }}>749 texts</Badge>
                       </div>
                     </div>
                   </CardContent>
                 </Card>
 
-                <Card>
+                <Card style={{
+                  background: 'linear-gradient(135deg, rgba(244, 208, 63, 0.15) 0%, rgba(128, 0, 32, 0.15) 100%)',
+                  backdropFilter: 'blur(20px)',
+                  border: '2px solid rgba(244, 208, 63, 0.4)',
+                  borderRadius: '24px',
+                  boxShadow: '0 8px 32px rgba(244, 208, 63, 0.3)'
+                }}>
                   <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <FileSpreadsheet className="h-5 w-5 text-orange-600" />
-                      Export Options
+                    <CardTitle className="flex items-center gap-2" style={{
+                      color: '#f4d03f',
+                      fontSize: '1.5rem',
+                      fontWeight: '800',
+                      textShadow: '0 2px 4px rgba(244, 208, 63, 0.3)'
+                    }}>
+                      <FileSpreadsheet className="h-5 w-5" style={{ color: '#f4d03f' }} />
+                      📊 Export Options
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="space-y-3">
+                    <div className="space-y-6">
                       <Button 
                         onClick={() => { setExportFormat('csv'); exportData(); }}
                         variant="outline" 
                         className="w-full justify-start"
+                        style={{
+                          background: 'rgba(255, 255, 255, 0.08)',
+                          border: '1px solid rgba(244, 208, 63, 0.3)',
+                          color: 'white',
+                          borderRadius: '12px',
+                          marginBottom: '24px'
+                        }}
                       >
-                        <FileSpreadsheet className="h-4 w-4 mr-2" />
+                        <FileSpreadsheet className="h-4 w-4 mr-2" style={{ color: '#f4d03f' }} />
                         Export as CSV
                       </Button>
                       <Button 
                         onClick={() => { setExportFormat('xlsx'); exportData(); }}
                         variant="outline" 
                         className="w-full justify-start"
+                        style={{
+                          background: 'rgba(255, 255, 255, 0.08)',
+                          border: '1px solid rgba(244, 208, 63, 0.3)',
+                          color: 'white',
+                          borderRadius: '12px',
+                          marginBottom: '24px'
+                        }}
                       >
-                        <FileSpreadsheet className="h-4 w-4 mr-2" />
+                        <FileSpreadsheet className="h-4 w-4 mr-2" style={{ color: '#f4d03f' }} />
                         Export as Excel
                       </Button>
                       <Button 
                         onClick={() => { setExportFormat('pdf'); exportData(); }}
                         variant="outline" 
                         className="w-full justify-start"
+                        style={{
+                          background: 'rgba(255, 255, 255, 0.08)',
+                          border: '1px solid rgba(244, 208, 63, 0.3)',
+                          color: 'white',
+                          borderRadius: '12px',
+                          marginBottom: '24px'
+                        }}
                       >
-                        <FileText className="h-4 w-4 mr-2" />
+                        <FileText className="h-4 w-4 mr-2" style={{ color: '#f4d03f' }} />
                         Export as PDF Report
                       </Button>
                       <Button 
                         onClick={() => { setExportFormat('json'); exportData(); }}
                         variant="outline" 
                         className="w-full justify-start"
+                        style={{
+                          background: 'rgba(255, 255, 255, 0.08)',
+                          border: '1px solid rgba(244, 208, 63, 0.3)',
+                          color: 'white',
+                          borderRadius: '12px',
+                          marginBottom: '24px'
+                        }}
                       >
-                        <Database className="h-4 w-4 mr-2" />
+                        <Database className="h-4 w-4 mr-2" style={{ color: '#f4d03f' }} />
                         Export as JSON
                       </Button>
                     </div>
@@ -1510,90 +1812,312 @@ export default function AnalyticsPage() {
               </div>
 
               {/* Data Tables */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <Card>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                <Card style={{
+                  background: 'linear-gradient(135deg, rgba(128, 0, 32, 0.15) 0%, rgba(30, 58, 138, 0.15) 100%)',
+                  backdropFilter: 'blur(20px)',
+                  border: '2px solid rgba(244, 208, 63, 0.4)',
+                  borderRadius: '24px',
+                  boxShadow: '0 8px 32px rgba(128, 0, 32, 0.3)'
+                }}>
                   <CardHeader>
-                    <CardTitle>Recent AI Analysis Results</CardTitle>
+                    <CardTitle style={{
+                      color: '#f4d03f',
+                      fontSize: '1.5rem',
+                      fontWeight: '800',
+                      textShadow: '0 2px 4px rgba(244, 208, 63, 0.3)'
+                    }}>🔍 Recent AI Analysis Results</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="space-y-3">
-                      <div className="flex items-center justify-between p-3 bg-gray-50 rounded">
-                        <div className="flex items-center gap-2">
-                          <Brain className="h-4 w-4 text-purple-600" />
-                          <span className="text-sm">Sentiment Analysis</span>
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between p-3 rounded-lg" style={{
+                        background: 'rgba(255, 255, 255, 0.08)',
+                        border: '1px solid rgba(244, 208, 63, 0.3)'
+                      }}>
+                        <div className="flex items-center gap-3">
+                          <Brain className="h-5 w-5" style={{ color: '#a855f7' }} />
+                          <span className="text-sm" style={{ color: '#f4d03f', fontWeight: '600' }}>Sentiment Analysis</span>
                         </div>
-                        <Badge className="bg-green-100 text-green-800">94.2% Accuracy</Badge>
+                        <Badge style={{
+                          background: 'rgba(16, 185, 129, 0.2)',
+                          border: '1px solid #10b981',
+                          color: '#10b981'
+                        }}>94.2% Accuracy</Badge>
                       </div>
-                      <div className="flex items-center justify-between p-3 bg-gray-50 rounded">
-                        <div className="flex items-center gap-2">
-                          <Volume2 className="h-4 w-4 text-blue-600" />
-                          <span className="text-sm">Voice Processing</span>
+                      <div className="flex items-center justify-between p-3 rounded-lg" style={{
+                        background: 'rgba(255, 255, 255, 0.08)',
+                        border: '1px solid rgba(244, 208, 63, 0.3)'
+                      }}>
+                        <div className="flex items-center gap-3">
+                          <Volume2 className="h-5 w-5" style={{ color: '#3b82f6' }} />
+                          <span className="text-sm" style={{ color: '#f4d03f', fontWeight: '600' }}>Voice Processing</span>
                         </div>
-                        <Badge className="bg-blue-100 text-blue-800">87.8% Accuracy</Badge>
+                        <Badge style={{
+                          background: 'rgba(59, 130, 246, 0.2)',
+                          border: '1px solid #3b82f6',
+                          color: '#3b82f6'
+                        }}>87.8% Accuracy</Badge>
                       </div>
-                      <div className="flex items-center justify-between p-3 bg-gray-50 rounded">
-                        <div className="flex items-center gap-2">
-                          <ImageIcon className="h-4 w-4 text-green-600" />
-                          <span className="text-sm">Image Recognition</span>
+                      <div className="flex items-center justify-between p-3 rounded-lg" style={{
+                        background: 'rgba(255, 255, 255, 0.08)',
+                        border: '1px solid rgba(244, 208, 63, 0.3)'
+                      }}>
+                        <div className="flex items-center gap-3">
+                          <ImageIcon className="h-5 w-5" style={{ color: '#10b981' }} />
+                          <span className="text-sm" style={{ color: '#f4d03f', fontWeight: '600' }}>Image Recognition</span>
                         </div>
-                        <Badge className="bg-green-100 text-green-800">91.5% Accuracy</Badge>
+                        <Badge style={{
+                          background: 'rgba(16, 185, 129, 0.2)',
+                          border: '1px solid #10b981',
+                          color: '#10b981'
+                        }}>91.5% Accuracy</Badge>
                       </div>
-                      <div className="flex items-center justify-between p-3 bg-gray-50 rounded">
-                        <div className="flex items-center gap-2">
-                          <Zap className="h-4 w-4 text-orange-600" />
-                          <span className="text-sm">Predictive Models</span>
+                      <div className="flex items-center justify-between p-3 rounded-lg" style={{
+                        background: 'rgba(255, 255, 255, 0.08)',
+                        border: '1px solid rgba(244, 208, 63, 0.3)'
+                      }}>
+                        <div className="flex items-center gap-3">
+                          <Zap className="h-5 w-5" style={{ color: '#f97316' }} />
+                          <span className="text-sm" style={{ color: '#f4d03f', fontWeight: '600' }}>Predictive Models</span>
                         </div>
-                        <Badge className="bg-orange-100 text-orange-800">89.3% Accuracy</Badge>
+                        <Badge style={{
+                          background: 'rgba(249, 115, 22, 0.2)',
+                          border: '1px solid #f97316',
+                          color: '#f97316'
+                        }}>89.3% Accuracy</Badge>
                       </div>
                     </div>
                   </CardContent>
                 </Card>
 
-                <Card>
+                <Card style={{
+                  background: 'linear-gradient(135deg, rgba(30, 58, 138, 0.15) 0%, rgba(244, 208, 63, 0.15) 100%)',
+                  backdropFilter: 'blur(20px)',
+                  border: '2px solid rgba(30, 58, 138, 0.4)',
+                  borderRadius: '24px',
+                  boxShadow: '0 8px 32px rgba(30, 58, 138, 0.3)'
+                }}>
                   <CardHeader>
-                    <CardTitle>Database Performance</CardTitle>
+                    <CardTitle style={{
+                      color: '#f4d03f',
+                      fontSize: '1.5rem',
+                      fontWeight: '800',
+                      textShadow: '0 2px 4px rgba(244, 208, 63, 0.3)'
+                    }}>⚡ Database Performance</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="space-y-4">
+                    <div className="space-y-6">
                       <div>
-                        <div className="flex justify-between text-sm mb-1">
-                          <span>Query Performance</span>
-                          <span>92%</span>
+                        <div className="flex justify-between text-sm mb-2">
+                          <span style={{ color: '#f4d03f', fontWeight: '600' }}>Query Performance</span>
+                          <span style={{ color: 'white', fontWeight: 'bold' }}>92%</span>
                         </div>
-                        <div className="w-full bg-gray-200 rounded-full h-2">
-                          <div className="bg-green-500 h-2 rounded-full" style={{width: '92%'}}></div>
+                        <div className="w-full rounded-full h-3" style={{ background: 'rgba(255, 255, 255, 0.1)' }}>
+                          <div className="h-3 rounded-full" style={{width: '92%', background: 'linear-gradient(90deg, #10b981 0%, #34d399 100%)'}}></div>
                         </div>
                       </div>
                       <div>
-                        <div className="flex justify-between text-sm mb-1">
-                          <span>Storage Efficiency</span>
-                          <span>87%</span>
+                        <div className="flex justify-between text-sm mb-2">
+                          <span style={{ color: '#f4d03f', fontWeight: '600' }}>Storage Efficiency</span>
+                          <span style={{ color: 'white', fontWeight: 'bold' }}>87%</span>
                         </div>
-                        <div className="w-full bg-gray-200 rounded-full h-2">
-                          <div className="bg-blue-500 h-2 rounded-full" style={{width: '87%'}}></div>
-                        </div>
-                      </div>
-                      <div>
-                        <div className="flex justify-between text-sm mb-1">
-                          <span>AI Processing Speed</span>
-                          <span>95%</span>
-                        </div>
-                        <div className="w-full bg-gray-200 rounded-full h-2">
-                          <div className="bg-purple-500 h-2 rounded-full" style={{width: '95%'}}></div>
+                        <div className="w-full rounded-full h-3" style={{ background: 'rgba(255, 255, 255, 0.1)' }}>
+                          <div className="h-3 rounded-full" style={{width: '87%', background: 'linear-gradient(90deg, #3b82f6 0%, #60a5fa 100%)'}}></div>
                         </div>
                       </div>
                       <div>
-                        <div className="flex justify-between text-sm mb-1">
-                          <span>Data Integrity</span>
-                          <span>99%</span>
+                        <div className="flex justify-between text-sm mb-2">
+                          <span style={{ color: '#f4d03f', fontWeight: '600' }}>AI Processing Speed</span>
+                          <span style={{ color: 'white', fontWeight: 'bold' }}>95%</span>
                         </div>
-                        <div className="w-full bg-gray-200 rounded-full h-2">
-                          <div className="bg-green-500 h-2 rounded-full" style={{width: '99%'}}></div>
+                        <div className="w-full rounded-full h-3" style={{ background: 'rgba(255, 255, 255, 0.1)' }}>
+                          <div className="h-3 rounded-full" style={{width: '95%', background: 'linear-gradient(90deg, #f4d03f 0%, #fbbf24 100%)'}}></div>
+                        </div>
+                      </div>
+                      <div>
+                        <div className="flex justify-between text-sm mb-2">
+                          <span style={{ color: '#f4d03f', fontWeight: '600' }}>Data Integrity</span>
+                          <span style={{ color: 'white', fontWeight: 'bold' }}>99%</span>
+                        </div>
+                        <div className="w-full rounded-full h-3" style={{ background: 'rgba(255, 255, 255, 0.1)' }}>
+                          <div className="h-3 rounded-full" style={{width: '99%', background: 'linear-gradient(90deg, #10b981 0%, #34d399 100%)'}}></div>
                         </div>
                       </div>
                     </div>
                   </CardContent>
                 </Card>
+              </div>
+            </div>
+          </TabsContent>
+
+          {/* Sentiment Analytics Tab */}
+          <TabsContent value="sentiment" className="mt-8">
+            <div className="space-y-8">
+              {/* Sentiment Statistics */}
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-9 gap-4 mb-6">
+                
+                {/* Positive Trend */}
+                <Card className="p-4"
+                  style={{
+                    background: 'rgba(255,255,255,0.08)',
+                    border: '1px solid rgba(244, 208, 63, 0.3)',
+                    backdropFilter: 'blur(12px)',
+                    borderRadius: '16px'
+                  }}
+                >
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <div dangerouslySetInnerHTML={{ __html: '<span style="color: #f4d03f; font-weight: 700; font-size: 14px; display: block;">Positive Trend</span>' }} />
+                      <div dangerouslySetInnerHTML={{ __html: '<span style="color: #ffffff; font-weight: bold; font-size: 20px; display: block;">↗ +12%</span>' }} />
+                    </div>
+                    <TrendingUp className="h-8 w-8" style={{ color: 'white' }}/>
+                  </div>
+                </Card>
+                
+                {/* Negative Trend */}
+                <Card className="p-4"
+                  style={{
+                    background: 'rgba(255,255,255,0.08)',
+                    border: '1px solid rgba(244, 208, 63, 0.3)',
+                    backdropFilter: 'blur(12px)',
+                    borderRadius: '16px'
+                  }}
+                >
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <div dangerouslySetInnerHTML={{ __html: '<span style="color: #f4d03f; font-weight: 700; font-size: 14px; display: block;">Negative Trend</span>' }} />
+                      <div dangerouslySetInnerHTML={{ __html: '<span style="color: #ffffff; font-weight: bold; font-size: 20px; display: block;">↘ -8%</span>' }} />
+                    </div>
+                    <TrendingDown className="h-8 w-8" style={{ color: 'white' }}/>
+                  </div>
+                </Card>
+                
+                {/* Overall Satisfaction */}
+                <Card className="p-4"
+                  style={{
+                    background: 'rgba(255,255,255,0.08)',
+                    border: '1px solid rgba(244, 208, 63, 0.3)',
+                    backdropFilter: 'blur(12px)',
+                    borderRadius: '16px'
+                  }}
+                >
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <div dangerouslySetInnerHTML={{ __html: '<span style="color: #f4d03f; font-weight: 700; font-size: 14px; display: block;">Overall Satisfaction</span>' }} />
+                      <div dangerouslySetInnerHTML={{ __html: '<span style="color: #ffffff; font-weight: bold; font-size: 20px; display: block;">4.2/5</span>' }} />
+                    </div>
+                    <Star className="h-8 w-8" style={{ color: 'white' }}/>
+                  </div>
+                </Card>
+                
+                {/* Flagged Reviews */}
+                <Card className="p-4"
+                  style={{
+                    background: 'rgba(255,255,255,0.08)',
+                    border: '1px solid rgba(244, 208, 63, 0.3)',
+                    backdropFilter: 'blur(12px)',
+                    borderRadius: '16px'
+                  }}
+                >
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <div dangerouslySetInnerHTML={{ __html: '<span style="color: #f4d03f; font-weight: 700; font-size: 14px; display: block;">Flagged Reviews</span>' }} />
+                      <div dangerouslySetInnerHTML={{ __html: '<span style="color: #ffffff; font-weight: bold; font-size: 20px; display: block;">3</span>' }} />
+                    </div>
+                    <AlertTriangle className="h-8 w-8" style={{ color: 'white' }}/>
+                  </div>
+                </Card>
+                
+                {/* Service Issues */}
+                <Card className="p-4"
+                  style={{
+                    background: 'rgba(255,255,255,0.08)',
+                    border: '1px solid rgba(244, 208, 63, 0.3)',
+                    backdropFilter: 'blur(12px)',
+                    borderRadius: '16px'
+                  }}
+                >
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <div dangerouslySetInnerHTML={{ __html: '<span style="color: #f4d03f; font-weight: 700; font-size: 14px; display: block;">Service Issues</span>' }} />
+                      <div dangerouslySetInnerHTML={{ __html: '<span style="color: #ffffff; font-weight: bold; font-size: 20px; display: block;">2</span>' }} />
+                    </div>
+                    <AlertTriangle className="h-8 w-8" style={{ color: 'white' }}/>
+                  </div>
+                </Card>
+                
+                {/* Safety Concerns */}
+                <Card className="p-4"
+                  style={{
+                    background: 'rgba(255,255,255,0.08)',
+                    border: '1px solid rgba(244, 208, 63, 0.3)',
+                    backdropFilter: 'blur(12px)',
+                    borderRadius: '16px'
+                  }}
+                >
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <div dangerouslySetInnerHTML={{ __html: '<span style="color: #f4d03f; font-weight: 700; font-size: 14px; display: block;">Safety Concerns</span>' }} />
+                      <div dangerouslySetInnerHTML={{ __html: '<span style="color: #ffffff; font-weight: bold; font-size: 20px; display: block;">1</span>' }} />
+                    </div>
+                    <AlertTriangle className="h-8 w-8" style={{ color: 'white' }}/>
+                  </div>
+                </Card>
+                
+                {/* Vendor Responses */}
+                <Card className="p-4"
+                  style={{
+                    background: 'rgba(255,255,255,0.08)',
+                    border: '1px solid rgba(244, 208, 63, 0.3)',
+                    backdropFilter: 'blur(12px)',
+                    borderRadius: '16px'
+                  }}
+                >
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <div dangerouslySetInnerHTML={{ __html: '<span style="color: #f4d03f; font-weight: 700; font-size: 14px; display: block;">Vendor Responses</span>' }} />
+                      <div dangerouslySetInnerHTML={{ __html: '<span style="color: #ffffff; font-weight: bold; font-size: 20px; display: block;">78%</span>' }} />
+                    </div>
+                    <Users className="h-8 w-8" style={{ color: 'white' }}/>
+                  </div>
+                </Card>
+                
+                {/* Avg Response Time */}
+                <Card className="p-4"
+                  style={{
+                    background: 'rgba(255,255,255,0.08)',
+                    border: '1px solid rgba(244, 208, 63, 0.3)',
+                    backdropFilter: 'blur(12px)',
+                    borderRadius: '16px'
+                  }}
+                >
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <div dangerouslySetInnerHTML={{ __html: '<span style="color: #f4d03f; font-weight: 700; font-size: 14px; display: block;">Avg Response Time</span>' }} />
+                      <div dangerouslySetInnerHTML={{ __html: '<span style="color: #ffffff; font-weight: bold; font-size: 20px; display: block;">2.3 hours</span>' }} />
+                    </div>
+                    <Calendar className="h-8 w-8" style={{ color: 'white' }}/>
+                  </div>
+                </Card>
+                
+                {/* Resolution Rate */}
+                <Card className="p-4"
+                  style={{
+                    background: 'rgba(255,255,255,0.08)',
+                    border: '1px solid rgba(244, 208, 63, 0.3)',
+                    backdropFilter: 'blur(12px)',
+                    borderRadius: '16px'
+                  }}
+                >
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <div dangerouslySetInnerHTML={{ __html: '<span style="color: #f4d03f; font-weight: 700; font-size: 14px; display: block;">Resolution Rate</span>' }} />
+                      <div dangerouslySetInnerHTML={{ __html: '<span style="color: #ffffff; font-weight: bold; font-size: 20px; display: block;">85%</span>' }} />
+                    </div>
+                    <Target className="h-8 w-8" style={{ color: 'white' }}/>
+                  </div>
+                </Card>
+                
               </div>
             </div>
           </TabsContent>

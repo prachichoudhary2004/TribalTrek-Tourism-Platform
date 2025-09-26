@@ -1,9 +1,9 @@
 {
   "/page": "app/page.js",
-  "/api/feedback/route": "app/api/feedback/route.js",
-  "/api/analytics/route": "app/api/analytics/route.js",
-  "/auth/page": "app/auth/page.js",
-  "/destinations/page": "app/destinations/page.js",
+  "/feedback/page": "app/feedback/page.js",
+  "/ai-features/page": "app/ai-features/page.js",
+  "/analytics/page": "app/analytics/page.js",
   "/profile/page": "app/profile/page.js",
-  "/feedback/page": "app/feedback/page.js"
+  "/api/feedback/route": "app/api/feedback/route.js",
+  "/api/analytics/route": "app/api/analytics/route.js"
 }

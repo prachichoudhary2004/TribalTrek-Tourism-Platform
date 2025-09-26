@@ -264,6 +264,289 @@ function fallbackSentimentAnalysis(text: string, language: string): {
   }
 }
 
+// Enhanced analysis functions
+function enhanceAnalysisWithRatings(aiAnalysis: AIAnalysisResult, starRating: number, emojiRating?: string): AIAnalysisResult {
+  // Prioritize AI text analysis, use ratings as enhancement/validation
+  let enhancedSentiment = aiAnalysis.sentiment
+  let enhancedConfidence = aiAnalysis.confidence
+  let enhancedUrgency = aiAnalysis.urgency || 'low'
+
+  console.log('🔍 Original AI Analysis:', {
+    sentiment: aiAnalysis.sentiment,
+    confidence: aiAnalysis.confidence,
+    starRating,
+    emojiRating
+  })
+
+  // If AI analysis has high confidence, trust it more than ratings
+  if (aiAnalysis.confidence > 0.7) {
+    console.log('✅ High confidence AI analysis - using text sentiment as primary')
+    
+    // Only adjust urgency based on star rating if text analysis suggests negative sentiment
+    if (aiAnalysis.sentiment === 'negative') {
+      if (starRating <= 2) {
+        enhancedUrgency = starRating === 1 ? 'high' : 'medium'
+      }
+    }
+    
+    // Emoji can reinforce the text analysis
+    if (emojiRating) {
+      const emojiSentimentMap: { [key: string]: { sentiment: 'positive' | 'negative' | 'neutral', urgency: 'low' | 'medium' | 'high' | 'critical' } } = {
+        '😍': { sentiment: 'positive', urgency: 'low' },
+        '😊': { sentiment: 'positive', urgency: 'low' },
+        '😐': { sentiment: 'neutral', urgency: 'low' },
+        '😞': { sentiment: 'negative', urgency: 'medium' },
+        '😡': { sentiment: 'negative', urgency: 'high' }
+      }
+      
+      const emojiData = emojiSentimentMap[emojiRating]
+      if (emojiData && emojiData.sentiment === aiAnalysis.sentiment) {
+        // Emoji reinforces text analysis - increase confidence
+        enhancedConfidence = Math.min(0.95, enhancedConfidence + 0.1)
+        console.log('🎯 Emoji reinforces text analysis - confidence boosted')
+      } else if (emojiData && emojiData.sentiment !== aiAnalysis.sentiment) {
+        // Emoji conflicts with text - average them out
+        console.log('⚖️ Emoji conflicts with text analysis - balancing')
+        enhancedConfidence = Math.max(0.6, enhancedConfidence - 0.1)
+      }
+    }
+  } else {
+    // Low confidence AI analysis - use ratings to help determine sentiment
+    console.log('⚠️ Low confidence AI analysis - using ratings to enhance')
+    
+    // Create weighted sentiment based on text + stars + emoji
+    let textWeight = aiAnalysis.confidence // 0.0 to 1.0
+    let starWeight = 0.4 // Fixed weight for star rating
+    let emojiWeight = emojiRating ? 0.3 : 0
+    
+    // Normalize weights
+    let totalWeight = textWeight + starWeight + emojiWeight
+    textWeight = textWeight / totalWeight
+    starWeight = starWeight / totalWeight
+    emojiWeight = emojiWeight / totalWeight
+    
+    console.log('📊 Sentiment weights:', { textWeight, starWeight, emojiWeight })
+    
+    // Calculate sentiment scores
+    let positiveScore = 0
+    let negativeScore = 0
+    let neutralScore = 0
+    
+    // Text contribution
+    if (aiAnalysis.sentiment === 'positive') positiveScore += textWeight
+    else if (aiAnalysis.sentiment === 'negative') negativeScore += textWeight
+    else neutralScore += textWeight
+    
+    // Star rating contribution
+    if (starRating >= 4) positiveScore += starWeight
+    else if (starRating <= 2) negativeScore += starWeight
+    else neutralScore += starWeight
+    
+    // Emoji contribution
+    if (emojiRating) {
+      if (emojiRating === '😍' || emojiRating === '😊') positiveScore += emojiWeight
+      else if (emojiRating === '😞' || emojiRating === '😡') negativeScore += emojiWeight
+      else neutralScore += emojiWeight
+    }
+    
+    // Determine final sentiment
+    if (positiveScore > negativeScore && positiveScore > neutralScore) {
+      enhancedSentiment = 'positive'
+      enhancedConfidence = 0.6 + (positiveScore * 0.3)
+      enhancedUrgency = 'low'
+    } else if (negativeScore > positiveScore && negativeScore > neutralScore) {
+      enhancedSentiment = 'negative'
+      enhancedConfidence = 0.6 + (negativeScore * 0.3)
+      enhancedUrgency = starRating <= 2 ? (starRating === 1 ? 'high' : 'medium') : 'medium'
+    } else {
+      enhancedSentiment = 'neutral'
+      enhancedConfidence = 0.6 + (neutralScore * 0.2)
+      enhancedUrgency = 'low'
+    }
+    
+    console.log('📈 Sentiment scores:', { positiveScore, negativeScore, neutralScore })
+  }
+
+  console.log('✅ Final enhanced analysis:', {
+    sentiment: enhancedSentiment,
+    confidence: enhancedConfidence,
+    urgency: enhancedUrgency
+  })
+
+  return {
+    ...aiAnalysis,
+    sentiment: enhancedSentiment,
+    confidence: enhancedConfidence,
+    urgency: enhancedUrgency
+  }
+}
+
+function createFallbackAnalysis(text: string, starRating: number, emojiRating?: string, language?: string): AIAnalysisResult {
+  console.log('🔄 Creating fallback analysis for:', { text: text.substring(0, 50) + '...', starRating, emojiRating })
+  
+  // Enhanced text analysis
+  let textSentiment: 'positive' | 'negative' | 'neutral' = 'neutral'
+  let textConfidence = 0.5
+  
+  if (text && text.trim().length > 0) {
+    // Enhanced word lists for better accuracy
+    const positiveWords = [
+      'good', 'great', 'excellent', 'amazing', 'wonderful', 'beautiful', 'love', 'perfect', 
+      'awesome', 'fantastic', 'outstanding', 'superb', 'brilliant', 'magnificent', 'marvelous',
+      'delightful', 'pleasant', 'enjoyable', 'satisfying', 'impressive', 'remarkable', 'splendid',
+      'clean', 'friendly', 'helpful', 'comfortable', 'peaceful', 'relaxing', 'refreshing',
+      'nice', 'lovely', 'charming', 'stunning', 'breathtaking', 'incredible', 'fabulous',
+      // Hindi positive words
+      'अच्छा', 'बहुत', 'सुंदर', 'खुश', 'प्रसन्न', 'उत्कृष्ट', 'शानदार', 'बेहतरीन', 'मजेदार'
+    ]
+    
+    const negativeWords = [
+      'bad', 'terrible', 'awful', 'horrible', 'hate', 'worst', 'disappointing', 'poor',
+      'disgusting', 'pathetic', 'useless', 'worthless', 'annoying', 'frustrating', 'boring',
+      'unpleasant', 'uncomfortable', 'dirty', 'smelly', 'noisy', 'crowded', 'expensive',
+      'overpriced', 'rude', 'unfriendly', 'unhelpful', 'slow', 'delayed', 'cancelled',
+      'broken', 'damaged', 'unsafe', 'dangerous', 'scary', 'unsatisfactory', 'disappointing',
+      // Hindi negative words
+      'बुरा', 'गंदा', 'खराब', 'दुखी', 'निराश', 'भयानक', 'घटिया', 'बेकार', 'महंगा'
+    ]
+    
+    const words = text.toLowerCase().split(/\s+/)
+    let positiveCount = 0
+    let negativeCount = 0
+    
+    words.forEach(word => {
+      if (positiveWords.includes(word)) positiveCount++
+      if (negativeWords.includes(word)) negativeCount++
+    })
+    
+    // Determine text sentiment
+    if (positiveCount > negativeCount) {
+      textSentiment = 'positive'
+      textConfidence = Math.min(0.85, 0.6 + (positiveCount - negativeCount) * 0.1)
+    } else if (negativeCount > positiveCount) {
+      textSentiment = 'negative'
+      textConfidence = Math.min(0.85, 0.6 + (negativeCount - positiveCount) * 0.1)
+    } else if (positiveCount === negativeCount && positiveCount > 0) {
+      textSentiment = 'neutral'
+      textConfidence = 0.7
+    }
+    
+    console.log('📝 Text analysis:', { textSentiment, textConfidence, positiveCount, negativeCount })
+  }
+  
+  // Combine text analysis with ratings using weighted approach
+  let finalSentiment: 'positive' | 'negative' | 'neutral' = 'neutral'
+  let finalConfidence = 0.5
+  let urgency: 'low' | 'medium' | 'high' | 'critical' = 'low'
+  
+  // Weight distribution: Text (50%), Stars (30%), Emoji (20%)
+  let textWeight = text && text.trim().length > 0 ? 0.5 : 0
+  let starWeight = 0.3 + (textWeight === 0 ? 0.5 : 0) // Increase star weight if no text
+  let emojiWeight = emojiRating ? 0.2 : 0
+  
+  // Normalize weights
+  let totalWeight = textWeight + starWeight + emojiWeight
+  if (totalWeight > 0) {
+    textWeight = textWeight / totalWeight
+    starWeight = starWeight / totalWeight
+    emojiWeight = emojiWeight / totalWeight
+  }
+  
+  console.log('⚖️ Analysis weights:', { textWeight, starWeight, emojiWeight })
+  
+  // Calculate sentiment scores
+  let positiveScore = 0
+  let negativeScore = 0
+  let neutralScore = 0
+  
+  // Text contribution
+  if (textSentiment === 'positive') positiveScore += textWeight * textConfidence
+  else if (textSentiment === 'negative') negativeScore += textWeight * textConfidence
+  else neutralScore += textWeight * (textConfidence || 0.5)
+  
+  // Star rating contribution
+  if (starRating >= 4) positiveScore += starWeight
+  else if (starRating <= 2) negativeScore += starWeight
+  else neutralScore += starWeight
+  
+  // Emoji contribution
+  if (emojiRating) {
+    if (emojiRating === '😍' || emojiRating === '😊') positiveScore += emojiWeight
+    else if (emojiRating === '😞' || emojiRating === '😡') negativeScore += emojiWeight
+    else neutralScore += emojiWeight
+  }
+  
+  // Determine final sentiment
+  if (positiveScore > negativeScore && positiveScore > neutralScore) {
+    finalSentiment = 'positive'
+    finalConfidence = Math.min(0.9, 0.6 + positiveScore * 0.4)
+    urgency = 'low'
+  } else if (negativeScore > positiveScore && negativeScore > neutralScore) {
+    finalSentiment = 'negative'
+    finalConfidence = Math.min(0.9, 0.6 + negativeScore * 0.4)
+    urgency = starRating <= 2 ? (starRating === 1 ? 'high' : 'medium') : 'medium'
+    if (emojiRating === '😡') urgency = 'high'
+  } else {
+    finalSentiment = 'neutral'
+    finalConfidence = Math.min(0.8, 0.6 + neutralScore * 0.3)
+    urgency = 'low'
+  }
+  
+  // Extract keywords and categories
+  const keywords: string[] = []
+  const categories: string[] = []
+  const actionableInsights: string[] = []
+
+  if (text) {
+    const lowercaseText = text.toLowerCase()
+    
+    // Extract meaningful keywords
+    const words = text.split(/\s+/).filter(word => word.length > 3 && !['this', 'that', 'with', 'have', 'been', 'were', 'they', 'there'].includes(word.toLowerCase()))
+    keywords.push(...words.slice(0, 5))
+
+    // Categorize based on content
+    if (lowercaseText.includes('room') || lowercaseText.includes('stay') || lowercaseText.includes('hotel') || lowercaseText.includes('accommodation')) categories.push('accommodation')
+    if (lowercaseText.includes('food') || lowercaseText.includes('meal') || lowercaseText.includes('restaurant') || lowercaseText.includes('eat')) categories.push('food')
+    if (lowercaseText.includes('staff') || lowercaseText.includes('service') || lowercaseText.includes('help') || lowercaseText.includes('support')) categories.push('service quality')
+    if (lowercaseText.includes('clean') || lowercaseText.includes('dirty') || lowercaseText.includes('hygiene') || lowercaseText.includes('maintenance')) categories.push('cleanliness')
+    if (lowercaseText.includes('price') || lowercaseText.includes('cost') || lowercaseText.includes('expensive') || lowercaseText.includes('cheap') || lowercaseText.includes('money')) categories.push('pricing')
+    if (lowercaseText.includes('location') || lowercaseText.includes('place') || lowercaseText.includes('area') || lowercaseText.includes('destination')) categories.push('location')
+
+    // Generate actionable insights based on sentiment and content
+    if (finalSentiment === 'negative') {
+      actionableInsights.push('Immediate attention required for customer satisfaction')
+      if (starRating === 1) actionableInsights.push('Critical service improvement needed')
+      if (categories.includes('cleanliness')) actionableInsights.push('Focus on hygiene and cleanliness standards')
+      if (categories.includes('service quality')) actionableInsights.push('Staff training and customer service improvement required')
+      if (categories.includes('pricing')) actionableInsights.push('Review pricing strategy and value proposition')
+    } else if (finalSentiment === 'positive') {
+      actionableInsights.push('Leverage positive feedback for marketing and testimonials')
+      if (categories.includes('service quality')) actionableInsights.push('Recognize and reward excellent staff performance')
+    }
+  }
+
+  console.log(`✅ Enhanced fallback analysis: ${finalSentiment} (${finalConfidence.toFixed(2)} confidence) - Scores: P:${positiveScore.toFixed(2)} N:${negativeScore.toFixed(2)} Neu:${neutralScore.toFixed(2)}`)
+
+  return {
+    sentiment: finalSentiment,
+    confidence: finalConfidence,
+    emotions: {
+      joy: finalSentiment === 'positive' ? finalConfidence * 0.8 : 0.1,
+      anger: finalSentiment === 'negative' ? finalConfidence * 0.7 : 0.1,
+      sadness: finalSentiment === 'negative' ? finalConfidence * 0.5 : 0.1,
+      surprise: 0.2,
+      fear: urgency === 'high' ? 0.6 : 0.1,
+      disgust: finalSentiment === 'negative' ? finalConfidence * 0.4 : 0.1
+    },
+    keywords,
+    language: language || 'en',
+    toxicity: urgency === 'high' ? 0.6 : 0,
+    urgency,
+    categories,
+    actionableInsights
+  }
+}
+
 // Enhanced feedback database with AI analysis
 let feedbacks: EnhancedFeedback[] = []
 
@@ -274,7 +557,6 @@ export async function GET(request: NextRequest) {
     const category = searchParams.get('category')
     const sentiment = searchParams.get('sentiment')
     const flagged = searchParams.get('flagged')
-    const urgency = searchParams.get('urgency')
     const limit = parseInt(searchParams.get('limit') || '50')
     const offset = parseInt(searchParams.get('offset') || '0')
 
@@ -296,29 +578,17 @@ export async function GET(request: NextRequest) {
       filteredFeedbacks = filteredFeedbacks.filter(f => f.flagged)
     }
 
-    if (urgency && urgency !== 'All') {
-      filteredFeedbacks = filteredFeedbacks.filter(f => f.urgencyLevel === urgency)
-    }
-
     // Sort by timestamp (newest first)
     filteredFeedbacks.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime())
 
     const paginatedFeedbacks = filteredFeedbacks.slice(offset, offset + limit)
 
-    // Calculate sentiment statistics
+    // Calculate sentiment statistics (simplified - no urgency levels)
     const sentimentStats = {
       positive: filteredFeedbacks.filter(f => f.aiAnalysis.sentiment === 'positive').length,
       negative: filteredFeedbacks.filter(f => f.aiAnalysis.sentiment === 'negative').length,
       neutral: filteredFeedbacks.filter(f => f.aiAnalysis.sentiment === 'neutral').length,
       total: filteredFeedbacks.length
-    }
-
-    // Calculate urgency statistics
-    const urgencyStats = {
-      critical: filteredFeedbacks.filter(f => f.urgencyLevel === 'critical').length,
-      high: filteredFeedbacks.filter(f => f.urgencyLevel === 'high').length,
-      medium: filteredFeedbacks.filter(f => f.urgencyLevel === 'medium').length,
-      low: filteredFeedbacks.filter(f => f.urgencyLevel === 'low').length
     }
 
     // Get sentiment trends
@@ -328,7 +598,6 @@ export async function GET(request: NextRequest) {
       feedbacks: paginatedFeedbacks,
       total: filteredFeedbacks.length,
       sentimentStats,
-      urgencyStats,
       sentimentTrends,
       hasMore: offset + limit < filteredFeedbacks.length
     })
@@ -342,7 +611,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json()
     const { userId, userName, location, category, rating, textFeedback, language = 'auto', voiceData, imageData, emojiRating } = body
 
-    // Advanced AI analysis
+    // Enhanced AI analysis with star rating and emoji integration
     let aiAnalysis: AIAnalysisResult
     let voiceAnalysis: VoiceAnalysisResult | undefined
     let imageAnalysis: ImageAnalysisResult | undefined
@@ -356,20 +625,22 @@ export async function POST(request: NextRequest) {
       aiAnalysis = analysisResults.aiAnalysis!
       voiceAnalysis = analysisResults.voiceAnalysis
       imageAnalysis = analysisResults.imageAnalysis
+
+      // Enhance analysis with star rating and emoji data
+      aiAnalysis = enhanceAnalysisWithRatings(aiAnalysis, rating, emojiRating)
+      
+      console.log('✅ Enhanced AI analysis complete:', {
+        sentiment: aiAnalysis.sentiment,
+        confidence: aiAnalysis.confidence,
+        urgency: aiAnalysis.urgency,
+        starRating: rating,
+        emoji: emojiRating
+      })
+      
     } catch (error) {
-      console.error('AI analysis failed, using fallback:', error)
-      // Fallback to basic analysis
-      aiAnalysis = {
-        sentiment: 'neutral',
-        confidence: 0.5,
-        emotions: {},
-        keywords: [],
-        language: language || 'en',
-        toxicity: 0,
-        urgency: 'low',
-        categories: [],
-        actionableInsights: []
-      }
+      console.error('AI analysis failed, using enhanced fallback:', error)
+      // Enhanced fallback analysis with star rating and emoji
+      aiAnalysis = createFallbackAnalysis(textFeedback || '', rating, emojiRating, language)
     }
 
     // Determine urgency level

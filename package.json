@@ -5,10 +5,10 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "dev": "next dev --turbo",
+    "dev": "next dev",
     "lint": "next lint",
     "start": "next start",
-    "clean": "rimraf .next"
+    "clean": "rd /s /q .next 2>nul || rmdir /s /q .next 2>nul || echo Cache cleared"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

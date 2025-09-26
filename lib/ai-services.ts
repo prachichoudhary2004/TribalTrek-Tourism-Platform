@@ -36,53 +36,125 @@ export class AdvancedAIService {
   private huggingFaceKey: string
   private openAIKey?: string
   private googleCloudKey?: string
+  private groqApiKey: string
+  private isGroqAvailable: boolean
 
   constructor() {
     this.huggingFaceKey = process.env.HUGGINGFACE_API_KEY || ''
     this.openAIKey = process.env.OPENAI_API_KEY
     this.googleCloudKey = process.env.GOOGLE_CLOUD_API_KEY
+    this.groqApiKey = process.env.GROQ_API_KEY || ''
+    this.isGroqAvailable = this.validateGroqKey()
+    
+    if (this.isGroqAvailable) {
+      console.log('✅ Groq API available for sentiment analysis')
+    } else {
+      console.warn('⚠️ Groq API key not found. Using enhanced fallback analysis.')
+    }
   }
 
-  // Enhanced text analysis with multiple AI models
+  private validateGroqKey(): boolean {
+    return !!(this.groqApiKey && this.groqApiKey.length > 10 && this.groqApiKey !== 'your_groq_api_key_here')
+  }
+
+  // Enhanced text analysis with Groq API first, then fallback
   async analyzeText(text: string, language: string = 'auto'): Promise<AIAnalysisResult> {
+    // Try Groq API first if available
+    if (this.isGroqAvailable) {
+      try {
+        console.log('🤖 Using Groq API for sentiment analysis')
+        return await this.analyzeWithGroq(text, language)
+      } catch (error) {
+        console.error('❌ Groq analysis failed, using enhanced fallback:', error)
+        return await this.fallbackAnalysis(text, language)
+      }
+    }
+
+    // If Groq is not available, use enhanced fallback immediately
+    console.log('🔄 Using enhanced fallback analysis (Groq unavailable)')
+    return await this.fallbackAnalysis(text, language)
+  }
+
+  // Analyze text using Groq API with Llama model
+  private async analyzeWithGroq(text: string, language: string): Promise<AIAnalysisResult> {
+    const prompt = `Analyze the following text for sentiment analysis and provide a JSON response with the following structure:
+{
+  "sentiment": "positive" | "negative" | "neutral",
+  "confidence": 0.0-1.0,
+  "emotions": {
+    "joy": 0.0-1.0,
+    "anger": 0.0-1.0,
+    "sadness": 0.0-1.0,
+    "fear": 0.0-1.0,
+    "surprise": 0.0-1.0,
+    "disgust": 0.0-1.0
+  },
+  "keywords": ["word1", "word2", "word3"],
+  "urgency": "low" | "medium" | "high" | "critical",
+  "categories": ["category1", "category2"],
+  "actionableInsights": ["insight1", "insight2"]
+}
+
+Text to analyze: "${text}"
+
+Language: ${language}
+
+Provide only the JSON response, no additional text.`
+
     try {
-      // Detect language if not specified
-      const detectedLanguage = language === 'auto' ? await this.detectLanguage(text) : language
+      const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${this.groqApiKey}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          model: 'llama-3.1-8b-instant',
+          messages: [
+            {
+              role: 'system',
+              content: 'You are an expert sentiment analysis AI. Respond only with valid JSON.'
+            },
+            {
+              role: 'user',
+              content: prompt
+            }
+          ],
+          temperature: 0.3,
+          max_tokens: 1000,
+        }),
+      })
 
-      // Run multiple AI analyses in parallel
-      const [sentimentResult, emotionResult, toxicityResult, categoryResult] = await Promise.allSettled([
-        this.analyzeSentiment(text, detectedLanguage),
-        this.analyzeEmotions(text),
-        this.analyzeToxicity(text),
-        this.categorizeText(text)
-      ])
+      if (!response.ok) {
+        throw new Error(`Groq API error: ${response.status} ${response.statusText}`)
+      }
 
-      // Extract keywords using advanced NLP
-      const keywords = await this.extractAdvancedKeywords(text, detectedLanguage)
+      const data = await response.json()
+      const content = data.choices?.[0]?.message?.content
 
-      // Generate actionable insights
-      const insights = await this.generateActionableInsights(text, detectedLanguage)
+      if (!content) {
+        throw new Error('No content in Groq response')
+      }
 
-      // Determine urgency level
-      const urgency = this.calculateUrgency(
-        sentimentResult.status === 'fulfilled' ? sentimentResult.value : null,
-        toxicityResult.status === 'fulfilled' ? toxicityResult.value : 0
-      )
+      // Parse the JSON response
+      const analysis = JSON.parse(content)
+      
+      console.log('✅ Groq sentiment analysis successful:', analysis.sentiment, analysis.confidence)
 
       return {
-        sentiment: sentimentResult.status === 'fulfilled' ? sentimentResult.value.sentiment : 'neutral',
-        confidence: sentimentResult.status === 'fulfilled' ? sentimentResult.value.confidence : 0.5,
-        emotions: emotionResult.status === 'fulfilled' ? emotionResult.value : {},
-        keywords,
-        language: detectedLanguage,
-        toxicity: toxicityResult.status === 'fulfilled' ? toxicityResult.value : 0,
-        urgency,
-        categories: categoryResult.status === 'fulfilled' ? categoryResult.value : [],
-        actionableInsights: insights
+        sentiment: analysis.sentiment || 'neutral',
+        confidence: analysis.confidence || 0.5,
+        emotions: analysis.emotions || {},
+        keywords: analysis.keywords || [],
+        language: language,
+        toxicity: 0, // Groq doesn't provide toxicity, set to 0
+        urgency: analysis.urgency || 'low',
+        categories: analysis.categories || [],
+        actionableInsights: analysis.actionableInsights || []
       }
     } catch (error) {
-      console.error('Advanced AI analysis failed:', error)
-      return this.fallbackAnalysis(text, language)
+      console.error('Groq API error:', error)
+      throw error
     }
   }
 

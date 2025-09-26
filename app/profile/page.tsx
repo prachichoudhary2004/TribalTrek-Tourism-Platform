@@ -127,7 +127,8 @@ export default function ProfilePage() {
 
   return (
     <div className="min-h-screen" style={{
-      background: 'linear-gradient(135deg, rgba(128, 0, 32, 0.3) 0%, rgba(30, 58, 138, 0.3) 100%)'
+      background: 'linear-gradient(135deg, rgba(128, 0, 32, 0.3) 0%, rgba(30, 58, 138, 0.3) 100%)',
+      color: 'white'
     }}>
       <Navigation />
 
@@ -141,7 +142,8 @@ export default function ProfilePage() {
                 backdropFilter: 'blur(15px)',
                 border: '2px solid rgba(244, 208, 63, 0.35)',
                 borderRadius: '20px',
-                boxShadow: '0 12px 40px rgba(0, 0, 0, 0.25)'
+                boxShadow: '0 12px 40px rgba(0, 0, 0, 0.25)',
+                color: 'white'
               }}
             >
               {/* Header */}
@@ -188,18 +190,32 @@ export default function ProfilePage() {
                   </label>
                   {isEditing ? (
                     <div className="relative group">
-                      <User className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-white/60" />
+                      <User className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5" style={{ color: 'rgba(255, 255, 255, 0.6)' }} />
                       <input
                         type="text"
                         name="name"
                         value={editData.name}
                         onChange={handleInputChange}
-                        className="w-full pl-12 pr-4 py-4 rounded-xl transition-all duration-300"
+                        placeholder="Enter your full name"
+                        className="w-full pl-12 pr-4 py-6 rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 placeholder-white/50"
                         style={{
                           background: 'rgba(255, 255, 255, 0.12)',
                           border: '2px solid rgba(244, 208, 63, 0.4)',
                           color: 'white',
-                          fontSize: '16px'
+                          fontSize: '16px',
+                          backdropFilter: 'blur(10px)',
+                          boxShadow: '0 4px 15px rgba(244, 208, 63, 0.2)',
+                          fontWeight: '500'
+                        }}
+                        onFocus={(e) => {
+                          e.target.style.background = 'rgba(255, 255, 255, 0.18)';
+                          e.target.style.border = '2px solid rgba(244, 208, 63, 0.6)';
+                          e.target.style.boxShadow = '0 6px 20px rgba(244, 208, 63, 0.3)';
+                        }}
+                        onBlur={(e) => {
+                          e.target.style.background = 'rgba(255, 255, 255, 0.12)';
+                          e.target.style.border = '2px solid rgba(244, 208, 63, 0.4)';
+                          e.target.style.boxShadow = '0 4px 15px rgba(244, 208, 63, 0.2)';
                         }}
                       />
                       {errors.name && <p className="text-red-400 text-sm mt-1">{errors.name}</p>}
@@ -243,20 +259,33 @@ export default function ProfilePage() {
                   </label>
                   {isEditing ? (
                     <div className="relative group">
-                      <Phone className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-white/60" />
+                      <Phone className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5" style={{ color: 'rgba(255, 255, 255, 0.6)' }} />
                       <input
                         type="tel"
                         name="phone"
                         value={editData.phone}
                         onChange={handleInputChange}
-                        className="w-full pl-12 pr-4 py-4 rounded-xl transition-all duration-300"
+                        className="w-full pl-12 pr-4 py-6 rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 placeholder-white/50"
                         style={{
                           background: 'rgba(255, 255, 255, 0.12)',
                           border: '2px solid rgba(244, 208, 63, 0.4)',
                           color: 'white',
-                          fontSize: '16px'
+                          fontSize: '16px',
+                          backdropFilter: 'blur(10px)',
+                          boxShadow: '0 4px 15px rgba(244, 208, 63, 0.2)',
+                          fontWeight: '500'
                         }}
                         placeholder="Enter your phone number"
+                        onFocus={(e) => {
+                          e.target.style.background = 'rgba(255, 255, 255, 0.18)';
+                          e.target.style.border = '2px solid rgba(244, 208, 63, 0.6)';
+                          e.target.style.boxShadow = '0 6px 20px rgba(244, 208, 63, 0.3)';
+                        }}
+                        onBlur={(e) => {
+                          e.target.style.background = 'rgba(255, 255, 255, 0.12)';
+                          e.target.style.border = '2px solid rgba(244, 208, 63, 0.4)';
+                          e.target.style.boxShadow = '0 4px 15px rgba(244, 208, 63, 0.2)';
+                        }}
                       />
                       {errors.phone && <p className="text-red-400 text-sm mt-1">{errors.phone}</p>}
                     </div>

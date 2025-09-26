@@ -1,1 +1,1 @@
-self.__REACT_LOADABLE_MANIFEST="{}"
+self.__REACT_LOADABLE_MANIFEST="{\"app\\\\page.tsx -> ../public/destination.js\":{\"id\":\"app\\\\page.tsx -> ../public/destination.js\",\"files\":[\"static/chunks/_app-pages-browser_public_destination_js.js\"]}}"

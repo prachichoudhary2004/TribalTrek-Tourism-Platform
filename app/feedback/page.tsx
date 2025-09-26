@@ -102,12 +102,6 @@ export default function FeedbackPage() {
     neutral: 0,
     total: 0
   })
-  const [urgencyStats, setUrgencyStats] = useState({
-    critical: 0,
-    high: 0,
-    medium: 0,
-    low: 0
-  })
   const [aiInsights, setAiInsights] = useState<any[]>([])
   const [autoResponse, setAutoResponse] = useState<string>('')
   const [followUpQuestions, setFollowUpQuestions] = useState<string[]>([])
@@ -130,7 +124,6 @@ export default function FeedbackPage() {
     location: "All",
     category: "All",
     sentiment: "All",
-    urgency: "All",
     flagged: false,
     hasVoice: false,
     hasImage: false
@@ -168,7 +161,6 @@ export default function FeedbackPage() {
         location: filters.location,
         category: filters.category,
         sentiment: filters.sentiment,
-        urgency: filters.urgency,
         flagged: filters.flagged.toString()
       })
       
@@ -177,7 +169,6 @@ export default function FeedbackPage() {
       
       setFeedbacks(data.feedbacks || [])
       setSentimentStats(data.sentimentStats || { positive: 0, negative: 0, neutral: 0, total: 0 })
-      setUrgencyStats(data.urgencyStats || { critical: 0, high: 0, medium: 0, low: 0 })
       setAiInsights(data.sentimentTrends || [])
     } catch (error) {
       console.error('Failed to fetch feedbacks:', error)
@@ -269,23 +260,6 @@ export default function FeedbackPage() {
     }
   }
 
-  const getUrgencyIcon = (urgency: string) => {
-    switch (urgency) {
-      case 'critical': return <AlertTriangle className="h-4 w-4 text-red-600" />
-      case 'high': return <TrendingUp className="h-4 w-4 text-orange-600" />
-      case 'medium': return <TrendingUp className="h-4 w-4 text-yellow-600" />
-      default: return <CheckCircle className="h-4 w-4 text-green-600" />
-    }
-  }
-
-  const getUrgencyColor = (urgency: string) => {
-    switch (urgency) {
-      case 'critical': return 'bg-red-100 text-red-800'
-      case 'high': return 'bg-orange-100 text-orange-800'
-      case 'medium': return 'bg-yellow-100 text-yellow-800'
-      default: return 'bg-green-100 text-green-800'
-    }
-  }
 
   const getSentimentColor = (sentiment: string) => {
     switch (sentiment) {
@@ -297,6 +271,85 @@ export default function FeedbackPage() {
 
   return (
     <div className="min-h-screen">
+      <style jsx>{`
+        input::placeholder {
+          color: white !important;
+          opacity: 0.7;
+        }
+        input::-webkit-input-placeholder {
+          color: white !important;
+          opacity: 0.7;
+        }
+        input::-moz-placeholder {
+          color: white !important;
+          opacity: 0.7;
+        }
+        input:-ms-input-placeholder {
+          color: white !important;
+          opacity: 0.7;
+        }
+        @keyframes autofill {
+          to {
+            color: white;
+            background: rgba(255, 255, 255, 0.08);
+          }
+        }
+        
+        input.autofill-fix:-webkit-autofill,
+        input.autofill-fix:-webkit-autofill:hover,
+        input.autofill-fix:-webkit-autofill:focus,
+        input.autofill-fix:-webkit-autofill:active {
+          -webkit-box-shadow: 0 0 0 30px rgba(255, 255, 255, 0.08) inset !important;
+          -webkit-text-fill-color: white !important;
+          caret-color: white !important;
+          animation-name: autofill !important;
+          animation-fill-mode: both !important;
+          animation-duration: 1s !important;
+        }
+        .autofill-fix:-webkit-autofill,
+        .autofill-fix:-webkit-autofill:hover,
+        .autofill-fix:-webkit-autofill:focus,
+        .autofill-fix:-webkit-autofill:active {
+          -webkit-box-shadow: 0 0 0 30px rgba(255, 255, 255, 0.08) inset !important;
+          -webkit-text-fill-color: white !important;
+          caret-color: white !important;
+          animation-name: autofill !important;
+          animation-fill-mode: both !important;
+          animation-duration: 1s !important;
+        }
+        textarea.autofill-fix:-webkit-autofill,
+        textarea.autofill-fix:-webkit-autofill:hover,
+        textarea.autofill-fix:-webkit-autofill:focus,
+        textarea.autofill-fix:-webkit-autofill:active {
+          -webkit-box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0.08) inset !important;
+          -webkit-text-fill-color: white !important;
+          background-color: rgba(255, 255, 255, 0.08) !important;
+          background: rgba(255, 255, 255, 0.08) !important;
+          transition: background-color 5000s ease-in-out 0s !important;
+          transition: background 5000s ease-in-out 0s !important;
+        }
+        
+        /* Force white text for statistics */
+        .stats-white, .stats-white * {
+          color: white !important;
+        }
+        .stats-gold, .stats-gold * {
+          color: #f4d03f !important;
+        }
+        
+        /* Target all p elements in cards */
+        .card-stats p {
+          color: white !important;
+        }
+        .card-stats .label {
+          color: #f4d03f !important;
+        }
+        
+        /* Nuclear option - target by content */
+        p:contains("↗ +12%"), p:contains("↘ -8%"), p:contains("4.2/5"), p:contains("78%") {
+          color: white !important;
+        }
+      `}</style>
       <Navigation />
 
       {/* Hero Section */}
@@ -388,17 +441,18 @@ export default function FeedbackPage() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <Label htmlFor="userName" style={{ color: '#f4d03f' }}>Your Name *</Label>
-                      <Input
+                      <input
                         id="userName"
+                        type="text"
+                        name="userName"
                         value={formData.userName}
                         onChange={(e) => setFormData(prev => ({ ...prev, userName: e.target.value }))}
                         placeholder="Enter your name"
-                        className="w-full"
+                        className="w-full pl-4 pr-4 py-3 rounded-md placeholder-white autofill-fix"
                         style={{
                           background: 'rgba(255, 255, 255, 0.08)',
                           border: '1px solid rgba(244, 208, 63, 0.3)',
                           color: 'white',
-                          padding: '0.5rem 0.75rem',
                           height: '42px'
                         }}
                         onFocus={(e) => {
@@ -411,6 +465,7 @@ export default function FeedbackPage() {
                           e.target.style.color = 'white';
                           e.target.style.border = '1px solid rgba(244, 208, 63, 0.3)';
                         }}
+                        autoComplete="name"
                       />
                     </div>
                     <div>
@@ -419,16 +474,22 @@ export default function FeedbackPage() {
                         id="language"
                         value={formData.language}
                         onChange={(e) => setFormData(prev => ({ ...prev, language: e.target.value }))}
-                        className="w-full px-3 py-2 rounded-md"
+                        className="w-full px-3 py-2 rounded-md custom-dropdown"
                         style={{
                           background: 'rgba(255, 255, 255, 0.08)',
                           border: '1px solid rgba(244, 208, 63, 0.3)',
                           color: 'white',
-                          height: '42px'
+                          height: '42px',
+                          appearance: 'none',
+                          backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23f4d03f' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e")`,
+                          backgroundPosition: 'right 0.5rem center',
+                          backgroundRepeat: 'no-repeat',
+                          backgroundSize: '1.5em 1.5em',
+                          paddingRight: '2.5rem'
                         }}
                       >
                         {languages.map(lang => (
-                          <option key={lang.code} value={lang.code} style={{ background: '#1a1a1a', color: 'white' }}>{lang.name}</option>
+                          <option key={lang.code} value={lang.code} style={{ background: '#1a1a1a', color: 'white', padding: '8px' }}>{lang.name}</option>
                         ))}
                       </select>
                     </div>
@@ -441,16 +502,22 @@ export default function FeedbackPage() {
                         id="location"
                         value={formData.location}
                         onChange={(e) => setFormData(prev => ({ ...prev, location: e.target.value }))}
-                        className="w-full px-3 py-2 rounded-md"
+                        className="w-full px-3 py-2 rounded-md custom-dropdown"
                         style={{
                           background: 'rgba(255, 255, 255, 0.08)',
                           border: '1px solid rgba(244, 208, 63, 0.3)',
                           color: 'white',
-                          height: '42px'
+                          height: '42px',
+                          appearance: 'none',
+                          backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23f4d03f' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e")`,
+                          backgroundPosition: 'right 0.5rem center',
+                          backgroundRepeat: 'no-repeat',
+                          backgroundSize: '1.5em 1.5em',
+                          paddingRight: '2.5rem'
                         }}
                       >
                         {locations.slice(1).map(location => (
-                          <option key={location} value={location} style={{ background: '#1a1a1a', color: 'white' }}>{location}</option>
+                          <option key={location} value={location} style={{ background: '#1a1a1a', color: 'white', padding: '8px' }}>{location}</option>
                         ))}
                       </select>
                     </div>
@@ -460,16 +527,22 @@ export default function FeedbackPage() {
                         id="category"
                         value={formData.category}
                         onChange={(e) => setFormData(prev => ({ ...prev, category: e.target.value }))}
-                        className="w-full px-3 py-2 rounded-md"
+                        className="w-full px-3 py-2 rounded-md custom-dropdown"
                         style={{
                           background: 'rgba(255, 255, 255, 0.08)',
                           border: '1px solid rgba(244, 208, 63, 0.3)',
                           color: 'white',
-                          height: '42px'
+                          height: '42px',
+                          appearance: 'none',
+                          backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23f4d03f' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e")`,
+                          backgroundPosition: 'right 0.5rem center',
+                          backgroundRepeat: 'no-repeat',
+                          backgroundSize: '1.5em 1.5em',
+                          paddingRight: '2.5rem'
                         }}
                       >
                         {categories.slice(1).map(category => (
-                          <option key={category} value={category} style={{ background: '#1a1a1a', color: 'white' }}>{category}</option>
+                          <option key={category} value={category} style={{ background: '#1a1a1a', color: 'white', padding: '8px' }}>{category}</option>
                         ))}
                       </select>
                     </div>
@@ -546,7 +619,7 @@ export default function FeedbackPage() {
                         onChange={(e) => setFormData(prev => ({ ...prev, textFeedback: e.target.value }))}
                         placeholder="Share your detailed experience..."
                         rows={4}
-                        className="pr-12"
+                        className="pr-12 autofill-fix"
                         style={{
                           background: 'rgba(255, 255, 255, 0.08)',
                           border: '1px solid rgba(244, 208, 63, 0.3)',
@@ -627,19 +700,25 @@ export default function FeedbackPage() {
                       id="language"
                       value={formData.language}
                       onChange={(e) => setFormData(prev => ({ ...prev, language: e.target.value }))}
-                      className="w-full px-3 py-2 rounded-md mt-2"
+                      className="w-full px-3 py-2 rounded-md mt-2 custom-dropdown"
                       style={{
                         background: 'rgba(255, 255, 255, 0.08)',
                         border: '1px solid rgba(244, 208, 63, 0.3)',
                         color: 'white',
                         minWidth: '340px',
                         marginBottom: '16px',
-                        height: '42px'
+                        height: '42px',
+                        appearance: 'none',
+                        backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23f4d03f' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e")`,
+                        backgroundPosition: 'right 0.5rem center',
+                        backgroundRepeat: 'no-repeat',
+                        backgroundSize: '1.5em 1.5em',
+                        paddingRight: '2.5rem'
                       }}
                     >
-                      <option value="auto" style={{ background: '#1a1a1a', color: 'white' }}>Auto-detect</option>
+                      <option value="auto" style={{ background: '#1a1a1a', color: 'white', padding: '8px' }}>Auto-detect</option>
                       {languages.map(lang => (
-                        <option key={lang.code} value={lang.code} style={{ background: '#1a1a1a', color: 'white' }}>{lang.name}</option>
+                        <option key={lang.code} value={lang.code} style={{ background: '#1a1a1a', color: 'white', padding: '8px' }}>{lang.name}</option>
                       ))}
                     </select>
                   </div>
@@ -748,7 +827,7 @@ export default function FeedbackPage() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-6">
+                  <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
                     <div data-aos="fade-up" data-aos-delay="300">
                       <Label htmlFor="locationFilter" style={{ color: '#f4d03f', fontWeight: 700, marginTop: '12px' }}>Location</Label>
                       <select
@@ -807,57 +886,8 @@ export default function FeedbackPage() {
                         <option value="neutral" style={{ background: '#1a1a1a', color: 'white' }}>Neutral</option>
                       </select>
                     </div>
-                    <div data-aos="fade-up" data-aos-delay="600">
-                      <Label htmlFor="urgencyFilter" style={{ color: '#f4d03f', fontWeight: 700, marginTop: '12px' }}>Urgency</Label>
-                      <select
-                        id="urgencyFilter"
-                        value={filters.urgency}
-                        onChange={(e) => setFilters(prev => ({ ...prev, urgency: e.target.value }))}
-                        className="w-full px-3 py-2 rounded-md"
-                        style={{
-                          background: 'rgba(255, 255, 255, 0.08)',
-                          border: '1px solid rgba(244, 208, 63, 0.25)',
-                          color: 'white',
-                          height: '42px'
-                        }}
-                      >
-                        <option value="All" style={{ background: '#1a1a1a', color: 'white' }}>All</option>
-                        <option value="critical" style={{ background: '#1a1a1a', color: 'white' }}>Critical</option>
-                        <option value="high" style={{ background: '#1a1a1a', color: 'white' }}>High</option>
-                        <option value="medium" style={{ background: '#1a1a1a', color: 'white' }}>Medium</option>
-                        <option value="low" style={{ background: '#1a1a1a', color: 'white' }}>Low</option>
-                      </select>
-                    </div>
-                    <div className="flex flex-col gap-2" data-aos="fade-up" data-aos-delay="700">
-                      <Label style={{ color: '#f4d03f', fontWeight: 700, marginTop: '12px' }}>Filters</Label>
-                      <div className="space-y-1">
-                        <label className="flex items-center gap-2 text-sm" style={{ color: 'white' }}>
-                          <input
-                            type="checkbox"
-                            checked={filters.flagged}
-                            onChange={(e) => setFilters(prev => ({ ...prev, flagged: e.target.checked }))}
-                          />
-                          Flagged
-                        </label>
-                        <label className="flex items-center gap-2 text-sm" style={{ color: 'white' }}>
-                          <input
-                            type="checkbox"
-                            checked={filters.hasVoice}
-                            onChange={(e) => setFilters(prev => ({ ...prev, hasVoice: e.target.checked }))}
-                          />
-                          Has Voice
-                        </label>
-                        <label className="flex items-center gap-2 text-sm" style={{ color: 'white' }}>
-                          <input
-                            type="checkbox"
-                            checked={filters.hasImage}
-                            onChange={(e) => setFilters(prev => ({ ...prev, hasImage: e.target.checked }))}
-                          />
-                          Has Image
-                        </label>
-                      </div>
-                    </div>
-                    <div className="flex items-end" data-aos="fade-up" data-aos-delay="800">
+                    <div className="flex flex-col" data-aos="fade-up" data-aos-delay="800">
+                      <Label style={{ color: '#f4d03f', fontWeight: 700, marginTop: '12px', marginBottom: '8px' }}>Actions</Label>
                       <Button
                         onClick={fetchFeedbacks}
                         size="sm"
@@ -867,7 +897,8 @@ export default function FeedbackPage() {
                           color: '#800020',
                           border: '2px solid #f4d03f',
                           borderRadius: '25px',
-                          fontWeight: 600 as unknown as string
+                          fontWeight: 600 as unknown as string,
+                          height: '42px'
                         }}
                       >
                         <RefreshCw className="h-4 w-4 mr-2" />
@@ -879,7 +910,7 @@ export default function FeedbackPage() {
               </Card>
 
               {/* Enhanced Statistics */}
-              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4 mb-6">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
                 <Card className="p-4"
                   style={{
                     background: 'rgba(255,255,255,0.08)',
@@ -954,78 +985,6 @@ export default function FeedbackPage() {
                     <Meh className="h-8 w-8 text-yellow-600" style={{ color: 'white' }}/>
                   </div>
                 </Card>
-                <Card className="p-4"
-                  style={{
-                    background: 'rgba(255,255,255,0.08)',
-                    border: '1px solid rgba(244, 208, 63, 0.3)',
-                    backdropFilter: 'blur(12px)',
-                    borderRadius: '16px'
-                  }}
-                  data-aos="fade-up"
-                  data-aos-delay="600"
-                >
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-sm" style={{ color: '#f4d03f', fontWeight: 700 }}>Critical</p>
-                      <p className="text-2xl font-bold text-red-600" style={{ color: 'white' }}>{urgencyStats.critical}</p>
-                    </div>
-                    <AlertTriangle className="h-8 w-8 text-red-600" style={{ color: 'white' }}/>
-                  </div>
-                </Card>
-                <Card className="p-4"
-                  style={{
-                    background: 'rgba(255,255,255,0.08)',
-                    border: '1px solid rgba(244, 208, 63, 0.3)',
-                    backdropFilter: 'blur(12px)',
-                    borderRadius: '16px'
-                  }}
-                  data-aos="fade-up"
-                  data-aos-delay="700"
-                >
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-sm" style={{ color: '#f4d03f', fontWeight: 700 }}>High</p>
-                      <p className="text-2xl font-bold text-orange-600" style={{ color: 'white' }}>{urgencyStats.high}</p>
-                    </div>
-                    <TrendingUp className="h-8 w-8 text-orange-600" style={{ color: 'white' }}/>
-                  </div>
-                </Card>
-                <Card className="p-4"
-                  style={{
-                    background: 'rgba(255,255,255,0.08)',
-                    border: '1px solid rgba(244, 208, 63, 0.3)',
-                    backdropFilter: 'blur(12px)',
-                    borderRadius: '16px'
-                  }}
-                  data-aos="fade-up"
-                  data-aos-delay="800"
-                >
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-sm" style={{ color: '#f4d03f', fontWeight: 700 }}>Medium</p>
-                      <p className="text-2xl font-bold text-yellow-600" style={{ color: 'white' }}>{urgencyStats.medium}</p>
-                    </div>
-                    <TrendingUp className="h-8 w-8 text-yellow-600" style={{ color: 'white' }}/>
-                  </div>
-                </Card>
-                <Card className="p-4"
-                  style={{
-                    background: 'rgba(255,255,255,0.08)',
-                    border: '1px solid rgba(244, 208, 63, 0.3)',
-                    backdropFilter: 'blur(12px)',
-                    borderRadius: '16px'
-                  }}
-                  data-aos="fade-up"
-                  data-aos-delay="900"
-                >
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-sm" style={{ color: '#f4d03f', fontWeight: 700 }}>Low</p>
-                      <p className="text-2xl font-bold text-green-600" style={{ color: 'white' }}>{urgencyStats.low}</p>
-                    </div>
-                    <CheckCircle className="h-8 w-8 text-green-600" style={{ color: 'white' }}/>
-                  </div>
-                </Card>
               </div>
 
               {/* Feedback List */}
@@ -1084,7 +1043,7 @@ export default function FeedbackPage() {
                                 {new Date(feedback.timestamp).toLocaleDateString()}
                               </span>
                               <span className="flex items-center gap-1">
-                                {feedback.language && (
+                                {feedback.language && feedback.language !== 'auto' && feedback.language !== 'AUTO' && (
                                   <Badge 
                                     variant="outline" 
                                     className="text-xs"
@@ -1104,28 +1063,31 @@ export default function FeedbackPage() {
                           <div className="flex items-center gap-2">
                             <Badge 
                               variant="outline" 
+                              className="px-3 py-1 text-sm font-semibold"
                               style={{ 
-                                background: 'rgba(244, 208, 63, 0.2)', 
-                                border: '1px solid rgba(244, 208, 63, 0.5)', 
+                                background: 'linear-gradient(135deg, rgba(244, 208, 63, 0.25) 0%, rgba(244, 208, 63, 0.15) 100%)', 
+                                border: '2px solid rgba(244, 208, 63, 0.6)', 
                                 color: '#f4d03f',
-                                borderRadius: '12px'
+                                borderRadius: '16px',
+                                boxShadow: '0 2px 8px rgba(244, 208, 63, 0.2)'
                               }}
                             >
                               {feedback.category}
                             </Badge>
                             <Badge 
-                              className={getSentimentColor(feedback.aiAnalysis.sentiment)}
-                              style={{ borderRadius: '12px' }}
+                              className={`px-3 py-1 text-sm font-semibold ${getSentimentColor(feedback.aiAnalysis.sentiment)}`}
+                              style={{ 
+                                borderRadius: '16px',
+                                border: '2px solid',
+                                borderColor: feedback.aiAnalysis.sentiment === 'positive' ? '#10b981' : 
+                                           feedback.aiAnalysis.sentiment === 'negative' ? '#ef4444' : '#f59e0b',
+                                boxShadow: `0 2px 8px ${feedback.aiAnalysis.sentiment === 'positive' ? 'rgba(16, 185, 129, 0.2)' : 
+                                           feedback.aiAnalysis.sentiment === 'negative' ? 'rgba(239, 68, 68, 0.2)' : 'rgba(245, 158, 11, 0.2)'}`,
+                                color: 'black'
+                              }}
                             >
                               {getSentimentIcon(feedback.aiAnalysis.sentiment)}
-                              <span className="ml-1 capitalize">{feedback.aiAnalysis.sentiment}</span>
-                            </Badge>
-                            <Badge 
-                              className={getUrgencyColor(feedback.urgencyLevel)}
-                              style={{ borderRadius: '12px' }}
-                            >
-                              {getUrgencyIcon(feedback.urgencyLevel)}
-                              <span className="ml-1 capitalize">{feedback.urgencyLevel}</span>
+                              <span className="ml-1 capitalize font-bold" style={{ color: 'black' }}>{feedback.aiAnalysis.sentiment}</span>
                             </Badge>
                           </div>
                         </div>
@@ -1179,37 +1141,47 @@ export default function FeedbackPage() {
                             <div className="grid grid-cols-2 gap-4 text-xs">
                               <div>
                                 <span style={{ color: 'rgba(255, 255, 255, 0.7)' }}>Sentiment:</span>
-                                <span className="ml-1 font-medium" style={{ color: 'white' }}>{feedback.aiAnalysis.sentiment}</span>
+                                <span className="ml-1 font-medium capitalize" style={{ color: 'white' }}>{feedback.aiAnalysis.sentiment}</span>
                               </div>
                               <div>
                                 <span style={{ color: 'rgba(255, 255, 255, 0.7)' }}>Confidence:</span>
                                 <span className="ml-1 font-medium" style={{ color: 'white' }}>{(feedback.aiAnalysis.confidence * 100).toFixed(1)}%</span>
                               </div>
-                              <div>
-                                <span style={{ color: 'rgba(255, 255, 255, 0.7)' }}>Language:</span>
-                                <span className="ml-1 font-medium" style={{ color: 'white' }}>{feedback.aiAnalysis.language}</span>
-                              </div>
-                              <div>
-                                <span style={{ color: 'rgba(255, 255, 255, 0.7)' }}>Urgency:</span>
-                                <span className="ml-1 font-medium capitalize" style={{ color: 'white' }}>{feedback.urgencyLevel}</span>
-                              </div>
                             </div>
 
                             {/* Keywords */}
                             {feedback.aiAnalysis.keywords.length > 0 && (
-                              <div className="mt-3">
-                                <p className="text-xs font-medium mb-2" style={{ color: 'rgba(255, 255, 255, 0.7)' }}>Key Topics:</p>
-                                <div className="flex flex-wrap gap-1">
+                              <div className="mt-4">
+                                <p className="text-sm font-semibold mb-3" style={{ color: '#f4d03f' }}>Key Topics:</p>
+                                <div className="flex flex-wrap gap-2">
                                   {feedback.aiAnalysis.keywords.slice(0, 4).map((keyword, idx) => (
                                     <Badge 
                                       key={idx} 
                                       variant="outline" 
-                                      className="text-xs"
+                                      className="px-3 py-1 text-sm font-medium"
                                       style={{
-                                        background: 'rgba(244, 208, 63, 0.2)',
-                                        border: '1px solid rgba(244, 208, 63, 0.4)',
-                                        color: '#f4d03f',
-                                        borderRadius: '8px'
+                                        background: feedback.aiAnalysis.sentiment === 'negative' 
+                                          ? 'linear-gradient(135deg, rgba(239, 68, 68, 0.2) 0%, rgba(239, 68, 68, 0.1) 100%)'
+                                          : feedback.aiAnalysis.sentiment === 'positive'
+                                          ? 'linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(16, 185, 129, 0.1) 100%)'
+                                          : 'linear-gradient(135deg, rgba(244, 208, 63, 0.2) 0%, rgba(244, 208, 63, 0.1) 100%)',
+                                        border: `2px solid ${feedback.aiAnalysis.sentiment === 'negative' 
+                                          ? 'rgba(239, 68, 68, 0.5)'
+                                          : feedback.aiAnalysis.sentiment === 'positive'
+                                          ? 'rgba(16, 185, 129, 0.5)'
+                                          : 'rgba(244, 208, 63, 0.5)'}`,
+                                        color: feedback.aiAnalysis.sentiment === 'negative' 
+                                          ? '#fca5a5'
+                                          : feedback.aiAnalysis.sentiment === 'positive'
+                                          ? '#6ee7b7'
+                                          : '#f4d03f',
+                                        borderRadius: '12px',
+                                        boxShadow: `0 2px 6px ${feedback.aiAnalysis.sentiment === 'negative' 
+                                          ? 'rgba(239, 68, 68, 0.15)'
+                                          : feedback.aiAnalysis.sentiment === 'positive'
+                                          ? 'rgba(16, 185, 129, 0.15)'
+                                          : 'rgba(244, 208, 63, 0.15)'}`,
+                                        fontWeight: '600'
                                       }}
                                     >
                                       {keyword}
@@ -1272,7 +1244,7 @@ export default function FeedbackPage() {
 
           {/* Analytics Tab */}
           <TabsContent value="analytics" className="mt-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <Card
                 style={{
                   background: 'rgba(255,255,255,0.08)',
@@ -1291,54 +1263,21 @@ export default function FeedbackPage() {
                 <CardContent>
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
-                      <span>Positive Trend</span>
-                      <span className="text-green-600 font-medium">↗ +12%</span>
+                      <span style={{ color: 'white' }}>Positive Trend</span>
+                      <span className="text-green-600 font-medium" style={{ color: 'white' }}>↗ +12%</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span>Negative Trend</span>
-                      <span className="text-red-600 font-medium">↘ -8%</span>
+                      <span style={{ color: 'white' }}>Negative Trend</span>
+                      <span className="text-red-600 font-medium" style={{ color: 'white' }}>↘ -8%</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span>Overall Satisfaction</span>
-                      <span className="font-medium">4.2/5</span>
+                      <span style={{ color: 'white' }}>Overall Satisfaction</span>
+                      <span className="font-medium" style={{ color: 'white' }}>4.2/5</span>
                     </div>
                   </div>
                 </CardContent>
               </Card>
-
-              <Card
-                style={{
-                  background: 'rgba(255,255,255,0.08)',
-                  border: '1px solid rgba(244, 208, 63, 0.3)',
-                  backdropFilter: 'blur(12px)'
-                }}
-                data-aos="fade-up"
-                data-aos-delay="400"
-              >
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2" style={{ color: '#f4d03f' }}>
-                    <AlertTriangle className="h-5 w-5" style={{ color: '#f4d03f' }} />
-                    Alert Summary
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-3">
-                    <div className="flex justify-between items-center">
-                      <span>Flagged Reviews</span>
-                      <Badge variant="destructive">3</Badge>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span>Service Issues</span>
-                      <Badge variant="secondary">2</Badge>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span>Safety Concerns</span>
-                      <Badge variant="destructive">1</Badge>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
+              
               <Card
                 style={{
                   background: 'rgba(255,255,255,0.08)',
@@ -1357,16 +1296,16 @@ export default function FeedbackPage() {
                 <CardContent>
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
-                      <span>Vendor Responses</span>
-                      <span className="font-medium">78%</span>
+                      <span style={{ color: 'white' }}>Vendor Responses</span>
+                      <span className="font-medium" style={{ color: 'white' }}>78%</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span>Avg Response Time</span>
-                      <span className="font-medium">2.3 hours</span>
+                      <span style={{ color: 'white' }}>Avg Response Time</span>
+                      <span className="font-medium" style={{ color: 'white' }}>2.3 hours</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span>Resolution Rate</span>
-                      <span className="font-medium">85%</span>
+                      <span style={{ color: 'white' }}>Resolution Rate</span>
+                      <span className="font-medium" style={{ color: 'white' }}>85%</span>
                     </div>
                   </div>
                 </CardContent>
