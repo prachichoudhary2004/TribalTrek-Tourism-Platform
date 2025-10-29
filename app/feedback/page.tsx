@@ -357,7 +357,7 @@ export default function FeedbackPage() {
         <div className="hero-content">
           <h1 data-aos="fade-up">
             Share Your
-            <span className="text-gold block">Experience & Insights</span>
+            <span className="text-gold block"> Experience & Insights</span>
           </h1>
           <p data-aos="fade-up" data-aos-delay="200">
             Help us enhance Jharkhand tourism with smart, AI-powered feedback analysis. Your voice shapes better

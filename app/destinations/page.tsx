@@ -188,7 +188,7 @@ export default function DestinationsPage() {
         <div className="hero-content">
           <h1 data-aos="fade-up" data-aos-delay="200">
             Discover Jharkhand's
-            <span className="text-gold block">Hidden Treasures</span>
+            <span className="text-gold block"> Hidden Treasures</span>
           </h1>
           <p data-aos="fade-up" data-aos-delay="400">
             From mystical waterfalls to sacred temples, explore the diverse landscapes and rich cultural heritage of

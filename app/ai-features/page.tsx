@@ -144,7 +144,7 @@ export default function AIFeaturesPage() {
         <div className="hero-content">
           <h1>
             Smart Tourism
-            <span className="text-gold block">Powered by AI</span>
+            <span className="text-gold block"> Powered by AI</span>
           </h1>
           <p>
             Experience the future of travel with our cutting-edge AI technology, blockchain security, and immersive

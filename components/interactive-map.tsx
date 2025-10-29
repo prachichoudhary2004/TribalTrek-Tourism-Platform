@@ -10,9 +10,20 @@ import jharkhandTouristPlaces from "../db/places";
 // Fix for default marker icon
 delete (Icon.Default.prototype as any)._getIconUrl;
 Icon.Default.mergeOptions({
-  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
-  iconUrl: require('leaflet/dist/images/marker-icon.png'),
-  shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
+  iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
+  iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+});
+
+// Create custom marker icon
+const customIcon = new L.Icon({
+  iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
+  iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
 });
 
 interface Place {
@@ -100,12 +111,18 @@ export default function InteractiveMap() {
 
   useEffect(() => {
     // Fetch GeoJSON data
+    console.log('Fetching GeoJSON data...');
     fetch("/JHARKHAND_DISTRICTS.geojson")
-      .then((r) => r.json())
+      .then((r) => {
+        console.log('GeoJSON response received:', r.status);
+        return r.json();
+      })
       .then((data: FeatureCollection) => {
+        console.log('GeoJSON data loaded:', data.features?.length, 'districts');
         setGeoData(data);
         if (data && data.features) {
           setDistrictColors(assignDistrictColors(data.features));
+          console.log('District colors assigned:', Object.keys(assignDistrictColors(data.features)).length);
           if (mapRef.current && data.features.length > 0) {
             const geoJsonLayer = L.geoJSON(data);
             const bounds = geoJsonLayer.getBounds();
@@ -117,10 +134,14 @@ export default function InteractiveMap() {
           }
         }
       })
-      .catch((err) => console.error("Failed to load geojson:", err));
+      .catch((err) => {
+        console.error("Failed to load geojson:", err);
+        setIsLoading(false);
+      });
 
     // Places data is now loaded from local file
     console.log('Places loaded from local file:', places.length, 'places');
+    console.log('Sample places:', places.slice(0, 3));
     setIsLoading(false);
   }, []);
 
@@ -245,9 +266,10 @@ export default function InteractiveMap() {
 
           // Set markers immediately since places data is local
           const districtPlaces = places
-            .filter((place) => place.district === districtName && place.streetView)
-            .slice(0, 2);
+            .filter((place) => place.district === districtName)
+            .slice(0, 5); // Show up to 5 places per district
           console.log(`Setting markers for ${districtName}:`, districtPlaces.length, 'places');
+          console.log('District places:', districtPlaces);
           setMarkers(districtPlaces);
         } else {
           setMarkers([]);
@@ -316,6 +338,7 @@ export default function InteractiveMap() {
               <Marker
                 key={idx}
                 position={[place.lat, place.lon] as LatLngExpression}
+                icon={customIcon}
                 eventHandlers={{
                   click: () => setSelectedPlace(place)
                 }}

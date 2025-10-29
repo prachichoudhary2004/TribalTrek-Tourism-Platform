@@ -254,7 +254,7 @@ export default function MarketplacePage() {
         <div className="hero-content">
           <h1 data-aos="fade-up" data-aos-delay="200">
             Local Marketplace
-            <span className="text-gold block">Supporting Communities</span>
+            <span className="text-gold block"> Supporting Communities</span>
           </h1>
           <p data-aos="fade-up" data-aos-delay="400">
             Discover authentic tribal handicrafts, stay with local families, and support sustainable tourism

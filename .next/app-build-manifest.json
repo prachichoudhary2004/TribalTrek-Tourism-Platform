@@ -11,11 +11,21 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/feedback/page": [
+    "/destinations/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/feedback/page.css",
-      "static/chunks/app/feedback/page.js"
+      "static/css/app/destinations/page.css",
+      "static/chunks/app/destinations/page.js"
+    ],
+    "/destinations/loading": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/destinations/loading.js"
+    ],
+    "/destinations/[destination]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/destinations/[destination]/page.js"
     ],
     "/ai-features/page": [
       "static/chunks/webpack.js",
@@ -27,15 +37,53 @@
       "static/chunks/main-app.js",
       "static/chunks/app/ai-features/loading.js"
     ],
-    "/analytics/page": [
+    "/travel-planner/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/analytics/page.js"
+      "static/css/app/travel-planner/page.css",
+      "static/chunks/app/travel-planner/page.js"
     ],
-    "/profile/page": [
+    "/ar-vr/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/profile/page.js"
+      "static/chunks/app/ar-vr/page.js"
+    ],
+    "/marketplace/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/marketplace/page.css",
+      "static/chunks/app/marketplace/page.js"
+    ],
+    "/marketplace/loading": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/marketplace/loading.js"
+    ],
+    "/marketplace/product/[id]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/marketplace/product/[id]/page.js"
+    ],
+    "/order/success/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/order/success/page.js"
+    ],
+    "/about/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/about/page.js"
+    ],
+    "/about/loading": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/about/loading.js"
+    ],
+    "/feedback/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/feedback/page.css",
+      "static/chunks/app/feedback/page.js"
     ]
   }
 }
